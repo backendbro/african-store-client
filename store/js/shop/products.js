@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   function renderProducts(products, results) {
-    document.getElementById("product_count").innerHTML = results.count;
+    console.log(products);
     productList.innerHTML = ""; // Clear previous items
 
     const cartCountElement = document.querySelector(".cart-count");
@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCartCounter();
 
     products.forEach((product) => {
+      console.log(product);
       let Discount = product.Discount
         ? product.BasePrice * (product.Discount / 100)
         : 0;
@@ -70,21 +71,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
       productItem.innerHTML = `
         <div class="product-box">
-          <a href="${productLink}" class="product-link">
-            <div class="product-image">
+          <div class="product-image">
+            <a href="${productLink}">
               <img src="${
-                product.file[0] ||
-                "https://i.pinimg.com/736x/1c/16/62/1c1662f546cc85a1d77732c840ff9113.jpg"
-              }" 
-                   alt="${product.name}">
-              ${isNew ? `<span class="label">New</span>` : ""}    
+                product.file[0] || "https://via.placeholder.com/150"
+              }" alt="${product.name}" />
               <div class="product-overlay"></div>
+            </a>
             <div class="product-buttons">
-              <button class="add-to-cart" data-id="${product._id}" 
+              <button class="add-to-cart"
+              data-id="${product._id}" 
                           data-name="${product.name}" 
                           data-price="${finalPrice}" 
                           data-image="${product.file[0]}"
                           data-stock="${product.StockQuantity}">
+              
                 <i class="feather icon-feather-shopping-bag"></i>
                 Add to Cart
               </button>
@@ -106,15 +107,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 </li>
               </ul>
             </div>
-              </div>
-            <div class="product-info">
-              <span class="product-name">${product.name}</span>
-              <div class="product-price">
-                ${product.Discount ? `<del>€${product.BasePrice}</del>` : ""}
-                €${finalPrice}
-              </div>
-            </div>
-          </a>
+          </div>
+          <div class="product-info">
+            <a href="${productLink}" class="product-name">${product.name}</a>
+            <div class="product-price">€${product.BasePrice}</div>
+          </div>
         </div>
       `;
 
@@ -140,6 +137,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const productImage = event.target.getAttribute("data-image");
 
         // Validate product attributes (Ensure they are not null or undefined)
+        const productObject = {
+          id: productId,
+          name: productName,
+          finalPrice: productPrice,
+          image: productImage,
+          StockQuantity: productStock,
+          quantity: 1, // Initialize quantity as 1
+        };
+        console.log(productObject);
+
         if (
           !productId ||
           !productName ||
@@ -157,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           Swal.fire({
             title: "Error",
-            text: "Please try again.",
+            text: "Invalid product data. Please try again.",
             icon: "error",
             showConfirmButton: false,
             timer: 2000,
@@ -166,14 +173,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Create product object
-        const productObject = {
-          id: productId,
-          name: productName,
-          finalPrice: productPrice,
-          image: productImage,
-          StockQuantity: productStock,
-          quantity: 1, // Initialize quantity as 1
-        };
 
         // Check if product is already in cart
         const existingProduct = cart.find((item) => item.id === productId);

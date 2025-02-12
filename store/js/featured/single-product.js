@@ -84,7 +84,12 @@ document.addEventListener("DOMContentLoaded", () => {
               <div class="product-overlay"></div>
             </a>
             <div class="product-buttons">
-              <button class="add-to-cart" data-id="${product._id}">
+              <button class="add-to-cart"
+              data-id="${product._id}" 
+                          data-name="${product.name}" 
+                          data-price="${finalPrice}" 
+                          data-image="${product.file[0]}"
+                          data-stock="${product.StockQuantity}">
                 <i class="feather icon-feather-shopping-bag"></i>
                 Add to Cart
               </button>
@@ -123,6 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Hello world");
         event.preventDefault();
 
+        // Retrieve product attributes
         const productId = event.target.getAttribute("data-id");
         const productName = event.target.getAttribute("data-name");
         const productPrice = parseFloat(
@@ -133,6 +139,32 @@ document.addEventListener("DOMContentLoaded", () => {
           10
         );
         const productImage = event.target.getAttribute("data-image");
+
+        // Validate product attributes (Ensure they are not null or undefined)
+        if (
+          !productId ||
+          !productName ||
+          isNaN(productPrice) ||
+          isNaN(productStock) ||
+          !productImage
+        ) {
+          console.error("Invalid product data:", {
+            productId,
+            productName,
+            productPrice,
+            productStock,
+            productImage,
+          });
+
+          Swal.fire({
+            title: "Error",
+            text: "Please try again.",
+            icon: "error",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+          return; // Stop execution if product data is invalid
+        }
 
         // Create product object
         const productObject = {

@@ -42,6 +42,19 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderProducts(products, results) {
     productList.innerHTML = ""; // Clear previous items
 
+    const cartCountElement = document.querySelector(".cart-count");
+
+    // Retrieve cart from localStorage or initialize an empty array
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Function to update cart counter
+    function updateCartCounter() {
+      cartCountElement.textContent = cart.length;
+    }
+
+    // Call updateCartCounter initially to sync with localStorage
+    updateCartCounter();
+
     products.forEach((product) => {
       let Discount = product.Discount
         ? product.BasePrice * (product.Discount / 100)
@@ -111,7 +124,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="product-overlay"></div>
               </a>
               <div class="product-buttons">
-                <button class="add-to-cart" data-id="${product._id}">
+                <button class="add-to-cart" data-id="${product._id}" 
+                          data-name="${product.name}" 
+                          data-price="${finalPrice}" 
+                          data-image="${product.file[0]}"
+                          data-stock="${product.StockQuantity}">
                   <i class="feather icon-feather-shopping-bag"></i>
                   Add to Cart
                 </button>
@@ -146,26 +163,81 @@ document.addEventListener("DOMContentLoaded", () => {
     // Attach event listeners to "Add to Cart" buttons
     document.querySelectorAll(".add-to-cart").forEach((button) => {
       button.addEventListener("click", (event) => {
+        console.log("Hello world");
         event.preventDefault();
-        const productId = event.target.getAttribute("data-id");
 
-        if (!cart.includes(productId)) {
-          cart.push(productId);
-          localStorage.setItem("cart", JSON.stringify(cart));
-          Swal.fire({
-            title: "Product",
-            text: "Product successfully added",
-            icon: "success",
-            showConfirmButton: false,
-            timer: 2000, // Auto close in 2 seconds
+        // Retrieve product attributes
+        const productId = event.target.getAttribute("data-id");
+        const productName = event.target.getAttribute("data-name");
+        const productPrice = parseFloat(
+          event.target.getAttribute("data-price")
+        );
+        const productStock = parseInt(
+          event.target.getAttribute("data-stock"),
+          10
+        );
+        const productImage = event.target.getAttribute("data-image");
+
+        // Validate product attributes (Ensure they are not null or undefined)
+        if (
+          !productId ||
+          !productName ||
+          isNaN(productPrice) ||
+          isNaN(productStock) ||
+          !productImage
+        ) {
+          console.error("Invalid product data:", {
+            productId,
+            productName,
+            productPrice,
+            productStock,
+            productImage,
           });
-        } else {
+
+          Swal.fire({
+            title: "Error",
+            text: "Please try again.",
+            icon: "error",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+          return; // Stop execution if product data is invalid
+        }
+
+        // Create product object
+        const productObject = {
+          id: productId,
+          name: productName,
+          finalPrice: productPrice,
+          image: productImage,
+          StockQuantity: productStock,
+          quantity: 1, // Initialize quantity as 1
+        };
+
+        // Check if product is already in cart
+        const existingProduct = cart.find((item) => item.id === productId);
+
+        if (existingProduct) {
           Swal.fire({
             title: "Product",
             text: "Product already added",
             icon: "error",
             showConfirmButton: false,
-            timer: 2000, // Auto close in 2 seconds
+            timer: 2000,
+          });
+        } else {
+          cart.push(productObject);
+          localStorage.setItem("cart", JSON.stringify(cart));
+
+          // Update cart counter
+          updateCartCounter();
+
+          Swal.fire({
+            title: "Product",
+            text: "Product successfully added",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 2000,
           });
         }
       });

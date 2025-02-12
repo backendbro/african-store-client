@@ -36,6 +36,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log("Product Data:", productData.data);
 
     document.querySelector(".image-descri").src = productData.data.file[0];
+    document.querySelector("#navigation-product").innerText =
+      productData.data.name;
+    document.querySelector("#single-product-name").innerText =
+      productData.data.name;
+    document.querySelector("#product-category").innerText =
+      productData.data.category.name;
+    document.querySelector("#product-description").innerText =
+      productData.data.description;
+
     const swiperWrapperMain = document.querySelector(
       ".product-image-slider .swiper-wrapper"
     );
@@ -202,38 +211,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Clear existing slides
     // Get the input element
     // Get the input element
-    const qtyInputElement = document.querySelector(".qty-text");
-    qtyInputElement.value = parseInt(productData.data.StockQuantity); // Set the initial value (can be adjusted based on your needs)
-
-    const minusButton = document.querySelector(".qty-minus");
-    const plusButton = document.querySelector(".qty-plus");
-
-    // Get the max quantity from the backend (productData.data.StockQuantity)
-    const maxQuantity = parseInt(productData.data.StockQuantity);
-
-    // Update the quantity based on user interaction
-    minusButton.addEventListener("click", () => {
-      let currentQuantity = parseInt(qtyInputElement.value);
-      if (currentQuantity > 1) {
-        qtyInputElement.value = currentQuantity - 1; // Decrease quantity
-      }
-    });
-
-    plusButton.addEventListener("click", () => {
-      let currentQuantity = parseInt(qtyInputElement.value, 10);
-
-      // Disable plus button and change pointer when the current quantity reaches max quantity
-      if (currentQuantity >= maxQuantity) {
-        plusButton.disabled = true;
-        plusButton.style.pointerEvents = "none";
-        plusButton.style.cursor = "not-allowed"; // Indicate the button is disabled
-      } else {
-        plusButton.disabled = false;
-        plusButton.style.pointerEvents = "auto"; // Re-enable interaction
-        plusButton.style.cursor = "pointer"; // Revert to normal pointer
-        qtyInputElement.value = currentQuantity + 1; // Increase quantity
-      }
-    });
 
     // Display product details on the page (example)
 
@@ -243,35 +220,111 @@ document.addEventListener("DOMContentLoaded", async () => {
       : 0;
     let finalPrice = Math.round(productData.data.BasePrice - Discount);
 
-    document.querySelector("#productPrice").textContent =
-      productData.data.BasePrice;
-
     document.querySelector("#navigation-product").textContent =
       productData.data.name;
     document.querySelector("#category-name").textContent =
       productData.data.category.name;
     document.querySelector("#product-description").textContent =
       productData.data.description;
-    document.querySelector("#sku").textContent = trimmedId;
-    document.querySelector("#product-category").textContent =
-      productData.data.category.name;
-    document.querySelector(".product-info2 h4").textContent =
-      productData.data.name;
-    document.querySelector("#image-description").src = productData.data.file[0];
-    document.querySelector(
-      ".product-price2 span"
-    ).textContent = `€${productData.data.price}`;
+    document.querySelector("#sku").innerText = trimmedId;
 
-    // Define the payment item with price data
-    const paymentItem = {
-      currency: "EUR",
-      name: productData.data.name,
-      images: productData.data.file || [], // Pass all images, default to empty array if none
-      price: parseInt(finalPrice), // Convert price to cents
-      quantity: parseInt(qtyInputElement.value), // Send the correct quantity
-    };
+    document.querySelector(".product-price").innerHTML = `
+  <span class="text-dark-gray fs-28 xs-fs-24 fw-700 ls-minus-1px">
+    ${
+      productData.data.Discount
+        ? `<del class="text-medium-gray me-10px fw-400">€${productData.data.BasePrice}</del>`
+        : ""
+    }
+    €${finalPrice}
+  </span>
 
-    localStorage.setItem("paymentItem", JSON.stringify(paymentItem));
+  `;
+
+    const cartCountElement = document.querySelector(".cart-count");
+    // Retrieve cart from localStorage or initialize an empty array
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Function to update cart counter
+    function updateCartCounter() {
+      cartCountElement.textContent = cart.length;
+    }
+
+    document.querySelectorAll(".add-to-cart").forEach((button) => {
+      button.addEventListener("click", (event) => {
+        console.log("Hello world");
+        event.preventDefault();
+        console.log(productData);
+
+        const productId = productData.data._id;
+        const productName = productData.data.name;
+        const productPrice = productData.data.BasePrice;
+        const productStock = productData.data.StockQuantity;
+        const productImage = productData.data.file[0];
+
+        if (
+          !productId ||
+          !productName ||
+          isNaN(productPrice) ||
+          isNaN(productStock) ||
+          !productImage
+        ) {
+          console.error("Invalid product data:", {
+            productId,
+            productName,
+            productPrice,
+            productStock,
+            productImage,
+          });
+
+          Swal.fire({
+            title: "Error",
+            text: "Please try again.",
+            icon: "error",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+          return; // Stop execution if product data is invalid
+        }
+
+        // Create product object
+        const productObject = {
+          id: productId,
+          name: productName,
+          finalPrice: productPrice,
+          image: productImage,
+          StockQuantity: productStock,
+          quantity: 1, // Initialize quantity as 1
+        };
+
+        // Check if product is already in cart
+        const existingProduct = cart.find((item) => item.id === productId);
+        console.log(existingProduct);
+        if (existingProduct) {
+          Swal.fire({
+            title: "Product",
+            text: "Product already added",
+            icon: "error",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        } else {
+          console.log(productObject);
+          cart.push(productObject);
+          localStorage.setItem("cart", JSON.stringify(cart));
+
+          // Update cart counter
+          updateCartCounter();
+
+          Swal.fire({
+            title: "Product",
+            text: "Product successfully added",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        }
+      });
+    });
     // Store the product and payment details in localStorage
   } catch (error) {
     console.error("Error fetching product:", error);

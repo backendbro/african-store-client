@@ -1,0 +1,3506 @@
+<!DOCTYPE html>
+<html class="no-js skrollr skrollr-desktop" lang="en">
+  <head>
+    <title>Home - African Store</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="description" content="African store demo." />
+    <!-- favicon icon -->
+    <link rel="shortcut icon" href="./store/images/favicon.png" />
+    <link
+      rel="apple-touch-icon"
+      href="./store/images/apple-touch-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="./store/images/apple-touch-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="./store/images/apple-touch-icon-114x114.png"
+    />
+    <!-- google fonts preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- style sheets and font icons  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="./store/js/auth/account.js"></script>
+
+    <link rel="stylesheet" href="./store/css/vendors.min.css" />
+    <link rel="stylesheet" href="./store/css/icon.min.css" />
+    <link rel="stylesheet" href="./store/css/style.min.css" />
+    <link rel="stylesheet" href="./store/css/pages.css" />
+    <link rel="stylesheet" href="./store/css/responsive.min.css" />
+    <link
+      rel="stylesheet"
+      href="./store/demos/fashion-store/fashion-store.css"
+    />
+    <link rel="stylesheet" href="./store/css/clasess.scss" />
+
+    <script type="application/ld+json">
+       {
+          "@context": "https://schema.org/",
+         "@type": "WebSite",
+          "url": "https://Africanmarkets.eu/",
+          "name": "African market lithuania",
+          "description": "African Market Lithuania is your go-to store for authentic African food products,
+          groceries, and essentials in Lithuania. We offer a wide range of high-quality African spices, grains,
+           beverages, and more, bringing the rich flavors of Africa to your doorstep.
+          Shop online or visit us for fresh, handpicked ingredients that celebrate African culinary traditions.",
+          "publisher": {
+              "@type": "Organization",
+              "name": "African market lithuania",
+              "url": "https://Africanmarkets.eu/",
+              "logo": "https://Africanmarkets.eu/store/images/apple-touch-icon-72x72.png"
+          }
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org/",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://Africanmarkets.eu/"
+          }
+        ]
+      }
+    </script>
+  </head>
+  <style>
+    .add-to-wishlist.added {
+      background: #ff4d4d; /* Red background to indicate it's added */
+      color: white; /* Change icon color to white */
+      border-radius: 50%; /* Make it round */
+      padding: 10px;
+    }
+
+    .add-to-wishlist.added i {
+      color: white; /* Make the heart icon white */
+    }
+  </style>
+  <body data-mobile-nav-style="classic">
+    <!-- start header -->
+    <header class="header-with-topbar">
+      <!-- start header top bar -->
+      <div
+        class="header-top-bar top-bar-light disable-fixed md-border-bottom border-color-transparent-dark-very-light"
+      >
+        <div class="container-fluid">
+          <div class="row h-40px align-items-center m-0">
+            <div
+              class="col-12 justify-content-center alt-font fs-13 fw-500 text-uppercase"
+            >
+              <div class="advert">
+                Enjoy FREE standard delivery on orders over €100
+              </div>
+              <a
+                href="./store/shop-page/shop.html"
+                class="advert fw-600 ms-5px advert-hover"
+              >
+                <span class="text-decoration-line-bottom">Shop now</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end header top bar -->
+      <!-- start navigation -->
+      <nav
+        class="navbar navbar-expand-lg header-light bg-white disable-fixed center-logo"
+      >
+        <div class="container-fluid">
+          <div class="col-auto col-xxl-3 col-lg-2 menu-logo">
+            <div class="header-icon d-none d-lg-flex">
+              <div class="widget-text icon alt-font">
+                <a
+                  href="https://maps.app.goo.gl/SHNZXP9ptSGASVYu7
+                "
+                >
+                  <i
+                    class="feather icon-feather-map-pin d-inline-block me-5px"
+                  ></i>
+                  <span class="d-none d-xxl-inline-block"></span>
+                </a>
+              </div>
+              <div class="widget-text icon alt-font">
+                <a
+                  href="https://www.instagram.com/african_market_lt?igsh=ZTQyc3JhcjVodGYw"
+                  target="_blank"
+                >
+                  <i
+                    class="feather icon-feather-instagram d-inline-block me-5px"
+                  ></i>
+                  <span class="d-none d-xxl-inline-block"></span>
+                </a>
+              </div>
+            </div>
+            <a class="navbar-brand" href="./index.html">
+              <img
+                src="./store/images/store-logo-1.png"
+                data-at2x="./store/images/store-logo-1.png"
+                alt=""
+                class="default-logo"
+              />
+              <img
+                src="./store/images/store-logo-1.png"
+                data-at2x="./store/images/store-logo-1.png"
+                alt=""
+                class="alt-logo"
+              />
+              <img
+                src="./store/images/store-logo-1.png"
+                data-at2x="./store/images/store-logo-1.png"
+                alt=""
+                class="mobile-logo"
+              />
+            </a>
+          </div>
+          <div class="col-auto col-xxl-6 col-lg-8 menu-order">
+            <button
+              class="navbar-toggler float-end"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-line"></span>
+              <span class="navbar-toggler-line"></span>
+              <span class="navbar-toggler-line"></span>
+              <span class="navbar-toggler-line"></span>
+            </button>
+            <div
+              class="collapse navbar-collapse justify-content-between"
+              id="navbarNav"
+            >
+              <ul class="navbar-nav alt-font navbar-left justify-content-end">
+                <li class="nav-item">
+                  <a href="./index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown submenu">
+                  <a href="./store/shop-page/shop.html" class="nav-link"
+                    >Shop</a
+                  >
+                </li>
+                <li class="nav-item dropdown submenu">
+                  <a
+                    href="./store/shop-categories/categories.html"
+                    class="nav-link"
+                    >Categories</a
+                  >
+                  <i
+                    class="fa-solid fa-angle-down dropdown-toggle"
+                    id="navbarDropdownMenuLink2"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  ></i>
+                  <div
+                    class="dropdown-menu submenu-content"
+                    aria-labelledby="navbarDropdownMenuLink2"
+                  >
+                    <div class="d-lg-flex mega-menu m-auto flex-column">
+                      <div
+                        class="row row-cols-2 row-cols-lg-6 row-cols-md-3 row-cols-sm-2 md-mx-0 align-items-center justify-content-center"
+                      >
+                        <div class="col md-mb-25px">
+                          <a
+                            href="./store/shop-categories/categories.html"
+                            class="justify-content-center mb-10px"
+                          >
+                            <img
+                              src="./store/images/snail (cat.).jpg"
+                              class="border-radius-4px w-100"
+                              alt=""
+                            />
+                          </a>
+                          <a
+                            href="./store/shop-categories/categories.html"
+                            class="btn btn-hover-animation fw-500 text-uppercase-inherit justify-content-center pt-0 pb-0"
+                          >
+                            <span>
+                              <span class="btn-text text-dark-gray fs-17"
+                                >Fresh Produce</span
+                              >
+                              <span class="btn-icon">
+                                <i
+                                  class="fa-solid fa-arrow-right icon-very-small w-auto"
+                                ></i>
+                              </span>
+                            </span>
+                          </a>
+                        </div>
+                        <div class="col md-mb-25px">
+                          <a
+                            href="./store/shop-categories/categories.html"
+                            class="justify-content-center mb-10px"
+                          >
+                            <img
+                              src="./store/images/noodles(cat.).jpg"
+                              class="border-radius-4px w-100"
+                              alt=""
+                            />
+                          </a>
+                          <a
+                            href="./store/shop-categories/categories.html"
+                            class="btn btn-hover-animation fw-500 text-uppercase-inherit justify-content-center pt-0 pb-0"
+                          >
+                            <span>
+                              <span class="btn-text text-dark-gray fs-17"
+                                >Noodles</span
+                              >
+                              <span class="btn-icon">
+                                <i
+                                  class="fa-solid fa-arrow-right icon-very-small w-auto"
+                                ></i>
+                              </span>
+                            </span>
+                          </a>
+                        </div>
+                        <div class="col md-mb-25px">
+                          <a
+                            href="./store/shop-categories/categories.html"
+                            class="justify-content-center mb-10px"
+                          >
+                            <img
+                              src="./store/images/black-soap (category).jpg"
+                              class="border-radius-4px w-100"
+                              alt=""
+                            />
+                          </a>
+                          <a
+                            href="./store/shop-categories/categories.html"
+                            class="btn btn-hover-animation fw-500 text-uppercase-inherit justify-content-center pt-0 pb-0"
+                          >
+                            <span>
+                              <span class="btn-text text-dark-gray fs-17"
+                                >Health & Beauty</span
+                              >
+                              <span class="btn-icon">
+                                <i
+                                  class="fa-solid fa-arrow-right icon-very-small w-auto"
+                                ></i>
+                              </span>
+                            </span>
+                          </a>
+                        </div>
+                        <div class="col sm-mb-25px">
+                          <a
+                            href="./store/shop-categories/categories.html"
+                            class="justify-content-center mb-10px"
+                          >
+                            <img
+                              src="./store/images/rice (cat.).jpg"
+                              class="border-radius-4px w-100"
+                              alt=""
+                            />
+                          </a>
+                          <a
+                            href="./store/shop-categories/categories.html"
+                            class="btn btn-hover-animation fw-500 text-uppercase-inherit justify-content-center pt-0 pb-0"
+                          >
+                            <span>
+                              <span class="btn-text text-dark-gray fs-17"
+                                >Rice</span
+                              >
+                              <span class="btn-icon">
+                                <i
+                                  class="fa-solid fa-arrow-right icon-very-small w-auto"
+                                ></i>
+                              </span>
+                            </span>
+                          </a>
+                        </div>
+                        <div class="col">
+                          <a
+                            href="./store/shop-categories/categories.html"
+                            class="justify-content-center mb-10px"
+                          >
+                            <img
+                              src="./store/images/flor (cat.).jpg"
+                              class="border-radius-4px w-100"
+                              alt=""
+                            />
+                          </a>
+                          <a
+                            href="./store/shop-categories/categories.html"
+                            class="btn btn-hover-animation fw-500 text-uppercase-inherit justify-content-center pt-0 pb-0"
+                          >
+                            <span>
+                              <span class="btn-text text-dark-gray fs-17"
+                                >Flour</span
+                              >
+                              <span class="btn-icon">
+                                <i
+                                  class="fa-solid fa-arrow-right icon-very-small w-auto"
+                                ></i>
+                              </span>
+                            </span>
+                          </a>
+                        </div>
+                        <div class="col">
+                          <a
+                            href="./store/shop-categories/categories.html"
+                            class="justify-content-center mb-10px"
+                          >
+                            <img
+                              src="./store/images/seasoning (cat.).jpg"
+                              class="border-radius-4px w-100"
+                              alt=""
+                            />
+                          </a>
+                          <a
+                            href="./store/shop-categories/categories.html"
+                            class="btn btn-hover-animation fw-500 text-uppercase-inherit justify-content-center pt-0 pb-0"
+                          >
+                            <span>
+                              <span class="btn-text text-dark-gray fs-17"
+                                >Spices</span
+                              >
+                              <span class="btn-icon">
+                                <i
+                                  class="fa-solid fa-arrow-right icon-very-small w-auto"
+                                ></i>
+                              </span>
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <ul
+                class="navbar-nav alt-font navbar-right justify-content-start"
+              >
+                <li class="nav-item">
+                  <a href="./store/blogs/home-blog.html" class="nav-link"
+                    >Blog</a
+                  >
+                </li>
+
+                <li class="nav-item dropdown simple-dropdown">
+                  <a href="javascript:void(0);" class="nav-link">Pages</a>
+                  <i
+                    class="fa-solid fa-angle-down dropdown-toggle"
+                    id="navbarDropdownMenuLink3"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  ></i>
+                  <ul
+                    class="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink3"
+                  >
+                    <li>
+                      <a href="./about.html">About</a>
+                    </li>
+                    <li>
+                      <a href="./faq.html">Faq</a>
+                    </li>
+                    <li>
+                      <a href="./wishlist.html">Wishlist</a>
+                    </li>
+                    <li>
+                      <a href="./account.html">Account</a>
+                    </li>
+                    <li>
+                      <a href="./cart.html">Cart</a>
+                    </li>
+                    <li>
+                      <a href="./checkout.html">Checkout</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a href="./contact.html" class="nav-link">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-auto col-xxl-3 col-lg-2 text-end">
+            <div class="header-icon">
+              <div class="header-search-icon icon alt-font">
+                <a
+                  href="javascript:void(0)"
+                  class="search-form-icon header-search-form"
+                >
+                  <i class="feather icon-feather-search me-5px"></i>
+                  <span class="d-none d-xxl-inline-block">Search</span>
+                </a>
+                <div class="search-form-wrapper">
+                  <button
+                    title="Close"
+                    type="button"
+                    class="search-close alt-font"
+                  >
+                    ×
+                  </button>
+                  <form
+                    id="search-form"
+                    role="search"
+                    method="get"
+                    class="search-form text-left"
+                    action="search-result.html"
+                  >
+                    <div class="search-form-box">
+                      <h2
+                        class="text-dark-gray text-center mb-4 fw-600 alt-font ls-minus-1px"
+                      >
+                        What are you looking for?
+                      </h2>
+                      <input
+                        class="search-input alt-font"
+                        id="search-form-input5e219ef164995"
+                        placeholder="Enter your keywords..."
+                        name="s"
+                        value=""
+                        type="text"
+                        autocomplete="off"
+                      />
+                      <button type="submit" class="search-button">
+                        <i
+                          class="feather icon-feather-search"
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="widget-text icon alt-font">
+                <a href="./account.html" class="account-auth">
+                  <i
+                    class="feather icon-feather-user d-inline-block me-5px"
+                  ></i>
+                  <span class="d-none d-xxl-inline-block">Account</span>
+                </a>
+              </div>
+              <div class="header-cart-icon icon">
+                <div class="header-cart dropdown">
+                  <a href="javascript:void(0);">
+                    <i class="feather icon-feather-shopping-bag"></i>
+                    <span class="cart-count alt-font text-white bg-dark-gray"
+                      >2</span
+                    >
+                  </a>
+                  <ul class="cart-item-list">
+                    <li class="cart-item align-items-center">
+                      <a href="javascript:void(0);" class="alt-font close">×</a>
+                      <div class="product-image">
+                        <a href="demo-fashion-store-single-product.html">
+                          <img
+                            src="./store/images/products/Acha Spices.JPG"
+                            class="cart-thumb"
+                            alt=""
+                          />
+                        </a>
+                      </div>
+                      <div class="product-detail fw-600">
+                        <a href="demo-fashion-store-single-product.html"
+                          >Acha Spices</a
+                        >
+                        <span class="item-ammount fw-400">1 x €23.00</span>
+                      </div>
+                    </li>
+                    <li class="cart-item align-items-center">
+                      <a href="javascript:void(0);" class="alt-font close">×</a>
+                      <div class="product-image">
+                        <a href="demo-fashion-store-single-product.html">
+                          <img
+                            src="./store/images/products/Fish Powder.JPG"
+                            class="cart-thumb"
+                            alt=""
+                          />
+                        </a>
+                      </div>
+                      <div class="product-detail fw-600">
+                        <a href="demo-fashion-store-single-product.html"
+                          >Fish Powder</a
+                        >
+                        <span class="item-ammount fw-400">2 x €11.00</span>
+                      </div>
+                    </li>
+                    <li class="cart-total">
+                      <div class="fs-18 alt-font mb-15px">
+                        <span class="w-50 fw-500 text-start">Subtotal:</span>
+                        <span class="w-50 text-end fw-700">€199.99</span>
+                      </div>
+                      <a
+                        href="./cart.html"
+                        class="btn btn-large btn-transparent-light-gray border-color-extra-medium-gray"
+                        >View cart</a
+                      >
+                      <a
+                        href="./checkout.html"
+                        class="btn btn-large btn-dark-gray btn-box-shadow"
+                        >Checkout</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- end header -->
+    <!-- start section -->
+    <section class="p-0">
+      <div
+        class="swiper full-screen top-space-margin md-h-600px sm-h-500px magic-cursor magic-cursor-vertical swiper-number-pagination-progress swiper-number-pagination-progress-vertical"
+        data-slider-options='{ "slidesPerView": 1, "direction": "horizontal", "loop": true, "parallax": true, "speed": 1000, "pagination": { "el": ".swiper-number", "clickable": true }, "autoplay": { "delay": 4000, "disableOnInteraction": false },  "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "1199": { "direction": "vertical" }}, "effect": "slide" }'
+        data-swiper-number-pagination-progress="true"
+      >
+        <div class="swiper-wrapper">
+          <!-- start slider item -->
+          <div class="swiper-slide overflow-hidden">
+            <div
+              class="cover-background position-absolute top-0 start-0 w-100 h-100"
+              data-swiper-parallax="500"
+              style="background-image: url('store/images/slide-1.png')"
+            >
+              <div class="container h-100">
+                <div class="row align-items-center h-100 justify-content-start">
+                  <div
+                    class="col-md-10 position-relative text-white d-flex flex-column justify-content-center h-100"
+                  >
+                    <div
+                      data-anime='{ "opacity": [0, 1], "translateY": [50, 0], "easing": "easeOutQuad", "duration": 500, "delay": 300 }'
+                      class="alt-font text-dark-gray mb-25px fs-20 sm-mb-15px"
+                    >
+                      <span class="text-highlight">
+                        Taste Tradition<span
+                          class="text-underline h-8px bottom-0px"
+                        ></span>
+                      </span>
+                    </div>
+                    <div
+                      class="alt-font fs-120 xs-fs-95 lh-100 mb-40px text-dark-gray fw-600 transform-origin-right ls-minus-5px sm-mb-25px"
+                      data-anime='{ "el": "childs", "rotateX": [90, 0], "opacity": [0,1], "staggervalue": 150, "easing": "easeOutQuad" }'
+                    >
+                      <span class="d-block text-shadow">Authentic</span>
+                      <span class="d-block text-shadow fw-300"
+                        >Poundo Flour</span
+                      >
+                    </div>
+                    <div
+                      data-anime='{ "opacity": [0, 1], "translateY": [100, 0], "easing": "easeOutQuad", "duration": 800, "delay": 400 }'
+                    >
+                      <a
+                        href="./store/single-category page/index.html"
+                        class="btn btn-dark-gray btn-box-shadow btn-large"
+                        >Shop Now</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end slider item -->
+          <!-- start slider item 2 -->
+          <div class="swiper-slide overflow-hidden">
+            <div
+              class="cover-background position-absolute top-0 start-0 w-100 h-100"
+              data-swiper-parallax="500"
+              style="background-image: url('store/images/slide-2.png')"
+            >
+              <div class="container h-100">
+                <div class="row align-items-center h-100 justify-content-start">
+                  <div
+                    class="col-md-10 position-relative text-white d-flex flex-column justify-content-center h-100"
+                  >
+                    <div
+                      data-anime='{ "opacity": [0, 1], "translateY": [50, 0], "easing": "easeOutQuad", "duration": 500, "delay": 300 }'
+                      class="alt-font text-dark-gray mb-25px fs-20 sm-mb-15px"
+                    >
+                      <span class="text-highlight">
+                        Glow Naturally<span
+                          class="text-underline h-8px bottom-0px"
+                        ></span>
+                      </span>
+                    </div>
+                    <div
+                      class="alt-font fs-120 xs-fs-95 lh-100 mb-40px text-dark-gray fw-600 transform-origin-right ls-minus-5px sm-mb-25px"
+                      data-anime='{ "el": "childs", "rotateX": [90, 0], "opacity": [0,1], "staggervalue": 150, "easing": "easeOutQuad" }'
+                    >
+                      <span class="d-block text-shadow">African</span>
+                      <span class="d-block text-shadow fw-300">Skin Care</span>
+                    </div>
+                    <div
+                      data-anime='{ "opacity": [0, 1], "translateY": [100, 0], "easing": "easeOutQuad", "duration": 800, "delay": 400 }'
+                    >
+                      <a
+                        href="./store/single-category page/index.html"
+                        class="btn btn-dark-gray btn-box-shadow btn-large"
+                        >Shop Now</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end slider item -->
+          <!-- start slider item -->
+          <div class="swiper-slide overflow-hidden">
+            <div
+              class="cover-background position-absolute top-0 start-0 w-100 h-100"
+              data-swiper-parallax="500"
+              style="background-image: url('store/images/slide-3.png')"
+            >
+              <div class="container h-100">
+                <div class="row align-items-center h-100 justify-content-start">
+                  <div
+                    class="col-md-10 position-relative text-white d-flex flex-column justify-content-center h-100"
+                  >
+                    <div
+                      data-anime='{ "opacity": [0, 1], "translateY": [50, 0], "easing": "easeOutQuad", "duration": 500, "delay": 300 }'
+                      class="alt-font text-dark-gray mb-25px fs-20 sm-mb-15px"
+                    >
+                      <span class="text-highlight">
+                        Fresh from Africa<span
+                          class="text-underline h-8px bottom-0px"
+                        ></span>
+                      </span>
+                    </div>
+                    <div
+                      class="alt-font fs-120 xs-fs-95 lh-100 mb-40px text-dark-gray fw-600 transform-origin-right ls-minus-5px sm-mb-25px"
+                      data-anime='{ "el": "childs", "rotateX": [90, 0], "opacity": [0,1], "staggervalue": 150, "easing": "easeOutQuad" }'
+                    >
+                      <span class="d-block text-shadow">Fresh Picks</span>
+                      <span class="d-block text-shadow fw-300"
+                        >& Groceries</span
+                      >
+                    </div>
+                    <div
+                      data-anime='{ "opacity": [0, 1], "translateY": [100, 0], "easing": "easeOutQuad", "duration": 800, "delay": 400 }'
+                    >
+                      <a
+                        href="./store/single-category page/index.html"
+                        class="btn btn-dark-gray btn-box-shadow btn-large"
+                        >Order Now</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end slider item -->
+        </div>
+        <!-- start slider pagination -->
+        <div class="swiper-pagination-wrapper">
+          <div
+            class="pagination-progress-vertical d-flex align-items-center justify-content-center"
+          >
+            <div class="number-prev text-dark-gray fs-16 fw-500"></div>
+            <div class="swiper-pagination-progress">
+              <span class="swiper-progress"></span>
+            </div>
+            <div class="number-next text-dark-gray fs-16 fw-500"></div>
+          </div>
+        </div>
+        <!-- end slider pagination -->
+      </div>
+    </section>
+    <!-- end section -->
+    <!-- start section -->
+    <section class="half-section">
+      <div class="container">
+        <div
+          class="row row-cols-1 row-cols-xl-4 row-cols-lg-4 row-cols-md-2 row-cols-sm-2"
+          data-anime='{ "el": "childs", "translateX": [30, 0], "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'
+        >
+          <!-- start features box item -->
+          <div class="col icon-with-text-style-01 md-mb-35px">
+            <div
+              class="feature-box feature-box-left-icon-middle last-paragraph-no-margin"
+            >
+              <div class="feature-box-icon me-20px">
+                <i class="line-icon-Box-Close icon-large text-dark-gray"></i>
+              </div>
+              <div class="feature-box-content">
+                <span class="alt-font fs-20 fw-500 d-block text-dark-gray"
+                  >Local Pickup</span
+                >
+                <p class="fs-16 lh-24">
+                  <a href="https://maps.app.goo.gl/SHNZXP9ptSGASVYu7"
+                    >Kalvarijų 88, Vilnius, Lithuania</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- end features box item -->
+          <!-- start features box item -->
+          <div class="col icon-with-text-style-01 md-mb-35px">
+            <div
+              class="feature-box feature-box-left-icon-middle last-paragraph-no-margin"
+            >
+              <div class="feature-box-icon me-20px">
+                <img src="./store/images/fast delivery.webp" />
+              </div>
+              <div class="feature-box-content">
+                <span class="alt-font fs-20 fw-500 d-block text-dark-gray"
+                  >Fast Delivery</span
+                >
+                <p class="fs-16 lh-24">Quick, and reliable 🚀</p>
+              </div>
+            </div>
+          </div>
+          <!-- end features box item -->
+          <!-- start features box item -->
+          <div class="col icon-with-text-style-01 xs-mb-35px">
+            <div
+              class="feature-box feature-box-left-icon-middle last-paragraph-no-margin"
+            >
+              <div class="feature-box-icon me-20px">
+                <i class="line-icon-Credit-Card2 icon-large text-dark-gray"></i>
+              </div>
+              <div class="feature-box-content">
+                <span class="alt-font fs-20 fw-500 d-block text-dark-gray"
+                  >Secure payment</span
+                >
+                <p class="fs-16 lh-24">100% protected payment</p>
+              </div>
+            </div>
+          </div>
+          <!-- end features box item -->
+          <!-- start features box item -->
+          <div class="col icon-with-text-style-01">
+            <div
+              class="feature-box feature-box-left-icon-middle last-paragraph-no-margin"
+            >
+              <div class="feature-box-icon me-20px">
+                <i class="line-icon-Phone-2 icon-large text-dark-gray"></i>
+              </div>
+              <div class="feature-box-content">
+                <span class="alt-font fs-20 fw-500 d-block text-dark-gray"
+                  >Top-notch support</span
+                >
+                <p class="fs-16 lh-24">
+                  <a href="mailto:info@Africanmarkets.eu"
+                    >info@Africanmarkets.eu</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- end features box item -->
+        </div>
+      </div>
+    </section>
+    <!-- end section -->
+
+    <!-- NEW CATEGORY SECTION -->
+    <div
+      id="shopify-section-1564920389248"
+      class="shopify-section index-section"
+    >
+      <div class="page-width">
+        <div class="container">
+          <div class="row mb-5 xs-mb-8">
+            <div class="col-12 text-center">
+              <h2 class="alt-font text-dark-gray mb-0 ls-minus-2px">
+                Our collection
+                <span class="text-highlight fw-600">
+                  list<span class="text-underline h-5px bottom-2px"></span>
+                </span>
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="collection-grid"
+          data-anime='{ "el": "childs", "translateY": [-15, 0], "perspective": [1200,1200], "scale": [1.1, 1], "rotateX": [50, 0], "opacity": [0,1], "duration": 400, "delay": 100, "staggervalue": 200, "easing": "easeOutQuad" }'
+        >
+          <div class="grid grid--uniform">
+            <div class="grid__item small--one-half medium-up--one-quarter">
+              <div class="collection-grid-item">
+                <a
+                  href="./store/shop-page/shop.html"
+                  class="collection-grid-item__link"
+                >
+                  <div
+                    class="collection-grid-item__overlay"
+                    style="
+                      background-image: url(//www.osiafrik.com/cdn/shop/collections/IMG-20180602-WA0006_3b81a974-17d5-4ed6-86de-8f399d55447e_250x250_crop_top@2x.jpg?v=1587489409);
+                    "
+                  ></div>
+                  <div class="collection-grid-item__title-wrapper">
+                    <h3 class="collection-grid-item__title">
+                      VIEW ALL PRODUCTS
+                    </h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="grid__item small--one-half medium-up--one-quarter">
+              <div class="collection-grid-item">
+                <a
+                  href="./store/single-category page/index.html"
+                  class="collection-grid-item__link"
+                >
+                  <div
+                    class="collection-grid-item__overlay"
+                    style="
+                      background-image: url(//www.osiafrik.com/cdn/shop/collections/image_95c1a460-af8e-4ddd-8ac0-c2d5f32414ad_250x250_crop_top@2x.jpg?v=1587434127);
+                    "
+                  ></div>
+                  <div class="collection-grid-item__title-wrapper">
+                    <h3 class="collection-grid-item__title">FISH / SEAFOOD</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="grid__item small--one-half medium-up--one-quarter">
+              <div class="collection-grid-item">
+                <a
+                  href="/collections/local-delicacies"
+                  class="collection-grid-item__link"
+                >
+                  <div
+                    class="collection-grid-item__overlay"
+                    style="
+                      background-image: url(//www.osiafrik.com/cdn/shop/collections/image_88f6504d-f7ab-4b9a-92e6-b05921c50504_250x250_crop_top@2x.jpg?v=1587434414);
+                    "
+                  ></div>
+                  <div class="collection-grid-item__title-wrapper">
+                    <h3 class="collection-grid-item__title">
+                      ETHNIC DELICACIES
+                    </h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="grid__item small--one-half medium-up--one-quarter">
+              <div class="collection-grid-item">
+                <a
+                  href="./store/single-category page/index.html"
+                  class="collection-grid-item__link"
+                >
+                  <div
+                    class="collection-grid-item__overlay"
+                    style="
+                      background-image: url(//www.osiafrik.com/cdn/shop/collections/image_28b9e993-825c-4a3d-860f-a3d31549dc63_250x250_crop_top@2x.jpg?v=1590212092);
+                    "
+                  ></div>
+                  <div class="collection-grid-item__title-wrapper">
+                    <h3 class="collection-grid-item__title">
+                      FLOURS / FUFU OPTIONS
+                    </h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="grid__item small--one-half medium-up--one-quarter">
+              <div class="collection-grid-item">
+                <a
+                  href="/collections/local-seasonings-spices"
+                  class="collection-grid-item__link"
+                >
+                  <div
+                    class="collection-grid-item__overlay"
+                    style="
+                      background-image: url(//www.osiafrik.com/cdn/shop/collections/image_250x250_crop_top@2x.jpg?v=1587434248);
+                    "
+                  ></div>
+                  <div class="collection-grid-item__title-wrapper">
+                    <h3 class="collection-grid-item__title">
+                      SEASONINGS &amp; SPICES
+                    </h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="grid__item small--one-half medium-up--one-quarter">
+              <div class="collection-grid-item">
+                <a
+                  href="/collections/nuts-beans"
+                  class="collection-grid-item__link"
+                >
+                  <div
+                    class="collection-grid-item__overlay"
+                    style="
+                      background-image: url(//www.osiafrik.com/cdn/shop/collections/image_5134e743-c2d8-4248-8512-ba34cf49e1ac_250x250_crop_top@2x.jpg?v=1590212624);
+                    "
+                  ></div>
+                  <div class="collection-grid-item__title-wrapper">
+                    <h3 class="collection-grid-item__title">BEANS AND NUTS</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="grid__item small--one-half medium-up--one-quarter">
+              <div class="collection-grid-item">
+                <a
+                  href="/collections/oils-butters"
+                  class="collection-grid-item__link"
+                >
+                  <div
+                    class="collection-grid-item__overlay"
+                    style="
+                      background-image: url(//www.osiafrik.com/cdn/shop/collections/image_21ef9ed0-1eb5-4d62-b16c-924398274383_250x250_crop_top@2x.jpg?v=1587434532);
+                    "
+                  ></div>
+                  <div class="collection-grid-item__title-wrapper">
+                    <h3 class="collection-grid-item__title">OILS</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="grid__item small--one-half medium-up--one-quarter">
+              <div class="collection-grid-item">
+                <a
+                  href="/collections/noodles"
+                  class="collection-grid-item__link"
+                >
+                  <div
+                    class="collection-grid-item__overlay"
+                    style="
+                      background-image: url(//www.osiafrik.com/cdn/shop/collections/image_b0747836-2d85-458d-ab96-cb4dc97a70d4_250x250_crop_top@2x.jpg?v=1626477144);
+                    "
+                  ></div>
+                  <div class="collection-grid-item__title-wrapper">
+                    <h3 class="collection-grid-item__title">
+                      CONVENIENCE FOODS &amp; SNACKS
+                    </h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="grid__item small--one-half medium-up--one-quarter">
+              <div class="collection-grid-item">
+                <a
+                  href="/collections/soup-thickeners"
+                  class="collection-grid-item__link"
+                >
+                  <div
+                    class="collection-grid-item__overlay"
+                    style="
+                      background-image: url(//www.osiafrik.com/cdn/shop/collections/image_158e576d-6601-491f-b4b3-284991e05180_250x250_crop_top@2x.jpg?v=1590210945);
+                    "
+                  ></div>
+                  <div class="collection-grid-item__title-wrapper">
+                    <h3 class="collection-grid-item__title">SOUP THICKENERS</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="grid__item small--one-half medium-up--one-quarter">
+              <div class="collection-grid-item">
+                <a
+                  href="/collections/vegetables"
+                  class="collection-grid-item__link"
+                >
+                  <div
+                    class="collection-grid-item__overlay"
+                    style="
+                      background-image: url(//www.osiafrik.com/cdn/shop/collections/image_6f8d7562-db60-49d5-ab06-6bc4b6ddf71f_250x250_crop_top@2x.jpg?v=1587433854);
+                    "
+                  ></div>
+                  <div class="collection-grid-item__title-wrapper">
+                    <h3 class="collection-grid-item__title">VEGETABLES</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="grid__item small--one-half medium-up--one-quarter">
+              <div class="collection-grid-item">
+                <a
+                  href="/collections/african-garden-seeds-collection"
+                  class="collection-grid-item__link"
+                >
+                  <div
+                    class="collection-grid-item__overlay"
+                    style="
+                      background-image: url(//www.osiafrik.com/cdn/shop/collections/OsiAfrik_Chattanooga_TN_Emily_Lester_Photography-42_250x250_crop_top@2x.jpg?v=1645248977);
+                    "
+                  ></div>
+                  <div class="collection-grid-item__title-wrapper">
+                    <h3 class="collection-grid-item__title">
+                      NIGERIAN VEGETABLE GARDENING SEEDS
+                    </h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="grid__item small--one-half medium-up--one-quarter">
+              <div class="collection-grid-item">
+                <a
+                  href="/collections/snacks"
+                  class="collection-grid-item__link"
+                >
+                  <div
+                    class="collection-grid-item__overlay"
+                    style="
+                      background-image: url(//www.osiafrik.com/cdn/shop/collections/image_5629decd-005f-4c42-8672-af3afd8eb3ae_250x250_crop_top@2x.jpg?v=1646366958);
+                    "
+                  ></div>
+                  <div class="collection-grid-item__title-wrapper">
+                    <h3 class="collection-grid-item__title">BODY CARE</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- start section -->
+    <section class="ps-7 pe-7 pb-3 lg-ps-3 lg-pe-3 sm-pb-6 xs-px-0">
+      <div class="container">
+        <div class="row mb-5 xs-mb-8">
+          <div class="col-12 text-center">
+            <h2 class="alt-font text-dark-gray mb-0 ls-minus-2px">
+              Best seller
+              <span class="text-highlight fw-600">
+                products<span class="text-underline h-5px bottom-2px"></span>
+              </span>
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <ul class="product-list">
+              <li class="product-item">
+                <div class="product-box">
+                  <div class="product-image">
+                    <a href="./store/single product/single-product.html">
+                      <img src="./store/images/IMG_0428.png" alt="Quaker" />
+                      <span class="label">New</span>
+                      <div class="product-overlay"></div>
+                    </a>
+                    <div class="product-buttons">
+                      <a href="#" class="add-to-cart">
+                        <i class="feather icon-feather-shopping-bag"></i>
+                        <span>Add to cart</span>
+                      </a>
+                    </div>
+                    <div class="product-actions">
+                      <ul>
+                        <li>
+                          <a href="#" title="Add to wishlist">
+                            <i class="feather icon-feather-heart fs-16"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Quick shop">
+                            <i class="feather icon-feather-eye fs-16"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <a href="#" class="product-name">Ofada Rice</a>
+                    <div class="product-price">
+                      <del class>€20.00</del>
+                      c189.00
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="product-item">
+                <div class="product-box">
+                  <div class="product-image">
+                    <a href="#">
+                      <img src="./store/images/IMG_0431-1.png" alt="Quaker" />
+                      <div class="product-overlay"></div>
+                    </a>
+                    <div class="product-buttons">
+                      <a href="#" class="add-to-cart">
+                        <i class="feather icon-feather-shopping-bag"></i>
+                        <span>Add to cart</span>
+                      </a>
+                    </div>
+                    <div class="product-actions">
+                      <ul>
+                        <li>
+                          <a href="#" title="Add to wishlist">
+                            <i class="feather icon-feather-heart fs-16"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Quick shop">
+                            <i class="feather icon-feather-eye fs-16"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <a href="#" class="product-name">Quaker</a>
+                    <div class="product-price">
+                      <del>€350.00</del>
+                      €289.00
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="product-item">
+                <div class="product-box">
+                  <div class="product-image">
+                    <a href="#">
+                      <img src="./store/images/IMG_0432.png" alt="product" />
+                      <span class="label">New</span>
+                      <div class="product-overlay"></div>
+                    </a>
+                    <div class="product-buttons">
+                      <a href="#" class="add-to-cart">
+                        <i class="feather icon-feather-shopping-bag"></i>
+                        <span>Add to cart</span>
+                      </a>
+                    </div>
+                    <div class="product-actions">
+                      <ul>
+                        <li>
+                          <a href="#" title="Add to wishlist">
+                            <i class="feather icon-feather-heart fs-16"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Quick shop">
+                            <i class="feather icon-feather-eye fs-16"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <a href="#" class="product-name">Custard</a>
+                    <div class="product-price">
+                      <del>€220.00</del>
+                      €199.00
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="product-item">
+                <div class="product-box">
+                  <div class="product-image">
+                    <a href="#">
+                      <img src="./store/images/IMG_0433.png" alt="" />
+                      <div class="product-overlay"></div>
+                    </a>
+                    <div class="product-buttons">
+                      <a href="#" class="add-to-cart">
+                        <i class="feather icon-feather-shopping-bag"></i>
+                        <span>Add to cart</span>
+                      </a>
+                    </div>
+                    <div class="product-actions">
+                      <ul>
+                        <li>
+                          <a href="#" title="Add to wishlist">
+                            <i class="feather icon-feather-heart fs-16"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Quick shop">
+                            <i class="feather icon-feather-heart fs-16"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <a href="#" class="product-name">White Pepper</a>
+                    <div class="product-price">
+                      <del>€300.00</del>
+                      €259.00
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="product-item">
+                <div class="product-box">
+                  <div class="product-image">
+                    <a href="demo-fashion-store-single-product.html">
+                      <img src="./store/images/IMG_0434.png" alt="Rock Salt" />
+                      <div class="product-overlay"></div>
+                    </a>
+                    <div class="product-buttons">
+                      <a
+                        href="demo-fashion-store-single-product.html"
+                        class="add-to-cart"
+                      >
+                        <i class="feather icon-feather-shopping-bag"></i>
+                        <span>Add to cart</span>
+                      </a>
+                    </div>
+                    <div class="product-actions">
+                      <ul>
+                        <li>
+                          <a href="#" title="Add to wishlist">
+                            <i class="feather icon-feather-heart"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Quick shop">
+                            <i class="feather icon-feather-eye"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <a
+                      href="demo-fashion-store-single-product.html"
+                      class="product-name"
+                      >Rock Salt</a
+                    >
+                    <div class="product-price">
+                      <del>€250.00</del>
+                      €239.00
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="product-item">
+                <div class="product-box">
+                  <div class="product-image">
+                    <a href="#">
+                      <img src="./store/images/IMG_0436.png" alt="Sella Rice" />
+                      <span class="label">Hot</span>
+                      <div class="product-overlay"></div>
+                    </a>
+                    <div class="product-buttons">
+                      <a
+                        href="demo-fashion-store-single-product.html"
+                        class="add-to-cart"
+                      >
+                        <i class="feather icon-feather-shopping-bag"></i>
+                        <span>Add to cart</span>
+                      </a>
+                    </div>
+                    <div class="product-actions">
+                      <ul>
+                        <li>
+                          <a href="#" title="Add to wishlist">
+                            <i class="feather icon-feather-heart"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Quick shop">
+                            <i class="feather icon-feather-eye"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <a
+                      href="demo-fashion-store-single-product.html"
+                      class="product-name"
+                      >Sella Rice</a
+                    >
+                    <div class="product-price">
+                      <del>€200.00</del>
+                      €189.00
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="product-item">
+                <div class="product-box">
+                  <div class="product-image">
+                    <a href="demo-fashion-store-single-product.html">
+                      <img src="./store/images/IMG_0437.png" alt="Hot Pepper" />
+                      <div class="product-overlay"></div>
+                    </a>
+                    <div class="product-buttons">
+                      <a
+                        href="demo-fashion-store-single-product.html"
+                        class="add-to-cart"
+                      >
+                        <i class="feather icon-feather-shopping-bag"></i>
+                        <span>Add to cart</span>
+                      </a>
+                    </div>
+                    <div class="product-actions">
+                      <ul>
+                        <li>
+                          <a href="#" title="Add to wishlist">
+                            <i class="feather icon-feather-heart"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Quick shop">
+                            <i class="feather icon-feather-eye"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <a
+                      href="demo-fashion-store-single-product.html"
+                      class="product-name"
+                      >Hot Pepper</a
+                    >
+                    <div class="product-price">
+                      <del>€150.00</del>
+                      €129.00
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="product-item">
+                <div class="product-box">
+                  <div class="product-image">
+                    <a href="demo-fashion-store-single-product.html">
+                      <img
+                        src="./store/images/IMG_0438.png"
+                        alt="Condensed Milk"
+                      />
+                      <div class="product-overlay"></div>
+                    </a>
+                    <div class="product-buttons">
+                      <a
+                        href="demo-fashion-store-single-product.html"
+                        class="add-to-cart"
+                      >
+                        <i class="feather icon-feather-shopping-bag"></i>
+                        <span>Add to cart</span>
+                      </a>
+                    </div>
+                    <div class="product-actions">
+                      <ul>
+                        <li>
+                          <a href="#" title="Add to wishlist">
+                            <i class="feather icon-feather-heart"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Quick shop">
+                            <i class="feather icon-feather-eye"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <a
+                      href="demo-fashion-store-single-product.html"
+                      class="product-name"
+                      >Condensed Milk</a
+                    >
+                    <div class="product-price">
+                      <del>€170.00</del>
+                      €120.00
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="product-item">
+                <div class="product-box">
+                  <div class="product-image">
+                    <a href="demo-fashion-store-single-product.html">
+                      <img
+                        src="./store/images/IMG_0439.png"
+                        alt="Garlic Paste"
+                      />
+                      <div class="product-overlay"></div>
+                    </a>
+                    <div class="product-buttons">
+                      <a
+                        href="demo-fashion-store-single-product.html"
+                        class="add-to-cart"
+                      >
+                        <i class="feather icon-feather-shopping-bag"></i>
+                        <span>Add to cart</span>
+                      </a>
+                    </div>
+                    <div class="product-actions">
+                      <ul>
+                        <li>
+                          <a href="#" title="Add to wishlist">
+                            <i class="feather icon-feather-heart"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Quick shop">
+                            <i class="feather icon-feather-eye"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <a
+                      href="demo-fashion-store-single-product.html"
+                      class="product-name"
+                      >Garlic Paste</a
+                    >
+                    <div class="product-price">
+                      <del>€190.00</del>
+                      €150.00
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="product-item">
+                <div class="product-box">
+                  <div class="product-image">
+                    <a href="demo-fashion-store-single-product.html">
+                      <img
+                        src="./store/images/IMG_0440.png"
+                        alt="Fish Powder"
+                      />
+                      <div class="product-overlay"></div>
+                    </a>
+                    <div class="product-buttons">
+                      <a
+                        href="demo-fashion-store-single-product.html"
+                        class="add-to-cart"
+                      >
+                        <i class="feather icon-feather-shopping-bag"></i>
+                        <span>Add to cart</span>
+                      </a>
+                    </div>
+                    <div class="product-actions">
+                      <ul>
+                        <li>
+                          <a href="#" title="Add to wishlist">
+                            <i class="feather icon-feather-heart"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Quick shop">
+                            <i class="feather icon-feather-eye"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <a
+                      href="demo-fashion-store-single-product.html"
+                      class="product-name"
+                      >Fish Powder</a
+                    >
+                    <div class="product-price">
+                      <del>€120.00</del>
+                      €100.00
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="product-item">
+                <div class="product-box">
+                  <div class="product-image">
+                    <a href="demo-fashion-store-single-product.html">
+                      <img
+                        src="./store/images/IMG_0441.png"
+                        alt="Fish Powder"
+                      />
+                      <div class="product-overlay"></div>
+                    </a>
+                    <div class="product-buttons">
+                      <a
+                        href="demo-fashion-store-single-product.html"
+                        class="add-to-cart"
+                      >
+                        <i class="feather icon-feather-shopping-bag"></i>
+                        <span>Add to cart</span>
+                      </a>
+                    </div>
+                    <div class="product-actions">
+                      <ul>
+                        <li>
+                          <a href="#" title="Add to wishlist">
+                            <i class="feather icon-feather-heart"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Quick shop">
+                            <i class="feather icon-feather-eye"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <a
+                      href="demo-fashion-store-single-product.html"
+                      class="product-name"
+                      >Fish Powder</a
+                    >
+                    <div class="product-price">
+                      <del>€120.00</del>
+                      €100.00
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="product-item">
+                <div class="product-box">
+                  <div class="product-image">
+                    <a href="demo-fashion-store-single-product.html">
+                      <img
+                        src="./store/images/IMG_0443.png"
+                        alt="Fish Powder"
+                      />
+                      <div class="product-overlay"></div>
+                    </a>
+                    <div class="product-buttons">
+                      <a
+                        href="demo-fashion-store-single-product.html"
+                        class="add-to-cart"
+                      >
+                        <i class="feather icon-feather-shopping-bag"></i>
+                        <span>Add to cart</span>
+                      </a>
+                    </div>
+                    <div class="product-actions">
+                      <ul>
+                        <li>
+                          <a href="#" title="Add to wishlist">
+                            <i class="feather icon-feather-heart"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Quick shop">
+                            <i class="feather icon-feather-eye"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <a
+                      href="demo-fashion-store-single-product.html"
+                      class="product-name"
+                      >Fish Powder</a
+                    >
+                    <div class="product-price">
+                      <del>€120.00</del>
+                      €100.00
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end section -->
+    <!-- start section -->
+    <section class="p-15px bg-dark-gray text-white">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <span class="fs-15 text-uppercase fw-500">
+              Take an extra 25% discount our favorite dress style. Use
+              code:<span
+                class="fs-14 fw-700 lh-28 alt-font text-dark-gray text-uppercase text-underline d-inline-block border-radius-30px ps-15px pe-15px ms-5px align-middle"
+                >fw205</span
+              >
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end section -->
+    <!-- start section -->
+    <section
+      class="bg-very-light-gray overflow-hidden position-relative ps-3 xs-ps-0"
+    >
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div
+            class="col-lg-3 ps-5 pe-5 xl-pe-0 lg-ps-0 text-center text-lg-start md-mb-40px"
+          >
+            <div class="mb-10px">
+              <span class="text-dark-gray fw-500 text-highlight">
+                You Are a Masterpiece!<span
+                  class="text-underline h-8px bottom-0px"
+                ></span>
+              </span>
+            </div>
+            <h2 class="alt-font lh-50 text-dark-gray ls-minus-1px mb-15px">
+              Health &
+              <span class="fw-600">Beauty</span>
+            </h2>
+            <p class="xs-pe-15px xs-ps-15px">
+              Indulge in the best and give yourself the care you truly deserve.
+            </p>
+            <a
+              href="demo-fashion-store-shop.html"
+              class="btn btn-dark-gray btn-box-shadow btn-medium"
+              >Pamper Yourself</a
+            >
+
+            <!--<div class="d-flex mt-30px justify-content-center justify-content-lg-start">
+                             start slider navigation 
+                            <div class="slider-one-slide-prev-1 icon-small text-dark-gray swiper-button-prev slider-navigation-style-04 bg-white box-shadow-large"><i class="fa-solid fa-arrow-left"></i></div>
+                            <div class="slider-one-slide-next-1 icon-small text-dark-gray swiper-button-next slider-navigation-style-04 bg-white box-shadow-large"><i class="fa-solid fa-arrow-right"></i></div> 
+                             end slider navigation 
+                        </div>-->
+          </div>
+          <div class="col-12 col-lg-9 position-relative">
+            <div
+              class="outside-box-right-10 lg-outside-box-right-20 md-outside-box-right-25 xs-outside-box-right-0"
+            >
+              <div
+                class="swiper slider-three-slide"
+                data-slider-options='{ "slidesPerView": 1, "spaceBetween": 30, "loop": true, "autoplay": { "delay": 4000, "disableOnInteraction": false }, "navigation": { "nextEl": ".slider-one-slide-next-1", "prevEl": ".slider-one-slide-prev-1" }, "pagination": { "el": ".slider-four-slide-pagination-1", "clickable": true, "dynamicBullets": false }, "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "1400": { "slidesPerView": 4 }, "1024": { "slidesPerView": 3 }, "768": { "slidesPerView": 3 }, "576": { "slidesPerView": 2 }, "320": { "slidesPerView": 1 } }, "effect": "slide" }'
+              >
+                <div class="swiper-wrapper">
+                  <!-- start content carousal item -->
+                  <div class="swiper-slide">
+                    <div
+                      class="interactive-banner-style-09 border-radius-6px overflow-hidden position-relative"
+                    >
+                      <img src="./store/images/sponge.webp" alt="" />
+                      <div
+                        class="opacity-full bg-gradient-gray-light-dark-transparent"
+                      ></div>
+                      <div
+                        class="image-content h-100 w-100 ps-15 pe-15 pt-11 pb-11 lg-p-11 d-flex justify-content-bottom align-items-start flex-column"
+                      >
+                        <div
+                          class="mt-auto d-flex align-items-start w-100 z-index-1 position-relative overflow-hidden flex-column"
+                        >
+                          <span class="text-white fw-500 fs-22">
+                            African Net Sponge 40 Inch
+                          </span>
+                        </div>
+                        <div
+                          class="position-absolute left-0px top-0px w-100 h-100 bg-gradient-regal-blue-transparent opacity-9"
+                        ></div>
+                        <div
+                          class="box-overlay bg-gradient-gray-light-dark-transparent"
+                        ></div>
+                        <a
+                          href="demo-fashion-store-shop.html"
+                          class="position-absolute z-index-1 top-0px left-0px h-100 w-100"
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end content carousal item -->
+                  <!-- start content carousal item -->
+                  <div class="swiper-slide">
+                    <div
+                      class="interactive-banner-style-09 border-radius-6px overflow-hidden position-relative"
+                    >
+                      <img src="./store/images/shea-butter.jpg" alt="" />
+                      <div
+                        class="opacity-full bg-gradient-gray-light-dark-transparent"
+                      ></div>
+                      <div
+                        class="image-content h-100 w-100 ps-15 pe-15 pt-11 pb-11 lg-p-11 d-flex justify-content-bottom align-items-start flex-column"
+                      >
+                        <div
+                          class="mt-auto d-flex align-items-start w-100 z-index-1 position-relative overflow-hidden flex-column"
+                        >
+                          <span class="text-white fw-500 fs-22"
+                            >Shea Butter</span
+                          >
+                        </div>
+                        <div
+                          class="position-absolute left-0px top-0px w-100 h-100 bg-gradient-regal-blue-transparent opacity-9"
+                        ></div>
+                        <div
+                          class="box-overlay bg-gradient-gray-light-dark-transparent"
+                        ></div>
+                        <a
+                          href="demo-fashion-store-shop.html"
+                          class="position-absolute z-index-1 top-0px left-0px h-100 w-100"
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end content carousal item -->
+                  <!-- start content carousal item -->
+                  <div class="swiper-slide">
+                    <div
+                      class="interactive-banner-style-09 border-radius-6px overflow-hidden position-relative"
+                    >
+                      <img src="./store/images/balm.jpg" alt="" />
+                      <div
+                        class="opacity-full bg-gradient-gray-light-dark-transparent"
+                      ></div>
+                      <div
+                        class="image-content h-100 w-100 ps-15 pe-15 pt-11 pb-11 lg-p-11 d-flex justify-content-bottom align-items-start flex-column"
+                      >
+                        <div
+                          class="mt-auto d-flex align-items-start w-100 z-index-1 position-relative overflow-hidden flex-column"
+                        >
+                          <span class="text-white fw-500 fs-22"
+                            >Aboniki Balm</span
+                          >
+                        </div>
+                        <div
+                          class="position-absolute left-0px top-0px w-100 h-100 bg-gradient-regal-blue-transparent opacity-9"
+                        ></div>
+                        <div
+                          class="box-overlay bg-gradient-gray-light-dark-transparent"
+                        ></div>
+                        <a
+                          href="demo-fashion-store-shop.html"
+                          class="position-absolute z-index-1 top-0px left-0px h-100 w-100"
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end content carousal item -->
+                  <!-- start content carousal item -->
+                  <div class="swiper-slide">
+                    <div
+                      class="interactive-banner-style-09 border-radius-6px overflow-hidden position-relative"
+                    >
+                      <img src="./store/images/black-soap.webp" alt="" />
+                      <div
+                        class="opacity-full bg-gradient-gray-light-dark-transparent"
+                      ></div>
+                      <div
+                        class="image-content h-100 w-100 ps-15 pe-15 pt-11 pb-11 lg-p-11 d-flex justify-content-bottom align-items-start flex-column"
+                      >
+                        <div
+                          class="mt-auto d-flex align-items-start w-100 z-index-1 position-relative overflow-hidden flex-column"
+                        >
+                          <span class="text-white fw-500 fs-22"
+                            >Black Soap</span
+                          >
+                        </div>
+                        <div
+                          class="position-absolute left-0px top-0px w-100 h-100 bg-gradient-regal-blue-transparent opacity-9"
+                        ></div>
+                        <div
+                          class="box-overlay bg-gradient-gray-light-dark-transparent"
+                        ></div>
+                        <a
+                          href="demo-fashion-store-shop.html"
+                          class="position-absolute z-index-1 top-0px left-0px h-100 w-100"
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end content carousal item -->
+                  <!-- start content carousal item -->
+                  <div class="swiper-slide">
+                    <div
+                      class="interactive-banner-style-09 border-radius-6px overflow-hidden position-relative"
+                    >
+                      <img src="./store/images/dudu.jpg" alt="" />
+                      <div
+                        class="opacity-full bg-gradient-gray-light-dark-transparent"
+                      ></div>
+                      <div
+                        class="image-content h-100 w-100 ps-15 pe-15 pt-11 pb-11 lg-p-11 d-flex justify-content-bottom align-items-start flex-column"
+                      >
+                        <div
+                          class="mt-auto d-flex align-items-start w-100 z-index-1 position-relative overflow-hidden flex-column"
+                        >
+                          <span class="text-white fw-500 fs-22">Dudu Osun</span>
+                        </div>
+                        <div
+                          class="position-absolute left-0px top-0px w-100 h-100 bg-gradient-regal-blue-transparent opacity-9"
+                        ></div>
+                        <div
+                          class="box-overlay bg-gradient-gray-light-dark-transparent"
+                        ></div>
+                        <a
+                          href="demo-fashion-store-shop.html"
+                          class="position-absolute z-index-1 top-0px left-0px h-100 w-100"
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end content carousal item -->
+                  <!-- start content carousal item -->
+                  <div class="swiper-slide">
+                    <div
+                      class="interactive-banner-style-09 border-radius-6px overflow-hidden position-relative"
+                    >
+                      <img src="./store/images/robb.jpg" alt="" />
+                      <div
+                        class="opacity-full bg-gradient-gray-light-dark-transparent"
+                      ></div>
+                      <div
+                        class="image-content h-100 w-100 ps-15 pe-15 pt-11 pb-11 lg-p-11 d-flex justify-content-bottom align-items-start flex-column"
+                      >
+                        <div
+                          class="mt-auto d-flex align-items-start w-100 z-index-1 position-relative overflow-hidden flex-column"
+                        >
+                          <span class="text-white fw-500 fs-22">Robb</span>
+                        </div>
+                        <div
+                          class="position-absolute left-0px top-0px w-100 h-100 bg-gradient-regal-blue-transparent opacity-9"
+                        ></div>
+                        <div
+                          class="box-overlay bg-gradient-gray-light-dark-transparent"
+                        ></div>
+                        <a
+                          href="demo-fashion-store-shop.html"
+                          class="position-absolute z-index-1 top-0px left-0px h-100 w-100"
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end content carousal item -->
+                  <!-- start content carousal item -->
+                  <div class="swiper-slide">
+                    <div
+                      class="interactive-banner-style-09 border-radius-6px overflow-hidden position-relative"
+                    >
+                      <img src="./store/images/coco-butter.webp" alt="" />
+                      <div
+                        class="opacity-full bg-gradient-gray-light-dark-transparent"
+                      ></div>
+                      <div
+                        class="image-content h-100 w-100 ps-15 pe-15 pt-11 pb-11 lg-p-11 d-flex justify-content-bottom align-items-start flex-column"
+                      >
+                        <div
+                          class="mt-auto d-flex align-items-start w-100 z-index-1 position-relative overflow-hidden flex-column"
+                        >
+                          <span class="text-white fw-500 fs-22"
+                            >Coco Butter</span
+                          >
+                        </div>
+                        <div
+                          class="position-absolute left-0px top-0px w-100 h-100 bg-gradient-regal-blue-transparent opacity-9"
+                        ></div>
+                        <div
+                          class="box-overlay bg-gradient-gray-light-dark-transparent"
+                        ></div>
+                        <a
+                          href="demo-fashion-store-shop.html"
+                          class="position-absolute z-index-1 top-0px left-0px h-100 w-100"
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end content carousal item -->
+                  <!-- start content carousal item -->
+                  <div class="swiper-slide">
+                    <div
+                      class="interactive-banner-style-09 border-radius-6px overflow-hidden position-relative"
+                    >
+                      <img src="./store/images/shea-butter-2.webp" alt="" />
+                      <div
+                        class="opacity-full bg-gradient-gray-light-dark-transparent"
+                      ></div>
+                      <div
+                        class="image-content h-100 w-100 ps-15 pe-15 pt-11 pb-11 lg-p-11 d-flex justify-content-bottom align-items-start flex-column"
+                      >
+                        <div
+                          class="mt-auto d-flex align-items-start w-100 z-index-1 position-relative overflow-hidden flex-column"
+                        >
+                          <span class="text-white fw-500 fs-22"
+                            >Shea Butter</span
+                          >
+                        </div>
+                        <div
+                          class="position-absolute left-0px top-0px w-100 h-100 bg-gradient-regal-blue-transparent opacity-9"
+                        ></div>
+                        <div
+                          class="box-overlay bg-gradient-gray-light-dark-transparent"
+                        ></div>
+                        <a
+                          href="demo-fashion-store-shop.html"
+                          class="position-absolute z-index-1 top-0px left-0px h-100 w-100"
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end content carousal item -->
+                </div>
+              </div>
+            </div>
+            <!-- start slider pagination -->
+            <!--<div class="swiper-pagination slider-four-slide-pagination-1 swiper-pagination-style-2 swiper-pagination-clickable swiper-pagination-bullets"></div>-->
+            <!-- end slider pagination -->
+          </div>
+        </div>
+      </div>
+      <div
+        class="fs-180 lg-fs-150 md-fs-130 fw-700 position-absolute bottom-minus-50px md-bottom-minus-40px ls-minus-5px left-0px right-0px text-center w-100 opacity-1 d-none d-md-block"
+        data-bottom-top="transform:scale(1, 1) translate3d(0px, 0px, 0px);"
+        data-top-bottom="transform:scale(1, 1) translate3d(-100px, 0px, 0px);"
+      >
+        new collection
+      </div>
+    </section>
+    <!-- end section -->
+
+    <!-- start section -->
+    <section class="half-section border-bottom border-color-extra-medium-gray">
+      <div class="container">
+        <div class="row mb-5 xs-mb-8">
+          <div class="col-12 text-center">
+            <h2 class="alt-font text-dark-gray mb-0 ls-minus-2px">
+              Shop from popular
+              <span class="text-highlight fw-600">
+                Brands<span class="text-underline h-5px bottom-2px"></span>
+              </span>
+            </h2>
+          </div>
+        </div>
+        <div
+          class="row row-cols-2 row-cols-md-5 row-cols-sm-3 position-relative justify-content-center appear anime-child anime-complete"
+          data-anime='{ "el": "childs", "translateY": [-15, 0], "scale": [0.8, 1], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 100, "easing": "easeOutQuad" }'
+        >
+          <!-- start client item -->
+          <div class="col text-center sm-mb-30px" style="">
+            <a href="#">
+              <img
+                src="./store/images/brand-1.svg"
+                class="h-30px"
+                alt=""
+                data-no-retina=""
+              />
+            </a>
+          </div>
+          <!-- end client item -->
+          <!-- start client item -->
+          <div class="col text-center sm-mb-30px" style="">
+            <a href="#">
+              <img
+                src="./store/images/brand-2.svg"
+                class="h-30px"
+                alt=""
+                data-no-retina=""
+              />
+            </a>
+          </div>
+          <!-- end client item -->
+          <!-- start client item -->
+          <div class="col text-center sm-mb-30px" style="">
+            <a href="#">
+              <img
+                src="./store/images/brand-3.svg"
+                class="h-30px"
+                alt=""
+                data-no-retina=""
+              />
+            </a>
+          </div>
+          <!-- end client item -->
+          <!-- start client item -->
+          <div class="col text-center xs-mb-30px" style="">
+            <a href="#">
+              <img
+                src="./store/images/brand-4.svg"
+                class="h-30px"
+                alt=""
+                data-no-retina=""
+              />
+            </a>
+          </div>
+          <!-- end client item -->
+          <!-- start client item -->
+          <div class="col text-center" style="">
+            <a href="#">
+              <img
+                src="./store/images/brand-5.svg"
+                class="h-30px"
+                alt=""
+                data-no-retina=""
+              />
+            </a>
+          </div>
+          <!-- end client item -->
+        </div>
+      </div>
+    </section>
+    <!-- end section -->
+
+    <!-- start section -->
+    <section
+      class="p-0 border-top border-bottom border-color-extra-medium-gray"
+    >
+      <div class="container-fluid">
+        <div class="row position-relative">
+          <div
+            class="col swiper text-center swiper-width-auto"
+            data-slider-options='{ "slidesPerView": "auto", "spaceBetween":0, "speed": 10000, "loop": true, "pagination": { "el": ".slider-four-slide-pagination-2", "clickable": false }, "allowTouchMove": false, "autoplay": { "delay":0, "disableOnInteraction": false }, "navigation": { "nextEl": ".slider-four-slide-next-2", "prevEl": ".slider-four-slide-prev-2" }, "keyboard": { "enabled": true, "onlyInViewport": true }, "effect": "slide" }'
+          >
+            <div class="swiper-wrapper marquee-slide">
+              <!-- start client item -->
+              <div class="swiper-slide">
+                <div
+                  class="alt-font fs-26 fw-500 text-dark-gray border-color-extra-medium-gray border-end pt-30px pb-30px ps-60px pe-60px sm-p-25px"
+                >
+                  Get 20% off for your first order
+                </div>
+              </div>
+              <!-- end client item -->
+              <!-- start client item -->
+              <div class="swiper-slide">
+                <div
+                  class="alt-font fs-26 fw-500 text-dark-gray border-color-extra-medium-gray border-end pt-30px pb-30px ps-60px pe-60px sm-p-25px"
+                >
+                  The fashion core collection
+                </div>
+              </div>
+              <!-- end client item -->
+              <!-- start client item -->
+              <div class="swiper-slide">
+                <div
+                  class="alt-font fs-26 fw-500 text-dark-gray border-color-extra-medium-gray border-end pt-30px pb-30px ps-60px pe-60px sm-p-25px"
+                >
+                  100% secure protected payment
+                </div>
+              </div>
+              <!-- end client item -->
+              <!-- start client item -->
+              <div class="swiper-slide">
+                <div
+                  class="alt-font fs-26 fw-500 text-dark-gray border-color-extra-medium-gray border-end pt-30px pb-30px ps-60px pe-60px sm-p-25px"
+                >
+                  Free shipping for orders over €130
+                </div>
+              </div>
+              <!-- end client item -->
+              <!-- start client item -->
+              <div class="swiper-slide">
+                <div
+                  class="alt-font fs-26 fw-500 text-dark-gray border-color-extra-medium-gray border-end pt-30px pb-30px ps-60px pe-60px sm-p-25px"
+                >
+                  Pay with multiple credit cards
+                </div>
+              </div>
+              <!-- end client item -->
+              <!-- start client item -->
+              <div class="swiper-slide">
+                <div
+                  class="alt-font fs-26 fw-500 text-dark-gray border-color-extra-medium-gray border-end pt-30px pb-30px ps-60px pe-60px sm-p-25px"
+                >
+                  Get 20% off for your first order
+                </div>
+              </div>
+              <!-- end client item -->
+              <!-- start client item -->
+              <div class="swiper-slide">
+                <div
+                  class="alt-font fs-26 fw-500 text-dark-gray border-color-extra-medium-gray border-end pt-30px pb-30px ps-60px pe-60px sm-p-25px"
+                >
+                  The fashion core collection
+                </div>
+              </div>
+              <!-- end client item -->
+              <!-- start client item -->
+              <div class="swiper-slide">
+                <div
+                  class="alt-font fs-26 fw-500 text-dark-gray border-color-extra-medium-gray border-end pt-30px pb-30px ps-60px pe-60px sm-p-25px"
+                >
+                  100% secure protected payment
+                </div>
+              </div>
+              <!-- end client item -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end section -->
+    <!-- start section -->
+    <section class="ps-7 pe-7 pb-3 lg-ps-3 lg-pe-3 md-pb-5 xs-px-0">
+      <div class="container">
+        <div class="row mb-5 xs-mb-8">
+          <div class="col-12 text-center">
+            <h2 class="alt-font text-dark-gray mb-0 ls-minus-2px">
+              Featured
+              <span class="text-highlight fw-600">
+                products<span class="text-underline h-5px bottom-2px"></span>
+              </span>
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <ul
+              id="lister"
+              class="product-list"
+              data-anime='{ "el": "childs", "translateY": [-15, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 100, "easing": "easeOutQuad" }'
+            >
+              <li class="product-item">
+                <div class="product-box">
+                  <div class="product-image">
+                    <a href="demo-fashion-store-single-product.html">
+                      <img src="./store/images/IMG_0444.png" alt="Big Larsor" />
+                      <span class="label">New</span>
+                      <div class="product-overlay"></div>
+                    </a>
+                    <div class="product-buttons">
+                      <a
+                        href="demo-fashion-store-single-product.html"
+                        class="add-to-cart"
+                      >
+                        <i class="feather icon-feather-shopping-bag"></i>
+                        <span>Add to cart</span>
+                      </a>
+                    </div>
+                    <div class="product-actions">
+                      <ul>
+                        <li>
+                          <a href="#" title="Add to wishlist">
+                            <i class="feather icon-feather-heart"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Quick shop">
+                            <i class="feather icon-feather-eye"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <a
+                      href="demo-fashion-store-single-product.html"
+                      class="product-name"
+                      >Big Larsor</a
+                    >
+                    <div class="product-price">
+                      <del>€200.00</del>
+                      €189.00
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="product-item">
+                <div class="product-box">
+                  <div class="product-image">
+                    <a href="demo-fashion-store-single-product.html">
+                      <img src="./store/images/IMG_0445.png" alt="Herbal Tea" />
+                      <div class="product-overlay"></div>
+                    </a>
+                    <div class="product-buttons">
+                      <a
+                        href="demo-fashion-store-single-product.html"
+                        class="add-to-cart"
+                      >
+                        <i class="feather icon-feather-shopping-bag"></i>
+                        <span>Add to cart</span>
+                      </a>
+                    </div>
+                    <div class="product-actions">
+                      <ul>
+                        <li>
+                          <a href="#" title="Add to wishlist">
+                            <i class="feather icon-feather-heart"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Quick shop">
+                            <i class="feather icon-feather-eye"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <a
+                      href="demo-fashion-store-single-product.html"
+                      class="product-name"
+                      >Herbal Tea</a
+                    >
+                    <div class="product-price">
+                      <del>€350.00</del>
+                      €289.00
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="product-item">
+                <div class="product-box">
+                  <div class="product-image">
+                    <a href="demo-fashion-store-single-product.html">
+                      <img
+                        src="./store/images/IMG_0446.png"
+                        alt="Corned Beef"
+                      />
+                      <div class="product-overlay"></div>
+                    </a>
+                    <div class="product-buttons">
+                      <a
+                        href="demo-fashion-store-single-product.html"
+                        class="add-to-cart"
+                      >
+                        <i class="feather icon-feather-shopping-bag"></i>
+                        <span>Add to cart</span>
+                      </a>
+                    </div>
+                    <div class="product-actions">
+                      <ul>
+                        <li>
+                          <a href="#" title="Add to wishlist">
+                            <i class="feather icon-feather-heart"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Quick shop">
+                            <i class="feather icon-feather-eye"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <a
+                      href="demo-fashion-store-single-product.html"
+                      class="product-name"
+                      >Corned Beef</a
+                    >
+                    <div class="product-price">
+                      <del>€220.00</del>
+                      €199.00
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="product-item">
+                <div class="product-box">
+                  <div class="product-image">
+                    <a href="demo-fashion-store-single-product.html">
+                      <img
+                        src="./store/images/IMG_0447.png"
+                        alt="Acha Spices"
+                      />
+                      <div class="product-overlay"></div>
+                    </a>
+                    <div class="product-buttons">
+                      <a
+                        href="demo-fashion-store-single-product.html"
+                        class="add-to-cart"
+                      >
+                        <i class="feather icon-feather-shopping-bag"></i>
+                        <span>Add to cart</span>
+                      </a>
+                    </div>
+                    <div class="product-actions">
+                      <ul>
+                        <li>
+                          <a href="#" title="Add to wishlist">
+                            <i class="feather icon-feather-heart"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Quick shop">
+                            <i class="feather icon-feather-eye"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <a
+                      href="demo-fashion-store-single-product.html"
+                      class="product-name"
+                      >Acha Spices</a
+                    >
+                    <div class="product-price">
+                      <del>€300.00</del>
+                      €259.00
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="product-item">
+                <div class="product-box">
+                  <div class="product-image">
+                    <a href="demo-fashion-store-single-product.html">
+                      <img
+                        src="./store/images/IMG_0448.png"
+                        alt="Tomato Paste"
+                      />
+                      <div class="product-overlay"></div>
+                    </a>
+                    <div class="product-buttons">
+                      <a
+                        href="demo-fashion-store-single-product.html"
+                        class="add-to-cart"
+                      >
+                        <i class="feather icon-feather-shopping-bag"></i>
+                        <span>Add to cart</span>
+                      </a>
+                    </div>
+                    <div class="product-actions">
+                      <ul>
+                        <li>
+                          <a href="#" title="Add to wishlist">
+                            <i class="feather icon-feather-heart"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Quick shop">
+                            <i class="feather icon-feather-eye"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <a
+                      href="demo-fashion-store-single-product.html"
+                      class="product-name"
+                      >Tomato Paste</a
+                    >
+                    <div class="product-price">
+                      <del>€250.00</del>
+                      €239.00
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="product-item">
+                <div class="product-box">
+                  <div class="product-image">
+                    <a href="demo-fashion-store-single-product.html">
+                      <img
+                        src="./store/images/IMG_0450.png"
+                        alt="Tomato Paste"
+                      />
+                      <div class="product-overlay"></div>
+                    </a>
+                    <div class="product-buttons">
+                      <a
+                        href="demo-fashion-store-single-product.html"
+                        class="add-to-cart"
+                      >
+                        <i class="feather icon-feather-shopping-bag"></i>
+                        <span>Add to cart</span>
+                      </a>
+                    </div>
+                    <div class="product-actions">
+                      <ul>
+                        <li>
+                          <a href="#" title="Add to wishlist">
+                            <i class="feather icon-feather-heart"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Quick shop">
+                            <i class="feather icon-feather-eye"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <a
+                      href="demo-fashion-store-single-product.html"
+                      class="product-name"
+                      >Tomato Paste</a
+                    >
+                    <div class="product-price">
+                      <del>€250.00</del>
+                      €239.00
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="product-item">
+                <div class="product-box">
+                  <div class="product-image">
+                    <a href="demo-fashion-store-single-product.html">
+                      <img
+                        src="./store/images/IMG_0452.png"
+                        alt="Tomato Paste"
+                      />
+                      <div class="product-overlay"></div>
+                    </a>
+                    <div class="product-buttons">
+                      <a
+                        href="demo-fashion-store-single-product.html"
+                        class="add-to-cart"
+                      >
+                        <i class="feather icon-feather-shopping-bag"></i>
+                        <span>Add to cart</span>
+                      </a>
+                    </div>
+                    <div class="product-actions">
+                      <ul>
+                        <li>
+                          <a href="#" title="Add to wishlist">
+                            <i class="feather icon-feather-heart"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Quick shop">
+                            <i class="feather icon-feather-eye"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <a
+                      href="demo-fashion-store-single-product.html"
+                      class="product-name"
+                      >Tomato Paste</a
+                    >
+                    <div class="product-price">
+                      <del>€250.00</del>
+                      €239.00
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="product-item">
+                <div class="product-box">
+                  <div class="product-image">
+                    <a href="demo-fashion-store-single-product.html">
+                      <img
+                        src="./store/images/IMG_0454.png"
+                        alt="Tomato Paste"
+                      />
+                      <div class="product-overlay"></div>
+                    </a>
+                    <div class="product-buttons">
+                      <a
+                        href="demo-fashion-store-single-product.html"
+                        class="add-to-cart"
+                      >
+                        <i class="feather icon-feather-shopping-bag"></i>
+                        <span>Add to cart</span>
+                      </a>
+                    </div>
+                    <div class="product-actions">
+                      <ul>
+                        <li>
+                          <a href="#" title="Add to wishlist">
+                            <i class="feather icon-feather-heart"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Quick shop">
+                            <i class="feather icon-feather-eye"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <a
+                      href="demo-fashion-store-single-product.html"
+                      class="product-name"
+                      >Tomato Paste</a
+                    >
+                    <div class="product-price">
+                      <del>€250.00</del>
+                      €239.00
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end section -->
+    <section>
+      <div class="container">
+        <div class="row align-items-center mb-10">
+          <div class="col-lg-6 position-relative md-mb-70px">
+            <div
+              class="w-75 position-relative xs-w-80 appear"
+              data-anime='{ "effect": "slide", "direction": "rl", "color": "#fee300", "duration": 1000, "delay": 300 }'
+              style="position: relative"
+            >
+              <img
+                class="w-100"
+                src="./store/images/store-about.png"
+                alt=""
+                data-no-retina=""
+                style="opacity: 1"
+              />
+              <div
+                class="position-absolute right-minus-100px xs-right-minus-50px top-30px w-210px h-210px xs-w-130px xs-h-130px border-radius-100 lg-top-minus-10px md-top-60px sm-top-30px skrollable skrollable-between"
+                data-bottom-top="transform: translateY(30px)"
+                data-top-bottom="transform: translateY(-30px)"
+                style="transform: translateY(6.69196px)"
+              >
+                <img
+                  src="./store/images/element-3.png"
+                  class="position-absolute top-50 translate-middle-y"
+                  alt=""
+                  data-no-retina=""
+                />
+                <img
+                  src="./store/images/element-4.png"
+                  class="animation-rotation"
+                  alt=""
+                  data-no-retina=""
+                />
+              </div>
+            </div>
+            <div
+              class="position-absolute right-minus-15px md-right-15px bottom-minus-30px w-55 md-w-50 overflow-hidden appear skrollable skrollable-between"
+              data-bottom-top="transform: translateY(50px)"
+              data-top-bottom="transform: translateY(-50px)"
+              data-anime='{ "effect": "slide", "direction": "lr", "color": "#fee300", "duration": 1000, "delay": 1000 }'
+              style="position: relative; transform: translateY(27.7855px)"
+            >
+              <img
+                class="w-100"
+                src="./store/images/about-tag.png"
+                alt=""
+                data-no-retina=""
+                style="opacity: 1"
+              />
+            </div>
+          </div>
+          <div class="col-12 col-lg-5 offset-lg-1">
+            <div
+              class="alt-font text-dark-gray mb-15px fs-20 appear anime-complete"
+              data-anime='{ "translateX": [15, 0], "opacity": [0,1], "duration": 400, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'
+              style=""
+            >
+              <span class="text-highlight"
+                ><span class="bg-base-color h-8px bottom-0px"></span
+              ></span>
+            </div>
+            <h2
+              class="alt-font text-dark-gray mb-20px fw-400 ls-minus-1px w-90 lg-fs-50 lg-w-100 appear anime-complete"
+              data-anime='{ "translateX": [15, 0], "opacity": [0,1], "duration": 400, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'
+              style=""
+            >
+              Why shop with <span class="fw-600">African Market</span>
+            </h2>
+            <div class="row justify-content-center">
+              <div class="col-12">
+                <div
+                  class="accordion accordion-style-02 appear anime-child anime-complete"
+                  id="accordion-style-02"
+                  data-active-icon="icon-feather-minus"
+                  data-inactive-icon="icon-feather-plus"
+                  data-anime='{ "el": "childs", "translateX": [50, 0], "opacity": [0,1], "duration": 400, "delay": 500, "staggervalue": 300, "easing": "easeOutQuad" }'
+                >
+                  <!-- start accordion item -->
+                  <div class="accordion-item" style="">
+                    <div
+                      class="accordion-header border-bottom border-color-extra-medium-gray"
+                    >
+                      <a
+                        href="#"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#accordion-style-02-01"
+                        aria-expanded="false"
+                        data-bs-parent="#accordion-style-02"
+                        class="collapsed"
+                      >
+                        <div
+                          class="accordion-title mb-0 position-relative text-dark-gray"
+                        >
+                          <i class="feather icon-feather-plus"></i
+                          ><span class="fw-600 fs-19"
+                            >High-Quality Products</span
+                          >
+                        </div>
+                      </a>
+                    </div>
+                    <div
+                      id="accordion-style-02-01"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#accordion-style-02"
+                      style=""
+                    >
+                      <div
+                        class="accordion-body last-paragraph-no-margin border-bottom border-color-light-medium-gray"
+                      >
+                        <p>
+                          We offer authentic African products, carefully sourced
+                          from trusted suppliers to ensure freshness, quality,
+                          and authenticity. Every item is selected with care to
+                          bring you the best of Africa, right here in Lithuania
+                          .
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end accordion item -->
+                  <!-- start accordion item -->
+                  <div class="accordion-item" style="">
+                    <div
+                      class="accordion-header border-bottom border-color-extra-medium-gray"
+                    >
+                      <a
+                        href="#"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#accordion-style-02-02"
+                        aria-expanded="false"
+                        data-bs-parent="#accordion-style-02"
+                        class="collapsed"
+                      >
+                        <div
+                          class="accordion-title mb-0 position-relative text-dark-gray"
+                        >
+                          <i class="feather icon-feather-plus"></i
+                          ><span class="fw-600 fs-19">Affordable Prices</span>
+                        </div>
+                      </a>
+                    </div>
+                    <div
+                      id="accordion-style-02-02"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#accordion-style-02"
+                      style=""
+                    >
+                      <div
+                        class="accordion-body last-paragraph-no-margin border-bottom border-color-light-medium-gray"
+                      >
+                        <p>
+                          Our goal is to make African products accessible to
+                          everyone at competitive prices. We work closely with
+                          our suppliers to keep costs low while maintaining high
+                          quality.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end accordion item -->
+                  <!-- start accordion item -->
+                  <div class="accordion-item" style="">
+                    <div
+                      class="accordion-header border-bottom border-color-transparent"
+                    >
+                      <a
+                        href="#"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#accordion-style-02-03"
+                        aria-expanded="false"
+                        data-bs-parent="#accordion-style-02"
+                        class="collapsed"
+                      >
+                        <div
+                          class="accordion-title mb-0 position-relative text-dark-gray"
+                        >
+                          <i class="feather icon-feather-plus"></i
+                          ><span class="fw-600 fs-19"
+                            >Fast & Reliable Delivery</span
+                          >
+                        </div>
+                      </a>
+                    </div>
+                    <div
+                      id="accordion-style-02-03"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#accordion-style-02"
+                      style=""
+                    >
+                      <div
+                        class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent"
+                      >
+                        <p>
+                          We prioritize efficiency, ensuring that your orders
+                          are processed quickly and delivered on time. Whether
+                          you’re ordering food, skincare, or seafood, we
+                          guarantee prompt and secure shipping.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end accordion item -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Facebook social post section -->
+    <section
+      class="ooo-instagram"
+      data-section-id="1599232291782"
+      id="tiktok"
+      data-section-type="app-section-feed"
+      data-section-settings='{
+      "feed": "default",
+      "locale": "en",
+      "layout": "grid",
+      "imageSize": "medium",
+      "imageCount": 5,
+      "showAuthor": false,
+      "showCaption": true,
+      "showDate": true,
+      "clickAction": "open_instagram"
+    }'
+      style="
+        --ooo-instagram-container-max-width: 1430px;
+        --ooo-instagram-section-vertical-margin: 65px;
+        --ooo-instagram-external-gutter: 15px;
+      "
+    >
+      <div class="ooo-instagram-container">
+        <header class="ooo-instagram-header">
+          <h2 class="alt-font text-dark-gray mb-0 ls-minus-2px">
+            Check us out on
+            <span class="text-highlight fw-600">
+              Facebook<span class="text-tag h-5px bottom-2px"></span>
+            </span>
+          </h2>
+        </header>
+        <div
+          class="ooo-instagram-feed"
+          data-sr-id="23"
+          style="
+            visibility: visible;
+            opacity: 1;
+            transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transition: opacity 2.5s cubic-bezier(0.5, 0, 0, 1) 0.4s,
+              transform 2.5s cubic-bezier(0.5, 0, 0, 1) 0.4s;
+          "
+        >
+          <div class="ooo-instagram-feed__list">
+            <a
+              href="https://web.facebook.com/permalink.php?story_fbid=pfbid0gpKVCwVzZXxxYSxK3QHvxZKtbuWtwz8HhN6oW7ahFUtpDoRAcie9WYig4QgAjCS4l&id=100064113302037"
+              class="ooo-instagram-media"
+              target="_blank"
+              data-instagram-field="permalink"
+              ><img
+                class="ooo-instagram-media__image"
+                src="https://scontent.flos5-3.fna.fbcdn.net/v/t39.30808-6/474034327_1026182062862228_8940539445925654340_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHRjmeaLfppqSO40au-bkK3OYEOh3kDEns5gQ6HeQMSe9S3sdCG2_YXVUCW5kvtvp5nnAPrvtWq0_-qTFO3hDaA&_nc_ohc=UIX6UqaObbwQ7kNvgEbBPIR&_nc_oc=AdhbZzUrF8Q8fZvQLS4uiDPdAhmde2yU69hRpOIV5eJwlrrUOErQimEQsFtYP7Yaib0&_nc_zt=23&_nc_ht=scontent.flos5-3.fna&_nc_gid=AE4jcKDhQ1YGXpJVxsp8FMV&oh=00_AYAyXbu8DPiB1tnchvtMsb4m52oug763RO2hnh52Sifllw&oe=67AC9797"
+                loading="lazy"
+                height="400"
+                width="400"
+                alt=""
+                data-instagram-field="media_url"
+              />
+              <div class="ooo-instagram-media__overlay">
+                <p
+                  class="ooo-instagram-media__caption"
+                  data-instagram-field="caption"
+                >
+                  Hi Guys!!!. African market at kavariju g 88 Vilnius is fully
+                  restocked with all fresh vegetables available. 🔥🔥🔥🔥
+                </p>
+                <time
+                  class="ooo-instagram-media__date"
+                  data-instagram-field="timestamp"
+                  >January 22, 2025</time
+                >
+              </div>
+            </a>
+
+            <a
+              href="https://web.facebook.com/photo?fbid=1006190494861385&set=pcb.1006190548194713"
+              class="ooo-instagram-media"
+              target="_blank"
+              data-instagram-field="permalink"
+            >
+              <img
+                class="ooo-instagram-media__image"
+                src="https://scontent.flos5-3.fna.fbcdn.net/v/t51.75761-15/470946363_18041620739518509_6747229203103860694_n.jpg?stp=dst-jpegr_s600x600_tt6&_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGIjnklehfAjhk1fIa_dKZH4rKNWGiBYy_iso1YaIFjL2wT95SAKzT70wa7vDKmfxEggSUU0Z2z8cEieyb8yIPQ&_nc_ohc=trOoaVD-elcQ7kNvgFeiNo4&_nc_oc=Adhw44n7Zo_cLYNPQucpSRv4EgO0V2ehLlIQoU7TnmK6yGyxz5KNqW03kdJudj5uSvo&_nc_zt=23&se=-1&_nc_ht=scontent.flos5-3.fna&_nc_gid=A3U9l0k5m-Iu2kYwJD9jYeo&oh=00_AYCaayh2p5vjUOsG1PoadB3OWyN5cYPCNGHETwlpzQytjA&oe=67AC8E7B"
+                loading="lazy"
+                height="400"
+                width="400"
+                alt=""
+                data-instagram-field="media_url"
+              />
+
+              <div class="ooo-instagram-media__overlay">
+                <p
+                  class="ooo-instagram-media__caption"
+                  data-instagram-field="caption"
+                >
+                  African Market Kalvariju g 88 Vilnius wishes you a pleasant
+                  merry Christmas 🌹🌹🌹🌹. We thank you for your loyalty
+                </p>
+                <time
+                  class="ooo-instagram-media__date"
+                  data-instagram-field="timestamp"
+                  >December 25, 2024</time
+                >
+              </div>
+            </a>
+
+            <a
+              href="https://web.facebook.com/photo?fbid=1006164021530699&set=pcb.1006169234863511"
+              class="ooo-instagram-media"
+              target="_blank"
+              data-instagram-field="permalink"
+              ><img
+                class="ooo-instagram-media__image"
+                src="https://scontent.flos5-3.fna.fbcdn.net/v/t39.30808-6/471201408_1006169411530160_2275633478398138703_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHjIPhmPXuY05HQfAJIVBTRqeXK0TSz6ump5crRNLPq6WdIRAYm2rE4v22DAuE0H7A0UwI7rkk4OPQLjLP6ahE_&_nc_ohc=bOE6lWMaKH4Q7kNvgGG_IFt&_nc_oc=AdgAAb_f4EIphXQbYUVLRWcRAljmpKdqRCsFDiUhFQfLMquhh4RAaIJUoOFiFxRqfqI&_nc_zt=23&_nc_ht=scontent.flos5-3.fna&_nc_gid=AOcVpIe2prQr2E25M4otdOO&oh=00_AYBRRuUjvuxUfiCudbUNvybWxTJUn-HIJzBY-8XV8Tvm5g&oe=67AC95BE"
+                loading="lazy"
+                height="400"
+                width="400"
+                alt=""
+                data-instagram-field="media_url"
+              />
+              <div class="ooo-instagram-media__overlay">
+                <p
+                  class="ooo-instagram-media__caption"
+                  data-instagram-field="caption"
+                >
+                  Merry Christmas to you all !!!🌹🌹🌹 African Market Kalvariju
+                  g 88 is fully stock. We are open today 2024-12-25 from 10:00
+                  to 14:00 and tomorrow 2024-12-26 we return back to our normal
+                  working schedule from 11:00 to 20:00. 🔥🔥🔥🔥
+                  #foreignerinlithuania #AfricanMarkets #afroproductstotheworld.
+                </p>
+                <time
+                  class="ooo-instagram-media__date"
+                  data-instagram-field="timestamp"
+                  >December 25, 2024</time
+                >
+              </div> </a
+            ><a
+              href="https://web.facebook.com/permalink.php?story_fbid=pfbid02Dek6abQBhcTBixrSYtBR4nWfkqUBSQarUAzR2jNhu5YHPFRvmWnAUHZ6i6zTPqp9l&id=100064113302037"
+              class="ooo-instagram-media"
+              target="_blank"
+              data-instagram-field="permalink"
+              ><img
+                class="ooo-instagram-media__image"
+                src="https://scontent.flos5-1.fna.fbcdn.net/v/t39.30808-6/465008405_965948965552205_4136379648537567009_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGVlMzUBySQcdtgY_DtpcCiT-nHFYVJ5SNP6ccVhUnlI9o0eumK5ev9LZcCMFdzR5EEqYNixzpUoNE2mRsEMAw-&_nc_ohc=H3SYM5e6IwUQ7kNvgGYkzwE&_nc_oc=Adiyy1azwlSU-z7S128M2gowq_3PfHZ7FSvSKmcBMD4u9lxPxarJJYD2PqVBhYN7GcA&_nc_zt=23&_nc_ht=scontent.flos5-1.fna&_nc_gid=ACQP_D4waWzT_-tjF68izG_&oh=00_AYDPlnr4EuTSqa4c6uqG4UR3SwxHVNygML9tNGyhI0IoeQ&oe=67AC8C23"
+                loading="lazy"
+                height="400"
+                width="400"
+                alt=""
+                data-instagram-field="media_url"
+              />
+              <div class="ooo-instagram-media__overlay">
+                <p
+                  class="ooo-instagram-media__caption"
+                  data-instagram-field="caption"
+                >
+                  Hey guys!!! African Market is fully loaded again with lots of
+                  African and Asian products. Visit our physical shop and enjoy
+                  the best of African products at Kalvariju g 88 Vilnius.
+                  #OneLoveAfrican #foreignersinlithuania 🔥🔥🔥🔥🔥🔥
+                </p>
+                <time
+                  class="ooo-instagram-media__date"
+                  data-instagram-field="timestamp"
+                  >October 29, 2024</time
+                >
+              </div> </a
+            ><a
+              href="https://web.facebook.com/permalink.php?story_fbid=pfbid0A16WB3d7xKGYv73PGauWpsoGtKEU6ihepbfH7GNFPYcaMGuVi5U13srtXZQEXi9Dl&id=100064113302037"
+              class="ooo-instagram-media"
+              target="_blank"
+              data-instagram-field="permalink"
+              ><img
+                class="ooo-instagram-media__image"
+                src="https://scontent.flos5-3.fna.fbcdn.net/v/t39.30808-6/462118931_948258360654599_2940629865053322191_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHKZyfifCXtJOkXN8uPJmATSfkhixuXcKFJ-SGLG5dwoXAnSql8ZjSDFv9M3g3DBbYatRdFK9hXTrsGffGf5cki&_nc_ohc=BH8uOsT4VtYQ7kNvgH6Oljq&_nc_oc=AdhXi0q3rZtauaoPvAq1dg9OXRgpJvbsbkpELqnxyAs28m6Zy4AwZKiFHVhg8_m2UCQ&_nc_zt=23&_nc_ht=scontent.flos5-3.fna&_nc_gid=AzgGKHVxCjhr-gHx7We8WOu&oh=00_AYBzVxxuPl-x-KqgiqutjZwDocU9-9J4NfoYLBS_Dg9Rew&oe=67ACA4B0"
+                loading="lazy"
+                height="400"
+                width="400"
+                alt=""
+                data-instagram-field="media_url"
+              />
+              <div class="ooo-instagram-media__overlay">
+                <p
+                  class="ooo-instagram-media__caption"
+                  data-instagram-field="caption"
+                >
+                  Hi, guys. African Market is fully stock again with all
+                  varieties of fresh and frozen products. visit our shop at
+                  Kalvariju g 88 Vilnius.
+                </p>
+                <time
+                  class="ooo-instagram-media__date"
+                  data-instagram-field="timestamp"
+                  >October 6, 2024</time
+                >
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <style>
+        @media screen and (-ms-high-contrast: active),
+          (-ms-high-contrast: none) {
+          #shopify-section-1599232291782 {
+            display: none !important;
+          }
+        }
+
+        [data-section-id="1599232291782"] {
+          --ooo-instagram-section-vertical-margin: 50px;
+          --ooo-instagram-section-vertical-padding: 0;
+          --ooo-instagram-container-max-width: 1480px;
+          --ooo-instagram-external-gutter: 20px;
+          --ooo-instagram-header-margin-bottom: 10px;
+          --ooo-instagram-header-text-alignment: center;
+          --ooo-instagram-grid-gutter: 20px;
+          --ooo-instagram-footer-margin-top: 20px;
+        }
+
+        @media screen and (min-width: 768px) {
+          [data-section-id="1599232291782"] {
+            --ooo-instagram-section-vertical-margin: 60px;
+            --ooo-instagram-external-gutter: 40px;
+          }
+        }
+
+        /* Section and container */
+        [data-section-id="1599232291782"] {
+          margin: var(--ooo-instagram-section-vertical-margin) 0;
+          padding: var(--ooo-instagram-section-vertical-padding) 0;
+        }
+
+        [data-section-id="1599232291782"] * {
+          box-sizing: border-box;
+          /* Some theme do not use this by default */
+        }
+
+        [data-section-id="1599232291782"] .ooo-instagram-container {
+          max-width: var(--ooo-instagram-container-max-width);
+          padding: 0 var(--ooo-instagram-external-gutter);
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        /* Header */
+        [data-section-id="1599232291782"] .ooo-instagram-header {
+          margin-bottom: var(--ooo-instagram-header-margin-bottom);
+          padding: 0;
+          text-align: var(--ooo-instagram-header-text-alignment);
+        }
+
+        [data-section-id="1599232291782"] .ooo-instagram-header__title {
+          color: #000000;
+        }
+
+        [data-section-id="1599232291782"] .ooo-instagram-header__subheading {
+          color: #000000;
+        }
+
+        [data-section-id="1599232291782"] .ooo-instagram-header__subheading a {
+          text-decoration: underline;
+          text-underline-position: under;
+        }
+
+        [data-section-id="1599232291782"] .ooo-instagram-feed {
+          clear: both;
+          /* We do this because some themes float the header and footer */
+        }
+
+        /* Feed (on mobile, we always show as scrollable list) */
+        [data-section-id="1599232291782"] .ooo-instagram-feed__list {
+          padding: var(--ooo-instagram-grid-gutter) 0;
+          white-space: nowrap;
+          overflow-x: auto;
+          overflow-y: hidden;
+          -webkit-overflow-scrolling: touch;
+          scroll-snap-type: x mandatory;
+          margin: 0 calc(-1 * var(--ooo-instagram-external-gutter));
+        }
+
+        [data-section-id="1599232291782"]
+          .ooo-instagram-feed__list::-webkit-scrollbar {
+          display: none;
+        }
+
+        [data-section-id="1599232291782"] .ooo-instagram-media {
+          position: relative;
+          display: inline-block;
+          overflow: hidden;
+          width: 75%;
+          vertical-align: top;
+          white-space: normal;
+          scroll-snap-align: center;
+        }
+
+        [data-section-id="1599232291782"] .ooo-instagram-media:first-child {
+          margin-left: 0;
+        }
+
+        [data-section-id="1599232291782"] .ooo-instagram-media:last-child {
+          margin-right: 0;
+        }
+
+        [data-section-id="1599232291782"] .ooo-instagram-media::before {
+          content: "";
+          display: block;
+          padding-bottom: 100%;
+          /* Force the image to be squared */
+        }
+
+        [data-section-id="1599232291782"] .ooo-instagram-media__image {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+
+        @media screen and (min-width: 450px) {
+          [data-section-id="1599232291782"] .ooo-instagram-media {
+            width: 60%;
+          }
+        }
+
+        @media screen and (min-width: 600px) {
+          [data-section-id="1599232291782"] .ooo-instagram-media {
+            width: 50%;
+          }
+        }
+
+        @media screen and (min-width: 750px) {
+          [data-section-id="1599232291782"] .ooo-instagram-media {
+            width: 40%;
+          }
+        }
+
+        @media screen and (min-width: 900px) {
+          [data-section-id="1599232291782"] .ooo-instagram-media {
+            width: 32%;
+          }
+        }
+
+        @media screen and (min-width: 1000px) {
+          [data-section-id="1599232291782"] .ooo-instagram-feed__list {
+            margin: 0;
+            padding: var(--ooo-instagram-grid-gutter) 0;
+          }
+
+          [data-section-id="1599232291782"] .ooo-instagram-media {
+            display: block;
+            width: auto;
+            margin: 0;
+          }
+
+          [data-section-id="1599232291782"] .ooo-instagram-feed__list {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+          }
+        }
+
+        /* Overlay */
+        [data-section-id="1599232291782"] .ooo-instagram-media__overlay {
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          padding: 14px 20px;
+          font-size: 0.9em;
+          background-color: rgba(37, 38, 37, 0.859);
+          color: #ffffff;
+          opacity: 0;
+          transition: opacity 0.2s ease-in-out;
+        }
+
+        @media (hover: hover) {
+          [data-section-id="1599232291782"]
+            .ooo-instagram-media:hover
+            .ooo-instagram-media__overlay {
+            opacity: 1;
+          }
+        }
+
+        [data-section-id="1599232291782"]
+          .ooo-instagram-media__author-container {
+          display: flex;
+          align-items: center;
+          flex-shrink: 0;
+          margin-bottom: 16px;
+        }
+
+        [data-section-id="1599232291782"] .ooo-instagram-media__author-icon {
+          margin-right: 8px;
+        }
+
+        [data-section-id="1599232291782"] .ooo-instagram-media__caption {
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 3;
+          overflow: hidden;
+          color: white;
+        }
+
+        [data-section-id="1599232291782"]
+          .ooo-instagram-media__caption:first-child {
+          margin-top: 0;
+        }
+
+        [data-section-id="1599232291782"] .ooo-instagram-media__date {
+          margin-top: auto;
+          text-transform: uppercase;
+          font-size: 0.9em;
+          font-weight: 500;
+          letter-spacing: 0.1em;
+        }
+
+        /* Footer */
+        [data-section-id="1599232291782"] .ooo-instagram-footer {
+          margin-top: var(--ooo-instagram-footer-margin-top);
+          padding: 0 var(--ooo-instagram-external-gutter);
+          text-align: center;
+        }
+
+        [data-section-id="1599232291782"] .ooo-instagram-footer__button {
+          display: inline-block;
+          color: #ffffff;
+          background: #000000;
+          padding: 6px 24px;
+          text-decoration: none;
+        }
+      </style>
+    </section>
+
+    <!-- start footer -->
+
+    <!-- start footer -->
+    <footer class="footer-dark bg-dark-gray p-0">
+      <div class="container">
+        <div class="row align-items-center pt-35px pb-35px">
+          <!-- start footer column -->
+          <div class="col-12 col-md-auto sm-mb-15px text-center text-md-start">
+            <a href="./index.html" class="footer-logo">
+              <img
+                src="./store/images/african logo-2.jpg"
+                data-at2x="./store/images/african logo-2.jpg"
+                alt="african store Lithuania"
+                class="default-logo"
+              />
+            </a>
+          </div>
+          <!-- end footer column -->
+          <!-- start footer column -->
+          <div class="col">
+            <ul class="footer-navbar text-center text-md-end">
+              <li class="nav-item">
+                <a href="./index.html" class="nav-link">Home</a>
+              </li>
+              <li class="nav-item">
+                <a href="./store/shop-page/shop.html" class="nav-link">Shop</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  href="./store/shop-categories/categories.html"
+                  class="nav-link"
+                  >Collection</a
+                >
+              </li>
+              <li class="nav-item">
+                <a href="./store/blogs/home-blog.html" class="nav-link"
+                  >Our Blog</a
+                >
+              </li>
+              <li class="nav-item">
+                <a href="./about.html" class="nav-link">About</a>
+              </li>
+              <li class="nav-item">
+                <a href="./contact.html" class="nav-link">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <!-- end footer column -->
+        </div>
+        <div class="row justify-content-center fs-15 lh-28 pb-50px xs-pb-35px">
+          <div class="col-12 mb-50px sm-mb-35px">
+            <div
+              class="divider-style-03 divider-style-03-01 border-color-transparent-white-light"
+            ></div>
+          </div>
+          <!-- start footer column -->
+          <div class="col-6 col-lg-2 col-sm-4 xs-mb-30px order-sm-3 order-lg-2">
+            <span class="fw-500 d-block text-white mb-5px fs-17"
+              >Categories</span
+            >
+            <ul>
+              <li>
+                <a href="./store/single-category page/index.html"
+                  >Fresh Produce</a
+                >
+              </li>
+              <li>
+                <a href="./store/single-category page/index.html">Noodles</a>
+              </li>
+              <li>
+                <a href="./store/single-category page/index.html"
+                  >Health & Beauty</a
+                >
+              </li>
+              <li>
+                <a href="./store/single-category page/index.html">Oil & Fats</a>
+              </li>
+              <li>
+                <a href="./store/single-category page/index.html"
+                  >Dairy & Drinks</a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- end footer column -->
+          <!-- start footer column -->
+          <div class="col-6 col-lg-2 col-sm-4 xs-mb-30px order-sm-3 order-lg-2">
+            <span class="fw-500 d-block text-white mb-5px fs-17"
+              >Information</span
+            >
+            <ul>
+              <li>
+                <a href="./about.html">About us</a>
+              </li>
+              <li>
+                <a href="./contact.html">Contact us</a>
+              </li>
+              <li>
+                <a
+                  href="https://www.notion.so/RULES-FOR-THE-PURCHASE-AND-SALE-OF-GOODS-196799d17ff880db86edf37641a38724?pvs=4"
+                  >Terms & conditions</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.notion.so/Shipping-Delivery-196799d17ff880029cfdd001478ed630?pvs=4"
+                  >Shipping & delivery</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.notion.so/Privacy-Policy-196799d17ff880e68bbae623425f4a93?pvs=4"
+                  >Privacy policy</a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- end footer column -->
+          <!-- start footer column -->
+          <div class="col-6 col-lg-2 col-sm-4 xs-mb-30px order-sm-3 order-lg-2">
+            <span class="fw-500 d-block text-white mb-5px fs-17"
+              >Quick links</span
+            >
+            <ul>
+              <li>
+                <a href="./account.html">My account</a>
+              </li>
+
+              <li>
+                <a
+                  href="https://maps.app.goo.gl/SHNZXP9ptSGASVYu7
+                "
+                  >Our store</a
+                >
+              </li>
+
+              <li>
+                <a href="./faq.html">FAQs</a>
+              </li>
+            </ul>
+          </div>
+          <!-- end footer column -->
+          <!-- start footer column -->
+          <div
+            class="col-6 col-lg-3 col-md-4 col-sm-5 md-mb-50px xs-mb-30px order-sm-2 order-lg-2 offset-md-2 offset-lg-0"
+          >
+            <span class="fw-500 d-block text-white mb-10px fs-17"
+              >Quick contact</span
+            >
+            <div>
+              <i
+                class="feather icon-feather-phone-call fs-16 text-white me-10px xs-me-5px"
+              ></i>
+              <a
+                href="tel:+370 640 35989
+
+              "
+                >+370 640 35989
+              </a>
+            </div>
+
+            <div class="mb-15px">
+              <i
+                class="feather icon-feather-mail fs-16 text-white me-10px xs-me-5px"
+              ></i>
+              <a
+                href="mailto:info@Africanmarkets.eu"
+                class="text-decoration-line-bottom"
+              >
+                info@Africanmarkets.eu
+              </a>
+            </div>
+
+            <span class="fw-500 d-block text-white mb-5px fs-17"
+              >Connect with us</span
+            >
+            <div class="elements-social social-icon-style-02">
+              <ul class="light">
+                <li>
+                  <a
+                    class="facebook"
+                    href="https://www.facebook.com/share/17cQcCj36N/
+                    "
+                    target="_blank"
+                  >
+                    <i class="fa-brands fa-facebook-f"></i>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="instagram"
+                    href="https://www.instagram.com/african_market_lt?igsh=ZTQyc3JhcjVodGYw
+                    "
+                    target="_blank"
+                  >
+                    <i class="fa-brands fa-instagram"></i>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="instagram"
+                    href="https://www.tiktok.com/@afrogroceries?_t=ZN-8tOU5b1F7Ru&_r=1
+
+                    "
+                    target="_blank"
+                  >
+                    <i class="fa-brands fa-tiktok"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- end footer column -->
+          <!-- start footer column -->
+          <div
+            class="col-lg-3 col-md-6 col-sm-7 ps-20px sm-ps-15px md-mb-50px xs-mb-0 order-sm-1 order-lg-5"
+          >
+            <span class="fw-500 d-block text-white mb-5px fs-17"
+              >Become a member</span
+            >
+            <div class="mb-15px">Join now and get 20% extra discount!</div>
+            <div
+              class="d-inline-block w-100 newsletter-style-04 position-relative mb-15px"
+            >
+              <form
+                action="email-templates/subscribe-newsletter.php"
+                method="post"
+                class="position-relative w-100"
+              >
+                <input
+                  class="input-small bg-nero-grey border-radius-4px border-color-transparent w-100 form-control pe-50px ps-20px lg-ps-15px required"
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                />
+                <input type="hidden" name="redirect" value="" />
+                <button class="btn pe-20px submit" aria-label="submit">
+                  <i class="icon bi bi-envelope icon-small text-white"></i>
+                </button>
+                <div
+                  class="form-results border-radius-4px pt-5px pb-5px ps-15px pe-15px fs-14 lh-22 mt-10px w-100 text-center position-absolute d-none"
+                ></div>
+              </form>
+            </div>
+            <div class="footer-card">
+              <a href="#" class="d-inline-block me-5px align-middle">
+                <img src="./store/images/payment-icon-01.png" alt="" />
+              </a>
+              <a href="#" class="d-inline-block me-5px align-middle">
+                <img src="./storeimages/payment-icon-02.png" alt="" />
+              </a>
+              <a href="#" class="d-inline-block me-5px align-middle">
+                <img src="./storeimages/payment-icon-03.png" alt="" />
+              </a>
+              <a href="#" class="d-inline-block me-5px align-middle">
+                <img src="./storeimages/payment-icon-04.png" alt="" />
+              </a>
+            </div>
+          </div>
+          <!-- end footer column -->
+        </div>
+      </div>
+      <div class="pt-30px pb-30px bg-nero-grey">
+        <div class="container">
+          <div class="row align-items-center fs-15">
+            <div
+              class="col-12 col-lg-7 last-paragraph-no-margin md-mb-15px text-center text-lg-start lh-22"
+            >
+              <p>
+                This site is protected by our
+                <a
+                  href="https://www.notion.so/Privacy-Policy-196799d17ff880e68bbae623425f4a93?pvs=4"
+                  class="text-white text-decoration-line-bottom"
+                  >privacy policy</a
+                >
+              </p>
+            </div>
+            <div class="col-12 col-lg-5 text-center text-lg-end lh-22">
+              <span>
+                &copy;2025 African market Lithuaniaa. built by
+                <a
+                  href="https://Africanmarkets.eu"
+                  target="_blank"
+                  class="text-decoration-line-bottom text-white"
+                  >African market lithuania</a
+                >
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- end footer -->
+
+    <a href="https://wa.link/835yqh" class="float" target="_blank">
+      <i class="fab fa-whatsapp my-float"></i>
+    </a>
+
+    <script src="/store/js/auth/account.js"></script>
+    <script src="/store/js/category/categoryHover.js"></script>
+    <script src="/store/js/category/categoryCollection.js"></script>
+    <!-- <script src="/store/js/product/bestSellerProduct.js"></script> -->
+    <script src="/store/js/featured/product.js"></script>
+    <script src="/store/js/shop/cart.js"></script>
+
+    <!-- javascript libraries -->
+    <script src="./store/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script type="text/javascript" src="./store/js/jquery.js"></script>
+    <script type="text/javascript" src="./store/js/vendors.min.js"></script>
+    <script type="text/javascript" src="./store/js/main.js"></script>
+  </body>
+</html>

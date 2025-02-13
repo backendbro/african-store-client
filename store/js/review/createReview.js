@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           }
         );
         console.log(response);
-
+        const res = await response.json();
         if (response.ok) {
           spinner.style.display = "none";
           Swal.fire({
@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           spinner.style.display = "none";
           Swal.fire({
             title: "Review",
-            text: response.message,
+            text: res.message,
             icon: "error",
             showConfirmButton: false,
             timer: 2000,

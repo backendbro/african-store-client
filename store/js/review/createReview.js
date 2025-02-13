@@ -116,6 +116,15 @@ document.addEventListener("DOMContentLoaded", async () => {
           });
 
           window.location.reload();
+        } else {
+          spinner.style.display = "none";
+          Swal.fire({
+            title: "Review",
+            text: response.message,
+            icon: "error",
+            showConfirmButton: false,
+            timer: 2000,
+          });
         }
       } catch (error) {
         console.error("Error submitting form:", error);

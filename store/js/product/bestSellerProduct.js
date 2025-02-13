@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  const productList = document.querySelector(".product-list");
+  const productList = document.querySelector(".best-list");
   const API_URL = "https://african-store.onrender.com/api/v1/bestseller/";
   const AUTH_TOKEN = localStorage.getItem("token");
 

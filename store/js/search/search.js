@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     @media (max-width: 767px) {
     .search-form-wrapper .search-form-box {
         width: 60%%;
-      margin-left: 20px;
+      
         }
 
   .search-results {

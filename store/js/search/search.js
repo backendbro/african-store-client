@@ -3,12 +3,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const style = document.createElement("style");
   style.innerHTML = `
     /* For screens 768px and above, show the search form and results side by side */
-    @media (max-width: 767px)  {
-      /* Increase right side (search results) to 75% */
-      .search-results {
-        flex: 0 0 55%;
+    
+    @media (max-width: 767px) {
+    .search-form-wrapper .search-form-box {
+        width: 60%%;
+    }
+
+  .search-results {
+    margin-left: 10px;
+    display: block;
+    width: 100%;
       }
     }
+
+@media (max-width: 575px) {
+    .search-form-wrapper .search-form .search-input {
+        font-size: 15px;
+        height: 50px;
+        margin-left: 20px;
+    }
+}
+    
+   
+
+      
+
   `;
   document.head.appendChild(style);
 

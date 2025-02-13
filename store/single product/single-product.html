@@ -74,6 +74,17 @@
       transition: transform 0.2s ease-in-out;
     }
 
+    .add-to-wishlist.added {
+      background: #ff4d4d !important; /* Ensure it applies */
+      color: white !important;
+      border-radius: 50%;
+      padding: 10px;
+    }
+
+    .add-to-wishlist.added i {
+      color: white !important; /* Ensure icon turns white */
+    }
+
     .spinner {
       width: 20px;
       height: 20px;
@@ -90,28 +101,6 @@
       100% {
         transform: rotate(360deg);
       }
-    }
-
-    .add-to-wishlist.added {
-      background: #ff4d4d; /* Red background to indicate it's added */
-      color: white; /* Change icon color to white */
-      border-radius: 50%; /* Make it round */
-      padding: 10px;
-    }
-
-    .add-to-wishlist.added i {
-      color: white; /* Make the heart icon white */
-    }
-
-    .wishlister.added {
-      background: #ff4d4d; /* Red background to indicate it's added */
-      color: white; /* Change icon color to white */
-      border-radius: 50%; /* Make it round */
-      padding: 10px;
-    }
-
-    .wishlister.added i {
-      color: white; /* Make the heart icon white */
     }
   </style>
 

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const token = localStorage.getItem("token");
 
-  const productList = document.querySelector(".product-list");
+  const productList = document.querySelector("#wishlist-list");
   if (!productList) {
     console.error("Product list container not found!");
     return;
@@ -16,6 +16,41 @@ document.addEventListener("DOMContentLoaded", () => {
       timer: 2000,
     });
   }
+
+  const style = document.createElement("style");
+  style.innerHTML = `
+    /* Hover effects for wishlist and quick-shop links */
+    .add-to-wishlist:hover, .quick-shop:hover {
+      transform: scale(1.1);
+      background: #f0f0f0;
+      transition: transform 0.2s ease;
+    }
+
+    /* Red background when wishlist is clicked */
+.add-to-wishlist.added {
+  background: red !important;
+  color: #fff !important;
+}
+
+    
+    /* Spinner styles for wishlist */
+    .wishlist-spinner {
+      display: inline-block;
+      margin-left: 5px;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #3498db;
+      border-top: 2px solid transparent;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  `;
+  document.head.appendChild(style);
 
   const paginationContainer = document.querySelector(".pagination");
   let currentPage = 1;

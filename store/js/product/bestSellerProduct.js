@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const productList = document.querySelector(".best-list");
   const API_URL = "https://african-store.onrender.com/api/v1/bestseller/";
-  const AUTH_TOKEN = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
   try {
     async function fetchBestSellers() {
@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         };
 
         // Add Authorization header **only if token exists**
-        if (AUTH_TOKEN) {
-          headers["Authorization"] = `Bearer ${AUTH_TOKEN}`;
+        if (token) {
+          headers["Authorization"] = `Bearer ${token}`;
         }
 
         const response = await fetch(API_URL, {
@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           ? individualProduct.BasePrice * (individualProduct.Discount / 100)
           : 0;
         let finalPrice = Math.round(individualProduct.BasePrice - Discount);
+        let isNew = isProductNew(product.createdAt);
 
         const productItem = document.createElement("li");
         productItem.classList.add("product-item");
@@ -78,19 +79,23 @@ document.addEventListener("DOMContentLoaded", async () => {
                       "https://i.pinimg.com/736x/1c/16/62/1c1662f546cc85a1d77732c840ff9113.jpg"
                     }" 
                          alt="${individualProduct.name}">
-                    
+                     ${isNew ? `<span class="label">New</span>` : ""}
                     <div class="product-overlay"></div>
                   
-                    <div class="product-buttons">
-                  <button class="add-to-cart" 
+                    <div class="product-buttons" style="cursor: pointer;"  >
+                  <a class="add-to-cart" 
                           data-id="${individualProduct._id}" 
                           data-name="${individualProduct.name}" 
                           data-price="${finalPrice}" 
                           data-image="${individualProduct.file?.[0]}"
                           data-stock="${individualProduct.StockQuantity}">
-                    Add to Cart
-                  </button>
+    
+                          <i class="feather icon-feather-shopping-bag"></i>
+                          Add to Cart
+
+                          </a>
                 </div>
+                
                     </div>
                   <div class="product-info">
                     <span class="product-name">${individualProduct.name}</span>
@@ -109,6 +114,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         productList.append(productItem);
       });
+
+      function isProductNew(createdAt) {
+        const createdDate = new Date(createdAt); // Convert the createdAt string to a Date object
+        const currentDate = new Date(); // Get the current date
+        const differenceInMillis = currentDate - createdDate; // Difference in milliseconds
+
+        // Convert 1 day to milliseconds
+        const oneDayInMillis = 24 * 60 * 60 * 1000;
+
+        // Check if the difference is less than or equal to 1 day
+        return differenceInMillis <= oneDayInMillis;
+      }
 
       function displayCartItems() {
         let cart = JSON.parse(localStorage.getItem("cart")) || [];

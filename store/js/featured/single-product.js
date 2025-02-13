@@ -19,6 +19,13 @@ document.addEventListener("DOMContentLoaded", () => {
       background: #f0f0f0;
       transition: transform 0.2s ease;
     }
+
+    /* Red background when wishlist is clicked */
+.add-to-wishlist.added {
+  background: red !important;
+  color: #fff !important;
+}
+
     
     /* Spinner styles for wishlist */
     .wishlist-spinner {
@@ -107,60 +114,56 @@ document.addEventListener("DOMContentLoaded", () => {
       const productLink = `https://www.africanmarkets.eu/store/single%20product/single-product.html?id=${product._id}`;
 
       productItem.innerHTML = `
-      <div class="product-box" style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-        <div class="product-image" style="position: relative;">
+      <div class="product-box">
+        <div class="product-image">
           <a href="${productLink}">
             <img src="${
               product.file[0] ||
-              "https://i.pinimg.com/236x/b6/7e/d0/b67ed0e98bf1fe74702c9ef92a240a04.jpg"
-            }" alt="${product.name}" style="width:100%; display:block;" />
-            <div class="product-overlay" style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.2); opacity:0; transition: opacity 0.3s;"></div>
+              "https://i.pinimg.com/474x/68/cb/f4/68cbf40113d88a2a6a63b937740a292f.jpg"
+            }" alt="${product.name}" />
+            ${isNew ? '<span class="label">New</span>' : ""}
+            <div class="product-overlay"></div>
           </a>
-          <div class="product-buttons" style="position: absolute; bottom: 10px; left: 10px;">
-            <button class="add-to-cart"
+          <div class="product-buttons" style="cursor: pointer;">
+            <a class="add-to-cart"
               data-id="${product._id}" 
               data-name="${product.name}" 
               data-price="${finalPrice}" 
-              data-image="${product.file[0]}" 
-              data-stock="${product.StockQuantity}"
-              style="background: #3498db; border: none; color: #fff; padding: 8px 12px; border-radius: 4px; cursor: pointer;">
-              <i class="feather icon-feather-shopping-bag"></i> Add to Cart
-            </button>
+              data-image="${product.file[0]}"
+              data-stock="${product.StockQuantity}">
+              <i class="feather icon-feather-shopping-bag"></i>
+              Add to Cart
+            </a>
           </div>
-          <div class="product-actions" style="position: absolute; top: 10px; right: 10px;">
-            <ul style="list-style: none; margin: 0; padding: 0; display: flex; gap: 8px;">
+          <div class="product-actions">
+            <ul>
               <li>
-                <a href="#"
-                  class="add-to-wishlist ${
-                    product.isWishlisted ? "added" : ""
-                  } d-flex align-items-center justify-content-center"
-                  data-bs-placement="left"
-                  aria-label="Remove from wishlist"
-                  data-bs-original-title="Add to wishlist"
-                  data-id="${product._id}"
-                  style="width: 40px; height: 40px; background: #fff; color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                  <i class="feather icon-feather-heart-on fs-16"></i>
+                <a href="#" class="add-to-wishlist ${
+                  product.isWishlisted ? "added" : ""
+                } d-flex align-items-center justify-content-center"
+                   data-bs-placement="left" aria-label="Remove from wishlist"
+                   data-bs-original-title="Add to wishlist" data-id="${
+                     product._id
+                   }"
+                   style="width: 40px; height: 40px; background: #fff; color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                  <i class="feather icon-feather-heart-on fs-16 product-wishlist-icon"></i>
                 </a>
               </li>
               <li>
                 <a href="${productLink}" title="Quick shop" class="quick-shop"
-                  style="width: 40px; height: 40px; background: #fff; color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                   style="width: 40px; height: 40px; background: #fff; color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                   <i class="feather icon-feather-eye fs-16"></i>
                 </a>
               </li>
             </ul>
           </div>
         </div>
-        <div class="product-info" style="text-align: center; padding: 10px;">
-          <a href="${productLink}" class="product-name" style="font-weight: bold; display: block; margin-bottom: 5px;">${
-        product.name
-      }</a>
-          <div class="product-price" style="color: #ff5a5f; font-weight: bold;">€${
-            product.BasePrice
-          }</div>
+        <div class="product-info">
+          <a href="${productLink}" class="product-name">${product.name}</a>
+          <div class="product-price">€${product.BasePrice}</div>
         </div>
       </div>
-    `;
+      `;
 
       productList.appendChild(productItem);
     });
@@ -263,61 +266,57 @@ document.addEventListener("DOMContentLoaded", () => {
           productItem.classList.add("product-item");
 
           const productLink = `https://www.africanmarkets.eu/store/single%20product/single-product.html?id=${product._id}`;
-
           productItem.innerHTML = `
-          <div class="product-box" style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-            <div class="product-image" style="position: relative;">
+          <div class="product-box">
+            <div class="product-image">
               <a href="${productLink}">
                 <img src="${
-                  product.file[0] || "https://via.placeholder.com/150"
-                }" alt="${product.name}" style="width:100%; display:block;" />
-                <div class="product-overlay" style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.2); opacity:0; transition: opacity 0.3s;"></div>
+                  product.file[0] ||
+                  "https://i.pinimg.com/474x/68/cb/f4/68cbf40113d88a2a6a63b937740a292f.jpg"
+                }" alt="${product.name}" />
+                ${isNew ? '<span class="label">New</span>' : ""}
+                <div class="product-overlay"></div>
               </a>
-              <div class="product-buttons" style="position: absolute; bottom: 10px; left: 10px;">
-                <button class="add-to-cart"
+              <div class="product-buttons" style="cursor: pointer;">
+                <a class="add-to-cart"
                   data-id="${product._id}" 
                   data-name="${product.name}" 
                   data-price="${finalPrice}" 
-                  data-image="${product.file[0]}" 
-                  data-stock="${product.StockQuantity}"
-                  style="background: #3498db; border: none; color: #fff; padding: 8px 12px; border-radius: 4px; cursor: pointer;">
-                  <i class="feather icon-feather-shopping-bag"></i> Add to Cart
-                </button>
+                  data-image="${product.file[0]}"
+                  data-stock="${product.StockQuantity}">
+                  <i class="feather icon-feather-shopping-bag"></i>
+                  Add to Cart
+                </a>
               </div>
-              <div class="product-actions" style="position: absolute; top: 10px; right: 10px;">
-                <ul style="list-style: none; margin: 0; padding: 0; display: flex; gap: 8px;">
+              <div class="product-actions">
+                <ul>
                   <li>
-                    <a href="#"
-                      class="add-to-wishlist ${
-                        product.isWishlisted ? "added" : ""
-                      } d-flex align-items-center justify-content-center"
-                      data-bs-placement="left"
-                      aria-label="Remove from wishlist"
-                      data-bs-original-title="Add to wishlist"
-                      data-id="${product._id}"
-                      style="width: 40px; height: 40px; background: #fff; color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                      <i class="feather icon-feather-heart-on fs-16"></i>
+                    <a href="#" class="add-to-wishlist ${
+                      product.isWishlisted ? "added" : ""
+                    } d-flex align-items-center justify-content-center"
+                       data-bs-placement="left" aria-label="Remove from wishlist"
+                       data-bs-original-title="Add to wishlist" data-id="${
+                         product._id
+                       }"
+                       style="width: 40px; height: 40px; background: #fff; color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="feather icon-feather-heart-on fs-16 product-wishlist-icon"></i>
                     </a>
                   </li>
                   <li>
                     <a href="${productLink}" title="Quick shop" class="quick-shop"
-                      style="width: 40px; height: 40px; background: #fff; color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                       style="width: 40px; height: 40px; background: #fff; color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                       <i class="feather icon-feather-eye fs-16"></i>
                     </a>
                   </li>
                 </ul>
               </div>
             </div>
-            <div class="product-info" style="text-align: center; padding: 10px;">
-              <a href="${productLink}" class="product-name" style="font-weight: bold; display: block; margin-bottom: 5px;">${
-            product.name
-          }</a>
-              <div class="product-price" style="color: #ff5a5f; font-weight: bold;">€${
-                product.BasePrice
-              }</div>
+            <div class="product-info">
+              <a href="${productLink}" class="product-name">${product.name}</a>
+              <div class="product-price">€${product.BasePrice}</div>
             </div>
           </div>
-        `;
+          `;
 
           productList.appendChild(productItem);
         });

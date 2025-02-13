@@ -18,6 +18,14 @@ document.addEventListener("DOMContentLoaded", () => {
       transform: scale(1.1);
       transition: transform 0.2s ease;
     }
+
+    /* Red background when wishlist is clicked */
+.add-to-wishlist.added {
+  background: red !important;
+  color: #fff !important;
+}
+
+
     /* Red background when wishlist is clicked */
     .add-to-wishlist.clicked {
       background: red !important;
@@ -140,8 +148,8 @@ document.addEventListener("DOMContentLoaded", () => {
             ${isNew ? '<span class="label">New</span>' : ""}
             <div class="product-overlay"></div>
           </a>
-          <div class="product-buttons">
-            <button class="add-to-cart"
+          <div class="product-buttons" style="cursor: pointer;">
+            <a class="add-to-cart"
               data-id="${product._id}" 
               data-name="${product.name}" 
               data-price="${finalPrice}" 
@@ -149,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
               data-stock="${product.StockQuantity}">
               <i class="feather icon-feather-shopping-bag"></i>
               Add to Cart
-            </button>
+            </a>
           </div>
           <div class="product-actions">
             <ul>

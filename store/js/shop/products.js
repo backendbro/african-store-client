@@ -1,11 +1,50 @@
 document.addEventListener("DOMContentLoaded", () => {
   const token = localStorage.getItem("token");
 
-  const productList = document.querySelector(".product-list");
+  const productList = document.querySelector("#shop-list");
+
   if (!productList) {
     console.error("Product list container not found!");
     return;
   }
+
+  // Inject CSS for hover effects, clicked state, and spinner animation
+  const style = document.createElement("style");
+  style.innerHTML = `
+  /* Hover effects for wishlist and quick-shop buttons */
+  .add-to-wishlist:hover, .quick-shop:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+  }
+  /* Red background when wishlist is clicked */
+  .add-to-wishlist.clicked {
+    background: red !important;
+    color: #fff !important;
+  }
+  
+  /* Red background when wishlist is clicked */
+.add-to-wishlist.added {
+  background: red !important;
+  color: #fff !important;
+}
+
+  /* Spinner styles for wishlist button */
+  .wishlist-spinner {
+    display: inline-block;
+    margin-left: 5px;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #3498db;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+`;
+  document.head.appendChild(style);
 
   const paginationContainer = document.querySelector(".pagination");
   let currentPage = 1;
@@ -73,54 +112,105 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const productLink = `https://www.africanmarkets.eu/store/single%20product/single-product.html?id=${product._id}`;
 
+      // productItem.innerHTML = `
+      //   <div class="product-box">
+      //     <div class="product-image">
+      //       <a href="${productLink}">
+      //         <img src="${
+      //           product.file[0] ||
+      //           "https://i.pinimg.com/474x/68/cb/f4/68cbf40113d88a2a6a63b937740a292f.jpg"
+      //         }" alt="${product.name}" />
+      //         <div class="product-overlay"></div>
+      //       </a>
+      //       <div class="product-buttons">
+      //         <button class="add-to-cart"
+      //         data-id="${product._id}"
+      //                     data-name="${product.name}"
+      //                     data-price="${finalPrice}"
+      //                     data-image="${product.file[0]}"
+      //                     data-stock="${product.StockQuantity}">
+
+      //           <i class="feather icon-feather-shopping-bag"></i>
+      //           Add to Cart
+      //         </button>
+      //       </div>
+      //       <div class="product-actions">
+      //   <ul>
+      //     <li>
+      //       <a href="#" class="add-to-wishlist ${
+      //         product.isWishlisted ? "added" : ""
+      //       } w-40px h-40px bg-white text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px"
+      //      "data-bs-placement="left" aria-label="Remove from wishlist"
+      //       data-bs-original-title="Add to wishlist" data-id="${product._id}">
+      //         <i class="feather icon-feather-heart-on fs-16 product-wishlist-icon"></i>
+      //       </a>
+      //     </li>
+      //     <li>
+      //       <a href="${productLink}" title="Quick shop">
+      //         <i class="feather icon-feather-eye fs-16"></i>
+      //       </a>
+      //     </li>
+      //   </ul>
+      // </div>
+      //     </div>
+      //     <div class="product-info">
+      //       <a href="${productLink}" class="product-name">${product.name}</a>
+      //       <div class="product-price">€${product.BasePrice}</div>
+      //     </div>
+      //   </div>
+      // `;
+
       productItem.innerHTML = `
-        <div class="product-box">
-          <div class="product-image">
-            <a href="${productLink}">
-              <img src="${
-                product.file[0] ||
-                "https://i.pinimg.com/474x/68/cb/f4/68cbf40113d88a2a6a63b937740a292f.jpg"
-              }" alt="${product.name}" />
-              <div class="product-overlay"></div>
-            </a>
-            <div class="product-buttons">
-              <button class="add-to-cart"
+      <div class="product-box">
+        <div class="product-image">
+          <a href="${productLink}">
+            <img src="${
+              product.file[0] ||
+              "https://i.pinimg.com/474x/68/cb/f4/68cbf40113d88a2a6a63b937740a292f.jpg"
+            }" alt="${product.name}" />
+            ${isNew ? '<span class="label">New</span>' : ""}
+            <div class="product-overlay"></div>
+          </a>
+          <div class="product-buttons" style="cursor: pointer;">
+            <a class="add-to-cart"
               data-id="${product._id}" 
-                          data-name="${product.name}" 
-                          data-price="${finalPrice}" 
-                          data-image="${product.file[0]}"
-                          data-stock="${product.StockQuantity}">
-              
-                <i class="feather icon-feather-shopping-bag"></i>
-                Add to Cart
-              </button>
-            </div>
-            <div class="product-actions">
-        <ul>
-          <li>
-            <a href="#" class="add-to-wishlist ${
-              product.isWishlisted ? "added" : ""
-            } w-40px h-40px bg-white text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px"
-           "data-bs-placement="left" aria-label="Remove from wishlist"
-            data-bs-original-title="Add to wishlist" data-id="${product._id}">
-              <i class="feather icon-feather-heart-on fs-16 product-wishlist-icon"></i>
+              data-name="${product.name}" 
+              data-price="${finalPrice}" 
+              data-image="${product.file[0]}"
+              data-stock="${product.StockQuantity}">
+              <i class="feather icon-feather-shopping-bag"></i>
+              Add to Cart
             </a>
-          </li>
-          <li>
-            <a href="${productLink}" title="Quick shop">
-              <i class="feather icon-feather-eye fs-16"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
           </div>
-          <div class="product-info">
-            <a href="${productLink}" class="product-name">${product.name}</a>
-            <div class="product-price">€${product.BasePrice}</div>
+          <div class="product-actions">
+            <ul>
+              <li>
+                <a href="#" class="add-to-wishlist ${
+                  product.isWishlisted ? "added" : ""
+                } d-flex align-items-center justify-content-center"
+                   data-bs-placement="left" aria-label="Remove from wishlist"
+                   data-bs-original-title="Add to wishlist" data-id="${
+                     product._id
+                   }"
+                   style="width: 40px; height: 40px; background: #fff; color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                  <i class="feather icon-feather-heart-on fs-16 product-wishlist-icon"></i>
+                </a>
+              </li>
+              <li>
+                <a href="${productLink}" title="Quick shop" class="quick-shop"
+                   style="width: 40px; height: 40px; background: #fff; color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                  <i class="feather icon-feather-eye fs-16"></i>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
+        <div class="product-info">
+          <a href="${productLink}" class="product-name">${product.name}</a>
+          <div class="product-price">€${product.BasePrice}</div>
+        </div>
+      </div>
       `;
-
       productList.appendChild(productItem);
     });
 

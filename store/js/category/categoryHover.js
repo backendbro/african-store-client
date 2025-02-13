@@ -29,10 +29,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     categories.forEach((category) => {
       categoryContainer.innerHTML += `
             <div class="col md-mb-25px">
-              <a href="http://127.0.0.1:5500/store/single-category%20page/index.html?id=${category.id}" class="justify-content-center mb-10px">
+              <a href="https://www.africanmarkets.eu/store/single-category%20page/index.html?id=${category.id}" class="justify-content-center mb-10px">
                 <img src="${category.categoryDisplay}" class="border-radius-4px w-100" alt="${category.name}" />
               </a>
-              <a href="http://127.0.0.1:5500/store/single-category%20page/index.html?id=${category.id}" class="btn btn-hover-animation fw-500 text-uppercase-inherit justify-content-center pt-0 pb-0">
+              <a href="https://www.africanmarkets.eu/store/single-category%20page/index.html?id=${category.id}" class="btn btn-hover-animation fw-500 text-uppercase-inherit justify-content-center pt-0 pb-0">
                 <span>
                   <span class="btn-text text-dark-gray fs-17">${category.name}</span>
                   <span class="btn-icon">

@@ -235,12 +235,6 @@ document.addEventListener("DOMContentLoaded", () => {
       cartItemList.appendChild(cartTotal);
 
       // Attach event listeners to close buttons
-      document.querySelectorAll(".close").forEach((button) => {
-        button.addEventListener("click", (event) => {
-          const index = event.target.getAttribute("data-index");
-          removeCartItem(index);
-        });
-      });
     }
 
     // Attach event listeners to "Add to Cart" buttons
@@ -305,8 +299,8 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           cart.push(productObject);
           localStorage.setItem("cart", JSON.stringify(cart));
-          displayCartItems();
           updateCartCounter();
+          displayCartItems();
           Swal.fire({
             title: "Product",
             text: "Product successfully added",

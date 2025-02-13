@@ -40,310 +40,485 @@
     />
     <link rel="stylesheet" href="../../store/css/clasess.scss" />
   </head>
+  <style>
+    .add-to-wishlist.added {
+      background: #ff4d4d !important; /* Ensure it applies */
+      color: white !important;
+      border-radius: 50%;
+      padding: 10px;
+    }
 
+    .add-to-wishlist.added i {
+      color: white !important; /* Ensure icon turns white */
+    }
+  </style>
   <body data-mobile-nav-style="classic">
     <!-- start header -->
     <header class="header-with-topbar">
       <!-- start header top bar -->
       <div
-          class="header-top-bar top-bar-light bg-base-color disable-fixed md-border-bottom border-color-transparent-dark-very-light">
-          <div class="container-fluid">
-              <div class="row h-40px align-items-center m-0">
-                  <div class="col-12 justify-content-center alt-font fs-13 fw-500 text-uppercase">
-                      <div class="advert">
-                          Enjoy FREE standard delivery on orders over €100
-                        </div>
-                        <a
-                          href="../../store/shop-page/shop.html"
-                          class="advert fw-600 ms-5px advert-hover"
-                        >
-                          <span class="text-decoration-line-bottom">Shop now</span>
-                        </a>
-                  </div>
+        class="header-top-bar top-bar-light bg-base-color disable-fixed md-border-bottom border-color-transparent-dark-very-light"
+      >
+        <div class="container-fluid">
+          <div class="row h-40px align-items-center m-0">
+            <div
+              class="col-12 justify-content-center alt-font fs-13 fw-500 text-uppercase"
+            >
+              <div class="advert">
+                Enjoy FREE standard delivery on orders over €100
               </div>
+              <a
+                href="../../store/shop-page/shop.html"
+                class="advert fw-600 ms-5px advert-hover"
+              >
+                <span class="text-decoration-line-bottom">Shop now</span>
+              </a>
+            </div>
           </div>
+        </div>
       </div>
       <!-- end header top bar -->
       <!-- start navigation -->
-      <nav class="navbar navbar-expand-lg header-light bg-white disable-fixed center-logo">
-          <div class="container-fluid">
-              <div class="col-auto col-xxl-3 col-lg-2 menu-logo">
-                  <div class="header-icon d-none d-lg-flex">
-                      <div class="widget-text icon alt-font">
-                          <a href="https://maps.app.goo.gl/SHNZXP9ptSGASVYu7
-                          ">
-                              <i class="feather icon-feather-map-pin d-inline-block me-5px"></i>
-                              <span class="d-none d-xxl-inline-block"></span>
-                          </a>
-                      </div>
-                      <div class="widget-text icon alt-font">
-                          <a href="https://www.instagram.com/african_market_lt?igsh=ZTQyc3JhcjVodGYw
-                          " target="_blank">
-                              <i class="feather icon-feather-instagram d-inline-block me-5px"></i>
-                              <span class="d-none d-xxl-inline-block"></span>
-                          </a>
-                      </div>
-                  </div>
-                  <a class="navbar-brand" href="./index.html">
-                      <img src="../../store/images/store-logo-1.png" data-at2x="../../store/images/store-logo-1.png"
-                          alt="" class="default-logo">
-                      <img src="../../store/images/store-logo-1.png" data-at2x="../../store/images/store-logo-1.png"
-                          alt="" class="alt-logo">
-                      <img src="../../store/images/store-logo-1.png" data-at2x="../../store/images/store-logo-1.png"
-                          alt="" class="mobile-logo">
-                  </a>
+      <nav
+        class="navbar navbar-expand-lg header-light bg-white disable-fixed center-logo"
+      >
+        <div class="container-fluid">
+          <div class="col-auto col-xxl-3 col-lg-2 menu-logo">
+            <div class="header-icon d-none d-lg-flex">
+              <div class="widget-text icon alt-font">
+                <a
+                  href="https://maps.app.goo.gl/SHNZXP9ptSGASVYu7
+                          "
+                >
+                  <i
+                    class="feather icon-feather-map-pin d-inline-block me-5px"
+                  ></i>
+                  <span class="d-none d-xxl-inline-block"></span>
+                </a>
               </div>
-              <div class="col-auto col-xxl-6 col-lg-8 menu-order">
-                  <button class="navbar-toggler float-end" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#navbarNav" aria-controls="navbarNav" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-line"></span>
-                      <span class="navbar-toggler-line"></span>
-                      <span class="navbar-toggler-line"></span>
-                      <span class="navbar-toggler-line"></span>
-                  </button>
-                  <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-                      <ul class="navbar-nav alt-font navbar-left justify-content-end">
-                          <li class="nav-item">
-                              <a href="../../index.html" class="nav-link">Home</a>
-                          </li>
-                          <li class="nav-item dropdown submenu">
-                              <a href="../../store/shop-page/shop.html" class="nav-link">Shop</a>
-                          
-                              
-                          </li>
-                          <li class="nav-item dropdown submenu">
-                              <a href="../../store/shop-categories/categories.html" class="nav-link">Categories</a>
-                              <i class="fa-solid fa-angle-down dropdown-toggle" id="navbarDropdownMenuLink2"
-                                  role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                              <div class="dropdown-menu submenu-content" aria-labelledby="navbarDropdownMenuLink2">
-                                  <div class="d-lg-flex mega-menu m-auto flex-column">
-                                      <div
-                                          class="row row-cols-2 row-cols-lg-6 row-cols-md-3 row-cols-sm-2 md-mx-0 align-items-center justify-content-center">
-                                          <div class="col md-mb-25px">
-                                              <a href="../../store/shop-categories/categories.html"
-                                                  class="justify-content-center mb-10px">
-                                                  <img src="../../store/images/snail (cat.).jpg"
-                                                      class="border-radius-4px w-100" alt="">
-                                              </a>
-                                              <a href="../../store/shop-categories/categories.html"
-                                                  class="btn btn-hover-animation fw-500 text-uppercase-inherit justify-content-center pt-0 pb-0">
-                                                  <span>
-                                                      <span class="btn-text text-dark-gray fs-17">Fresh Produce</span>
-                                                      <span class="btn-icon">
-                                                          <i
-                                                              class="fa-solid fa-arrow-right icon-very-small w-auto"></i>
-                                                      </span>
-                                                  </span>
-                                              </a>
-                                          </div>
-                                          <div class="col md-mb-25px">
-                                              <a href="../../store/shop-categories/categories.html"
-                                                  class="justify-content-center mb-10px">
-                                                  <img src="../../store/images/noodles(cat.).jpg"
-                                                      class="border-radius-4px w-100" alt="">
-                                              </a>
-                                              <a href="../../store/shop-categories/categories.html"
-                                                  class="btn btn-hover-animation fw-500 text-uppercase-inherit justify-content-center pt-0 pb-0">
-                                                  <span>
-                                                      <span class="btn-text text-dark-gray fs-17">Noodles</span>
-                                                      <span class="btn-icon">
-                                                          <i
-                                                              class="fa-solid fa-arrow-right icon-very-small w-auto"></i>
-                                                      </span>
-                                                  </span>
-                                              </a>
-                                          </div>
-                                          <div class="col md-mb-25px">
-                                              <a href="../../store/shop-categories/categories.html"
-                                                  class="justify-content-center mb-10px">
-                                                  <img src="../../store/images/black-soap (category).jpg"
-                                                      class="border-radius-4px w-100" alt="">
-                                              </a>
-                                              <a href="../../store/shop-categories/categories.html"
-                                                  class="btn btn-hover-animation fw-500 text-uppercase-inherit justify-content-center pt-0 pb-0">
-                                                  <span>
-                                                      <span class="btn-text text-dark-gray fs-17">Health &
-                                                          Beauty</span>
-                                                      <span class="btn-icon">
-                                                          <i
-                                                              class="fa-solid fa-arrow-right icon-very-small w-auto"></i>
-                                                      </span>
-                                                  </span>
-                                              </a>
-                                          </div>
-                                          <div class="col sm-mb-25px">
-                                              <a href="../../store/shop-categories/categories.html"
-                                                  class="justify-content-center mb-10px">
-                                                  <img src="../../store/images/rice (cat.).jpg"
-                                                      class="border-radius-4px w-100" alt="">
-                                              </a>
-                                              <a href="../../store/shop-categories/categories.html"
-                                                  class="btn btn-hover-animation fw-500 text-uppercase-inherit justify-content-center pt-0 pb-0">
-                                                  <span>
-                                                      <span class="btn-text text-dark-gray fs-17">Rice</span>
-                                                      <span class="btn-icon">
-                                                          <i
-                                                              class="fa-solid fa-arrow-right icon-very-small w-auto"></i>
-                                                      </span>
-                                                  </span>
-                                              </a>
-                                          </div>
-                                          <div class="col">
-                                              <a href="../../store/shop-categories/categories.html"
-                                                  class="justify-content-center mb-10px">
-                                                  <img src="../../store/images/flor (cat.).jpg"
-                                                      class="border-radius-4px w-100" alt="">
-                                              </a>
-                                              <a href="../../store/shop-categories/categories.html"
-                                                  class="btn btn-hover-animation fw-500 text-uppercase-inherit justify-content-center pt-0 pb-0">
-                                                  <span>
-                                                      <span class="btn-text text-dark-gray fs-17">Flour</span>
-                                                      <span class="btn-icon">
-                                                          <i
-                                                              class="fa-solid fa-arrow-right icon-very-small w-auto"></i>
-                                                      </span>
-                                                  </span>
-                                              </a>
-                                          </div>
-                                          <div class="col">
-                                              <a href="../../store/shop-categories/categories.html"
-                                                  class="justify-content-center mb-10px">
-                                                  <img src="../../store/images/seasoning (cat.).jpg"
-                                                      class="border-radius-4px w-100" alt="">
-                                              </a>
-                                              <a href="../../store/shop-categories/categories.html"
-                                                  class="btn btn-hover-animation fw-500 text-uppercase-inherit justify-content-center pt-0 pb-0">
-                                                  <span>
-                                                      <span class="btn-text text-dark-gray fs-17">Spices</span>
-                                                      <span class="btn-icon">
-                                                          <i
-                                                              class="fa-solid fa-arrow-right icon-very-small w-auto"></i>
-                                                      </span>
-                                                  </span>
-                                              </a>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </li>
-                      </ul>
-                      <ul class="navbar-nav alt-font navbar-right justify-content-start">
-                          <li class="nav-item">
-                              <a href="../../store/blogs/home-blog.html" class="nav-link">Our Blog</a>
-                          </li>
-                          <li class="nav-item dropdown simple-dropdown">
-                              <a href="javascript:void(0);" class="nav-link">Pages</a>
-                              <i class="fa-solid fa-angle-down dropdown-toggle" id="navbarDropdownMenuLink3"
-                                  role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
-                                  <li>
-                                      <a href="../../about.html">About</a>
-                                  </li>
-                                  <li>
-                                      <a href="../../faq.html">Faq</a>
-                                  </li>
-                                  <li>
-                                      <a href="../../wishlist.html">Wishlist</a>
-                                  </li>
-                                  <li>
-                                      <a href="../../account.html">Account</a>
-                                  </li>
-                                  <li>
-                                      <a href="../../cart.html">Cart</a>
-                                  </li>
-                                  <li>
-                                      <a href="../../checkout.html">Checkout</a>
-                                  </li>
-                              </ul>
-                          </li>
-                          <li class="nav-item">
-                              <a href="../../contact.html" class="nav-link">Contact us</a>
-                          </li>
-                      </ul>
-                  </div>
+              <div class="widget-text icon alt-font">
+                <a
+                  href="https://www.instagram.com/african_market_lt?igsh=ZTQyc3JhcjVodGYw
+                          "
+                  target="_blank"
+                >
+                  <i
+                    class="feather icon-feather-instagram d-inline-block me-5px"
+                  ></i>
+                  <span class="d-none d-xxl-inline-block"></span>
+                </a>
               </div>
-              <div class="col-auto col-xxl-3 col-lg-2 text-end">
-                  <div class="header-icon">
-                      <div class="header-search-icon icon alt-font">
-                          <a href="javascript:void(0)" class="search-form-icon header-search-form">
-                              <i class="feather icon-feather-search me-5px"></i>
-                              <span class="d-none d-xxl-inline-block">Search</span>
-                          </a>
-                          <div class="search-form-wrapper">
-                              <button title="Close" type="button" class="search-close alt-font">×</button>
-                              <form id="search-form" role="search" method="get" class="search-form text-left"
-                                  action="search-result.html">
-                                  <div class="search-form-box">
-                                      <h2 class="text-dark-gray text-center mb-4 fw-600 alt-font ls-minus-1px">What
-                                          are you looking for?</h2>
-                                      <input class="search-input alt-font" id="search-form-input5e219ef164995"
-                                          placeholder="Enter your keywords..." name="s" value="" type="text"
-                                          autocomplete="off">
-                                      <button type="submit" class="search-button">
-                                          <i class="feather icon-feather-search" aria-hidden="true"></i>
-                                      </button>
-                                  </div>
-                              </form>
-                          </div>
-                      </div>
-                      <div class="widget-text icon alt-font">
-                          <a href="../../account.html">
-                              <i class="feather icon-feather-user d-inline-block me-5px"></i>
-                              <span class="d-none d-xxl-inline-block">Account</span>
-                          </a>
-                      </div>
-                      <div class="header-cart-icon icon">
-                          <div class="header-cart dropdown">
-                              <a href="javascript:void(0);">
-                                  <i class="feather icon-feather-shopping-bag"></i>
-                                  <span class="cart-count alt-font text-white bg-dark-gray">2</span>
-                              </a>
-                              <ul class="cart-item-list">
-                                  <li class="cart-item align-items-center">
-                                      <a href="javascript:void(0);" class="alt-font close">×</a>
-                                      <div class="product-image">
-                                          <a href="demo-fashion-store-single-product.html">
-                                              <img src="../../store/images/products/Acha Spices.JPG"
-                                                  class="cart-thumb" alt="">
-                                          </a>
-                                      </div>
-                                      <div class="product-detail fw-600">
-                                          <a href="demo-fashion-store-single-product.html">Acha Spices</a>
-                                          <span class="item-ammount fw-400">1 x €23.00</span>
-                                      </div>
-                                  </li>
-                                  <li class="cart-item align-items-center">
-                                      <a href="javascript:void(0);" class="alt-font close">×</a>
-                                      <div class="product-image">
-                                          <a href="demo-fashion-store-single-product.html">
-                                              <img src="../../store/images/products/Fish Powder.JPG"
-                                                  class="cart-thumb" alt="">
-                                          </a>
-                                      </div>
-                                      <div class="product-detail fw-600">
-                                          <a href="demo-fashion-store-single-product.html">Fish Powder</a>
-                                          <span class="item-ammount fw-400">2 x €11.00</span>
-                                      </div>
-                                  </li>
-                                  <li class="cart-total">
-                                      <div class="fs-18 alt-font mb-15px">
-                                          <span class="w-50 fw-500 text-start">Subtotal:</span>
-                                          <span class="w-50 text-end fw-700">€199.99</span>
-                                      </div>
-                                      <a href="../../cart.html"
-                                          class="btn btn-large btn-transparent-light-gray border-color-extra-medium-gray">View
-                                          cart</a>
-                                      <a href="../../checkout.html"
-                                          class="btn btn-large btn-dark-gray btn-box-shadow">Checkout</a>
-                                  </li>
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+            </div>
+            <a class="navbar-brand" href="./index.html">
+              <img
+                src="../../store/images/store-logo-1.png"
+                data-at2x="../../store/images/store-logo-1.png"
+                alt=""
+                class="default-logo"
+              />
+              <img
+                src="../../store/images/store-logo-1.png"
+                data-at2x="../../store/images/store-logo-1.png"
+                alt=""
+                class="alt-logo"
+              />
+              <img
+                src="../../store/images/store-logo-1.png"
+                data-at2x="../../store/images/store-logo-1.png"
+                alt=""
+                class="mobile-logo"
+              />
+            </a>
           </div>
+          <div class="col-auto col-xxl-6 col-lg-8 menu-order">
+            <button
+              class="navbar-toggler float-end"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-line"></span>
+              <span class="navbar-toggler-line"></span>
+              <span class="navbar-toggler-line"></span>
+              <span class="navbar-toggler-line"></span>
+            </button>
+            <div
+              class="collapse navbar-collapse justify-content-between"
+              id="navbarNav"
+            >
+              <ul class="navbar-nav alt-font navbar-left justify-content-end">
+                <li class="nav-item">
+                  <a href="../../index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown submenu">
+                  <a href="../../store/shop-page/shop.html" class="nav-link"
+                    >Shop</a
+                  >
+                </li>
+                <li class="nav-item dropdown submenu">
+                  <a
+                    href="../../store/shop-categories/categories.html"
+                    class="nav-link"
+                    >Categories</a
+                  >
+                  <i
+                    class="fa-solid fa-angle-down dropdown-toggle"
+                    id="navbarDropdownMenuLink2"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  ></i>
+                  <div
+                    class="dropdown-menu submenu-content"
+                    aria-labelledby="navbarDropdownMenuLink2"
+                  >
+                    <div class="d-lg-flex mega-menu m-auto flex-column">
+                      <div
+                        class="row row-cols-2 row-cols-lg-6 row-cols-md-3 row-cols-sm-2 md-mx-0 align-items-center justify-content-center"
+                      >
+                        <div class="col md-mb-25px">
+                          <a
+                            href="../../store/shop-categories/categories.html"
+                            class="justify-content-center mb-10px"
+                          >
+                            <img
+                              src="../../store/images/snail (cat.).jpg"
+                              class="border-radius-4px w-100"
+                              alt=""
+                            />
+                          </a>
+                          <a
+                            href="../../store/shop-categories/categories.html"
+                            class="btn btn-hover-animation fw-500 text-uppercase-inherit justify-content-center pt-0 pb-0"
+                          >
+                            <span>
+                              <span class="btn-text text-dark-gray fs-17"
+                                >Fresh Produce</span
+                              >
+                              <span class="btn-icon">
+                                <i
+                                  class="fa-solid fa-arrow-right icon-very-small w-auto"
+                                ></i>
+                              </span>
+                            </span>
+                          </a>
+                        </div>
+                        <div class="col md-mb-25px">
+                          <a
+                            href="../../store/shop-categories/categories.html"
+                            class="justify-content-center mb-10px"
+                          >
+                            <img
+                              src="../../store/images/noodles(cat.).jpg"
+                              class="border-radius-4px w-100"
+                              alt=""
+                            />
+                          </a>
+                          <a
+                            href="../../store/shop-categories/categories.html"
+                            class="btn btn-hover-animation fw-500 text-uppercase-inherit justify-content-center pt-0 pb-0"
+                          >
+                            <span>
+                              <span class="btn-text text-dark-gray fs-17"
+                                >Noodles</span
+                              >
+                              <span class="btn-icon">
+                                <i
+                                  class="fa-solid fa-arrow-right icon-very-small w-auto"
+                                ></i>
+                              </span>
+                            </span>
+                          </a>
+                        </div>
+                        <div class="col md-mb-25px">
+                          <a
+                            href="../../store/shop-categories/categories.html"
+                            class="justify-content-center mb-10px"
+                          >
+                            <img
+                              src="../../store/images/black-soap (category).jpg"
+                              class="border-radius-4px w-100"
+                              alt=""
+                            />
+                          </a>
+                          <a
+                            href="../../store/shop-categories/categories.html"
+                            class="btn btn-hover-animation fw-500 text-uppercase-inherit justify-content-center pt-0 pb-0"
+                          >
+                            <span>
+                              <span class="btn-text text-dark-gray fs-17"
+                                >Health & Beauty</span
+                              >
+                              <span class="btn-icon">
+                                <i
+                                  class="fa-solid fa-arrow-right icon-very-small w-auto"
+                                ></i>
+                              </span>
+                            </span>
+                          </a>
+                        </div>
+                        <div class="col sm-mb-25px">
+                          <a
+                            href="../../store/shop-categories/categories.html"
+                            class="justify-content-center mb-10px"
+                          >
+                            <img
+                              src="../../store/images/rice (cat.).jpg"
+                              class="border-radius-4px w-100"
+                              alt=""
+                            />
+                          </a>
+                          <a
+                            href="../../store/shop-categories/categories.html"
+                            class="btn btn-hover-animation fw-500 text-uppercase-inherit justify-content-center pt-0 pb-0"
+                          >
+                            <span>
+                              <span class="btn-text text-dark-gray fs-17"
+                                >Rice</span
+                              >
+                              <span class="btn-icon">
+                                <i
+                                  class="fa-solid fa-arrow-right icon-very-small w-auto"
+                                ></i>
+                              </span>
+                            </span>
+                          </a>
+                        </div>
+                        <div class="col">
+                          <a
+                            href="../../store/shop-categories/categories.html"
+                            class="justify-content-center mb-10px"
+                          >
+                            <img
+                              src="../../store/images/flor (cat.).jpg"
+                              class="border-radius-4px w-100"
+                              alt=""
+                            />
+                          </a>
+                          <a
+                            href="../../store/shop-categories/categories.html"
+                            class="btn btn-hover-animation fw-500 text-uppercase-inherit justify-content-center pt-0 pb-0"
+                          >
+                            <span>
+                              <span class="btn-text text-dark-gray fs-17"
+                                >Flour</span
+                              >
+                              <span class="btn-icon">
+                                <i
+                                  class="fa-solid fa-arrow-right icon-very-small w-auto"
+                                ></i>
+                              </span>
+                            </span>
+                          </a>
+                        </div>
+                        <div class="col">
+                          <a
+                            href="../../store/shop-categories/categories.html"
+                            class="justify-content-center mb-10px"
+                          >
+                            <img
+                              src="../../store/images/seasoning (cat.).jpg"
+                              class="border-radius-4px w-100"
+                              alt=""
+                            />
+                          </a>
+                          <a
+                            href="../../store/shop-categories/categories.html"
+                            class="btn btn-hover-animation fw-500 text-uppercase-inherit justify-content-center pt-0 pb-0"
+                          >
+                            <span>
+                              <span class="btn-text text-dark-gray fs-17"
+                                >Spices</span
+                              >
+                              <span class="btn-icon">
+                                <i
+                                  class="fa-solid fa-arrow-right icon-very-small w-auto"
+                                ></i>
+                              </span>
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <ul
+                class="navbar-nav alt-font navbar-right justify-content-start"
+              >
+                <li class="nav-item">
+                  <a href="../../store/blogs/home-blog.html" class="nav-link"
+                    >Our Blog</a
+                  >
+                </li>
+                <li class="nav-item dropdown simple-dropdown">
+                  <a href="javascript:void(0);" class="nav-link">Pages</a>
+                  <i
+                    class="fa-solid fa-angle-down dropdown-toggle"
+                    id="navbarDropdownMenuLink3"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  ></i>
+                  <ul
+                    class="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink3"
+                  >
+                    <li>
+                      <a href="../../about.html">About</a>
+                    </li>
+                    <li>
+                      <a href="../../faq.html">Faq</a>
+                    </li>
+                    <li>
+                      <a href="../../wishlist.html">Wishlist</a>
+                    </li>
+                    <li>
+                      <a href="../../account.html">Account</a>
+                    </li>
+                    <li>
+                      <a href="../../cart.html">Cart</a>
+                    </li>
+                    <li>
+                      <a href="../../checkout.html">Checkout</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a href="../../contact.html" class="nav-link">Contact us</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-auto col-xxl-3 col-lg-2 text-end">
+            <div class="header-icon">
+              <div class="header-search-icon icon alt-font">
+                <a
+                  href="javascript:void(0)"
+                  class="search-form-icon header-search-form"
+                >
+                  <i class="feather icon-feather-search me-5px"></i>
+                  <span class="d-none d-xxl-inline-block">Search</span>
+                </a>
+                <div class="search-form-wrapper">
+                  <button
+                    title="Close"
+                    type="button"
+                    class="search-close alt-font"
+                  >
+                    ×
+                  </button>
+                  <form
+                    id="search-form"
+                    role="search"
+                    method="get"
+                    class="search-form text-left"
+                    action="search-result.html"
+                  >
+                    <div class="search-form-box">
+                      <h2
+                        class="text-dark-gray text-center mb-4 fw-600 alt-font ls-minus-1px"
+                      >
+                        What are you looking for?
+                      </h2>
+                      <input
+                        class="search-input alt-font"
+                        id="search-form-input5e219ef164995"
+                        placeholder="Enter your keywords..."
+                        name="s"
+                        value=""
+                        type="text"
+                        autocomplete="off"
+                      />
+                      <button type="submit" class="search-button">
+                        <i
+                          class="feather icon-feather-search"
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="widget-text icon alt-font">
+                <a href="../../account.html">
+                  <i
+                    class="feather icon-feather-user d-inline-block me-5px"
+                  ></i>
+                  <span class="d-none d-xxl-inline-block">Account</span>
+                </a>
+              </div>
+              <div class="header-cart-icon icon">
+                <div class="header-cart dropdown">
+                  <a href="javascript:void(0);">
+                    <i class="feather icon-feather-shopping-bag"></i>
+                    <span class="cart-count alt-font text-white bg-dark-gray"
+                      >2</span
+                    >
+                  </a>
+                  <ul class="cart-item-list">
+                    <li class="cart-item align-items-center">
+                      <a href="javascript:void(0);" class="alt-font close">×</a>
+                      <div class="product-image">
+                        <a href="demo-fashion-store-single-product.html">
+                          <img
+                            src="../../store/images/products/Acha Spices.JPG"
+                            class="cart-thumb"
+                            alt=""
+                          />
+                        </a>
+                      </div>
+                      <div class="product-detail fw-600">
+                        <a href="demo-fashion-store-single-product.html"
+                          >Acha Spices</a
+                        >
+                        <span class="item-ammount fw-400">1 x €23.00</span>
+                      </div>
+                    </li>
+                    <li class="cart-item align-items-center">
+                      <a href="javascript:void(0);" class="alt-font close">×</a>
+                      <div class="product-image">
+                        <a href="demo-fashion-store-single-product.html">
+                          <img
+                            src="../../store/images/products/Fish Powder.JPG"
+                            class="cart-thumb"
+                            alt=""
+                          />
+                        </a>
+                      </div>
+                      <div class="product-detail fw-600">
+                        <a href="demo-fashion-store-single-product.html"
+                          >Fish Powder</a
+                        >
+                        <span class="item-ammount fw-400">2 x €11.00</span>
+                      </div>
+                    </li>
+                    <li class="cart-total">
+                      <div class="fs-18 alt-font mb-15px">
+                        <span class="w-50 fw-500 text-start">Subtotal:</span>
+                        <span class="w-50 text-end fw-700">€199.99</span>
+                      </div>
+                      <a
+                        href="../../cart.html"
+                        class="btn btn-large btn-transparent-light-gray border-color-extra-medium-gray"
+                        >View cart</a
+                      >
+                      <a
+                        href="../../checkout.html"
+                        class="btn btn-large btn-dark-gray btn-box-shadow"
+                        >Checkout</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </nav>
-  </header>
+    </header>
     <!-- end header -->
 
     <main class="main-content" id="MainContent" role="main">
@@ -368,16 +543,13 @@
               ></div>
               <div class="collection-hero__title-wrapper">
                 <h1 class="collection-hero__title page-width" id="title">
-                  FLOURS / FUFU
+                  Category
                 </h1>
               </div>
             </div>
 
             <div class="rte collection-description page-width">
-              <p class="category-description">
-                Most loved fufu brands. A vast selection of Garri, pounded yam
-                flour and healthy low carb fufu options.&nbsp;
-              </p>
+              <p class="category-description">Description&nbsp;</p>
             </div>
 
             <div class="filters-toolbar-wrapper">
@@ -389,11 +561,11 @@
                     <span
                       class="filters-toolbar__product-count"
                       id="product_count"
-                      >30 products</span
+                      >products</span
                     >
                   </div>
 
-                  <div class="filters-toolbar__item text-right">
+                  <!-- <div class="filters-toolbar__item text-right">
                     <label for="SortBy" class="label--hidden">Sort</label>
                     <select
                       name="SortBy"
@@ -434,7 +606,7 @@
                       type="hidden"
                       value="created-descending"
                     />
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -449,7 +621,7 @@
         <div class="row">
           <div class="col-12">
             <ul class="product-list">
-              <li class="product-item">
+              <!-- <li class="product-item">
                 <div class="product-box">
                   <div class="product-image">
                     <a href="../single product/single-product.html">
@@ -998,7 +1170,7 @@
                     </div>
                   </div>
                 </div>
-              </li>
+              </li> -->
             </ul>
 
             <!----- Pagination for shop page -->

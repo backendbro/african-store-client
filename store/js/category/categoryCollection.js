@@ -3,16 +3,16 @@ document.addEventListener("DOMContentLoaded", async function () {
   const url = "https://african-store.onrender.com/api/v1/category";
   const gridContainer = document.querySelector(".grid.grid--uniform");
 
-  if (!token) {
-    Swal.fire({
-      title: "Invalid credentials",
-      text: "You are not allowed to complete this action, please log in",
-      icon: "error",
-      showConfirmButton: false,
-      timer: 2000,
-    });
-    window.location.href = "/account.html";
-  }
+  // if (!token) {
+  //   Swal.fire({
+  //     title: "Invalid credentials",
+  //     text: "You are not allowed to complete this action, please log in",
+  //     icon: "error",
+  //     showConfirmButton: false,
+  //     timer: 2000,
+  //   });
+  //   window.location.href = "/account.html";
+  // }
 
   try {
     const response = await fetch(url, {

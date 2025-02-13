@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const productItem = document.createElement("li");
       productItem.classList.add("product-item");
 
-      const productLink = `https://www.africanmarkets.eu/store/single%20product/single-product.html?id=${product._id}`;
+      const productLink = `http://127.0.0.1:5500/store/single%20product/single-product.html?id=${product._id}`;
 
       productItem.innerHTML = `
         <div class="product-box">

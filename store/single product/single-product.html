@@ -64,6 +64,16 @@
       height: 30px;
     }
 
+    .d-flex.align-items-center.flex-column.flex-sm-row.mb-20px.position-relative {
+      flex-direction: row !important;
+    }
+
+    /* Add hover effect to both wishlist buttons */
+    .wishlist:hover {
+      transform: scale(1.05);
+      transition: transform 0.2s ease-in-out;
+    }
+
     .spinner {
       width: 20px;
       height: 20px;
@@ -468,7 +478,6 @@
                     role="search"
                     method="get"
                     class="search-form text-left"
-                    action="search-result.html"
                   >
                     <div class="search-form-box">
                       <h2
@@ -491,6 +500,9 @@
                           aria-hidden="true"
                         ></i>
                       </button>
+                    </div>
+                    <div class="search-results" style="margin-left: 100px">
+                      <ul class="product-list" style="width: auto"></ul>
                     </div>
                   </form>
                 </div>
@@ -606,8 +618,8 @@
                       <img
                         class="w-100"
                         alt=""
-                        data-cfsrc="../../store/images/products/Ofada rice.JPG"
-                        src="https://i.pinimg.com/736x/1c/16/62/1c1662f546cc85a1d77732c840ff9113.jpg"
+                        data-cfsrc="https://i.pinimg.com/736x/2e/60/07/2e60079f1e36b5c7681f0996a79e8af4.jpg"
+                        src="https://i.pinimg.com/736x/2e/60/07/2e60079f1e36b5c7681f0996a79e8af4.jpg"
                         data-no-retina=""
                       />
                     </div>
@@ -620,8 +632,8 @@
                       <img
                         class="w-100"
                         alt=""
-                        data-cfsrc="../../store/images/products/Chicken Maggi.JPG"
-                        src="../../store/images/products/Chicken Maggi.JPG"
+                        data-cfsrc="https://i.pinimg.com/736x/2e/60/07/2e60079f1e36b5c7681f0996a79e8af4.jpg"
+                        src="https://i.pinimg.com/736x/2e/60/07/2e60079f1e36b5c7681f0996a79e8af4.jpg"
                         data-no-retina=""
                       />
                     </div>
@@ -634,8 +646,8 @@
                       <img
                         class="w-100"
                         alt=""
-                        data-cfsrc="../../store/images/products/Garlic Paste.JPG"
-                        src="../../store/images/products/Garlic Paste.JPG"
+                        data-cfsrc="https://i.pinimg.com/736x/2e/60/07/2e60079f1e36b5c7681f0996a79e8af4.jpg"
+                        src="https://i.pinimg.com/736x/2e/60/07/2e60079f1e36b5c7681f0996a79e8af4.jpg"
                         data-no-retina=""
                       />
                     </div>
@@ -648,8 +660,8 @@
                       <img
                         class="w-100"
                         alt=""
-                        data-cfsrc="../../store/images/products/quaker.JPG"
-                        src="../../store/images/products/quaker.JPG"
+                        data-cfsrc=""
+                        src="https://i.pinimg.com/736x/2e/60/07/2e60079f1e36b5c7681f0996a79e8af4.jpg"
                         data-no-retina=""
                       />
                     </div>
@@ -663,15 +675,16 @@
               </div>
             </div>
           </div>
+
           <div class="col-12 col-lg-5 product-info2">
             <span class="fw-500 text-dark-gray d-block" id="product-category"
-              >Rice</span
+              >Category</span
             >
             <h4
               class="alt-font text-dark-gray fw-500 mb-5px"
               id="single-product-name"
             >
-              Ofada Rice
+              Product
             </h4>
             <div class="d-block d-sm-flex align-items-center mb-15px">
               <div class="me-10px xs-me-0">
@@ -695,21 +708,18 @@
             </div>
             <div class="product-price mb-10px">
               <span class="text-dark-gray fs-28 xs-fs-24 fw-700 ls-minus-1px"
-                ><del class="text-medium-gray me-10px fw-400">€85.00</del
-                >€65.00</span
+                ><del class="text-medium-gray me-10px fw-400">€0.00</del
+                >€0.00</span
               >
             </div>
-            <p id="product-description">
-              Lorem ipsum is simply dummy text of the printing and typesetting
-              industry lorem ipsum standard.
-            </p>
+            <p id="product-description">Description</p>
 
             <div
               class="d-flex align-items-center flex-column flex-sm-row mb-20px position-relative"
             >
               <a
                 href="#"
-                class="wishlist d-flex align-items-center justify-content-center border border-radius-5px border-color-extra-medium-gray order-2 order-sm-3"
+                class="wishlist cartier d-flex align-items-center justify-content-center border border-radius-5px border-color-extra-medium-gray order-2 order-sm-3"
               >
                 <i
                   class="add-to-cart feather icon-feather-shopping-bag icon-small text-dark-gray"
@@ -1542,7 +1552,7 @@
         <div class="row">
           <div class="col-12">
             <ul
-              class="product-list"
+              class="product-list liste"
               data-anime='{ "el": "childs", "translateY": [-15, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 100, "easing": "easeOutQuad" }'
             ></ul>
           </div>

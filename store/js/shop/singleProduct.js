@@ -256,82 +256,94 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     updateCartCounter();
 
-    document.querySelectorAll(".add-to-cart").forEach((button) => {
-      button.addEventListener("click", (event) => {
-        console.log("Hello world");
-        event.preventDefault();
-        console.log(productData);
+    document.querySelector(".cartier").addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation(); // Prevent any parent handlers from interfering
 
-        const productId = productData.data._id;
-        const productName = productData.data.name;
-        const productPrice = productData.data.BasePrice;
-        const productStock = productData.data.StockQuantity;
-        const productImage = productData.data.file[0];
+      // Use event.currentTarget to refer to the element with the listener
+      const btn = event.currentTarget;
+      console.log("clicked");
 
-        if (
-          !productId ||
-          !productName ||
-          isNaN(productPrice) ||
-          isNaN(productStock) ||
-          !productImage
-        ) {
-          console.error("Invalid product data:", {
-            productId,
-            productName,
-            productPrice,
-            productStock,
-            productImage,
-          });
+      // Ensure productData is available
+      if (!productData || !productData.data) {
+        console.error("Product data not available");
+        Swal.fire({
+          title: "Error",
+          text: "Product details are missing. Please try again.",
+          icon: "error",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        return;
+      }
 
-          Swal.fire({
-            title: "Error",
-            text: "Please try again.",
-            icon: "error",
-            showConfirmButton: false,
-            timer: 2000,
-          });
-          return; // Stop execution if product data is invalid
-        }
+      // Use productData from the fetch
+      const productId = productData.data._id;
+      const productName = productData.data.name;
+      const productPrice = productData.data.BasePrice;
+      const productStock = productData.data.StockQuantity;
+      const productImage = productData.data.file[0];
 
-        // Create product object
-        const productObject = {
-          id: productId,
-          name: productName,
-          finalPrice: productPrice,
-          image: productImage,
-          StockQuantity: productStock,
-          quantity: 1, // Initialize quantity as 1
-        };
+      // Validate product details
+      if (
+        !productId ||
+        !productName ||
+        isNaN(productPrice) ||
+        isNaN(productStock) ||
+        !productImage
+      ) {
+        console.error("Invalid product data:", {
+          productId,
+          productName,
+          productPrice,
+          productStock,
+          productImage,
+        });
+        Swal.fire({
+          title: "Error",
+          text: "Invalid product details. Please try again.",
+          icon: "error",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        return;
+      }
 
-        // Check if product is already in cart
-        const existingProduct = cart.find((item) => item.id === productId);
-        console.log(existingProduct);
-        if (existingProduct) {
-          Swal.fire({
-            title: "Product",
-            text: "Product already added",
-            icon: "error",
-            showConfirmButton: false,
-            timer: 2000,
-          });
-        } else {
-          console.log(productObject);
-          cart.push(productObject);
-          localStorage.setItem("cart", JSON.stringify(cart));
+      // Create the product object
+      const productObject = {
+        id: productId,
+        name: productName,
+        finalPrice: productPrice,
+        image: productImage,
+        StockQuantity: productStock,
+        quantity: 1,
+      };
 
-          // Update cart counter
-          updateCartCounter();
+      // Check if the product already exists in the cart
+      const existingProduct = cart.find((item) => item.id === productId);
+      if (existingProduct) {
+        Swal.fire({
+          title: "Product",
+          text: "Product already added",
+          icon: "error",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      } else {
+        cart.push(productObject);
+        localStorage.setItem("cart", JSON.stringify(cart));
 
-          Swal.fire({
-            title: "Product",
-            text: "Product successfully added",
-            icon: "success",
-            showConfirmButton: false,
-            timer: 2000,
-          });
-        }
-      });
+        updateCartCounter();
+        Swal.fire({
+          title: "Product",
+          text: "Product successfully added",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      }
     });
+
     // Store the product and payment details in localStorage
   } catch (error) {
     console.error("Error fetching product:", error);

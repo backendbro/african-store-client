@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       console.log(result);
       if (result.success) {
-        renderProducts(result.data, result);
+        renderProducts(result, result);
         updatePagination(result.pagination);
       }
     } catch (error) {
@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   function renderProducts(products, results) {
+    console.log(products);
     productList.innerHTML = ""; // Clear previous items
 
     const cartCountElement = document.querySelector(".cart-count");
@@ -65,7 +66,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Call updateCartCounter initially to sync with localStorage
     updateCartCounter();
 
-    products.forEach((product) => {
+    products.data.forEach((product) => {
+      product = product.productId;
+      console.log(product);
       let Discount = product.Discount
         ? product.BasePrice * (product.Discount / 100)
         : 0;
@@ -73,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let isNew = isProductNew(product.createdAt);
 
       const productItem = document.createElement("li");
+
       productItem.classList.add("product-item");
 
       // Product link including ID
@@ -149,8 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="product-actions">
       <ul>
         <li>
-          <a href="#" class="add-to-wishlist ${
-            product.isWishlisted ? "added" : ""
+          <a href="#" class="add-to-wishlist added"
           } w-40px h-40px bg-white text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px"
          "data-bs-placement="left" aria-label="Remove from wishlist"
           data-bs-original-title="Add to wishlist" data-id="${product._id}">

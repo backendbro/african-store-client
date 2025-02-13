@@ -58,12 +58,14 @@
       font-size: 18px;
     }
 
-    .spinner {
-      display: none;
-      height: 30px;
+    .btn-double-text {
+      display: inline-flex; /* Ensures text & spinner are on the same line */
+      align-items: center; /* Vertically center them */
     }
 
     .spinner {
+      display: none; /* Hidden by default */
+      margin-left: 8px; /* A little space before the spinner */
       width: 20px;
       height: 20px;
       border: 4px solid #3498db;
@@ -444,7 +446,6 @@
                     role="search"
                     method="get"
                     class="search-form text-left"
-                    action="search-result.html"
                   >
                     <div class="search-form-box">
                       <h2
@@ -467,6 +468,9 @@
                           aria-hidden="true"
                         ></i>
                       </button>
+                    </div>
+                    <div class="search-results">
+                      <ul class="product-list"></ul>
                     </div>
                   </form>
                 </div>
@@ -725,14 +729,27 @@
                   </tr>
                 </tbody>
               </table>
-              <a
+              <!-- <a
                 id="checkoutBtn"
                 class="btn btn-dark-gray btn-large btn-switch-text btn-round-edge btn-box-shadow w-100 mt-25px"
               >
                 <span>
                   <span class="btn-double-text" data-text="Proceed to checkout"
                     >Proceed to checkout
-                    <p class="spinner"></p>
+                    <span class="spinner"></span>
+                  </span>
+                </span>
+              </a> -->
+
+              <a
+                id="checkoutBtn"
+                class="btn btn-dark-gray btn-large btn-switch-text btn-round-edge btn-box-shadow w-100 mt-25px"
+                href="javascript:void(0)"
+              >
+                <span>
+                  <span class="btn-double-text" data-text="Proceed to checkout">
+                    Proceed to checkout
+                    <span class="spinner"></span>
                   </span>
                 </span>
               </a>
@@ -1034,6 +1051,7 @@
     <script src="/store/js/shop/displayCart.js"></script>
     <script src="/store/js/shop/cart.js"></script>
     <script src="/store/js/category/categoryHover.js"></script>
+    <script src="/store/js/search/search.js"></script>
 
     <script src="./store/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script type="text/javascript" src="./store/js/jquery.js"></script>

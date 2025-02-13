@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       totalPrice += itemTotal; // Add to total price
 
       const cartRow = document.createElement("tr");
+      cartRow.style.marginRight = "15px";
 
       cartRow.innerHTML = `
           <td class="product-remove" data-id="${item.id}">
@@ -322,12 +323,19 @@ document.addEventListener("DOMContentLoaded", async () => {
   //   console.log(paymentItems);
   // });
 
-  checkoutBtn.addEventListener("click", async function () {
+  checkoutBtn.addEventListener("click", async function (event) {
     // Show spinner
 
+    // const spinner = document.querySelector(".spinner");
+    // document.querySelector(".btn-double-text").style.display = "flex";
+    // spinner.style.display = "inline-block";
+
+    event.preventDefault(); // Prevents the jump to the top
     const spinner = document.querySelector(".spinner");
-    document.querySelector(".btn-double-text").style.display = "flex";
-    spinner.style.display = "inline-block";
+    const btnDoubleText = document.querySelector(".btn-double-text");
+
+    btnDoubleText.style.display = "inline-flex";
+    spinner.style.display = "inline-block"; // Show the spinner
 
     const paymentItems = cart.map((item, index) => {
       console.log(item);

@@ -2,6 +2,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Retrieve cart from localStorage or initialize an empty array
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+  const cartCountElement = document.querySelector(".cart-count");
+
+  // Retrieve cart from localStorage or initialize an empty array
+  // Function to update cart counter
+  function updateCartCounter() {
+    cartCountElement.textContent = cart.length;
+  }
+  updateCartCounter();
+
   // Function to display cart items
   function displayCartItems() {
     const cartItemList = document.querySelector(".cart-item-list");
@@ -65,6 +74,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   function removeCartItem(index) {
     cart.splice(index, 1); // Remove item at the given index
     localStorage.setItem("cart", JSON.stringify(cart)); // Update localStorage
+    updateCartCounter();
     displayCartItems(); // Refresh the cart display
   }
 

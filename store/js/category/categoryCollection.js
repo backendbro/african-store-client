@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       gridContainer.innerHTML += `
             <div class="grid__item small--one-half medium-up--one-quarter">
               <div class="collection-grid-item">
-                <a href="./store/single-category%20page/index.html?id=${category.id}" class="collection-grid-item__link">
+                <a href="https://www.africanmarkets.eu/store/single-category%20page/index.html?id=${category.id}" class="collection-grid-item__link">
                   <div class="collection-grid-item__overlay" style="background-image: url('${category.categoryDisplay}');"></div>
                   <div class="collection-grid-item__title-wrapper">
                     <h3 class="collection-grid-item__title">${category.name}</h3>

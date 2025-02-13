@@ -116,7 +116,9 @@ document.addEventListener("DOMContentLoaded", async () => {
           });
 
           window.location.reload();
-        } else {
+        } else if (
+          res.message == "You can only submit up to 2 reviews per product."
+        ) {
           spinner.style.display = "none";
           Swal.fire({
             title: "Review",

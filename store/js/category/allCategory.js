@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     container.innerHTML = ""; // Clear existing content
 
     categories.forEach((category) => {
-      const productLink = `http://127.0.0.1:5500/store/single-category%20page/index.html?id=${category._id}`;
+      const productLink = `https://www.africanmarkets.eu/store/single-category%20page/index.html?id=${category._id}`;
       const categoryElement = document.createElement("div");
       categoryElement.className =
         "grid__item small--one-half medium-up--one-quarter";

@@ -7,11 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
     @media (max-width: 767px) {
     .search-form-wrapper .search-form-box {
         width: 60%%;
-      
         }
 
   .search-results {
-   
     display: block;
     width: 100%;
       }

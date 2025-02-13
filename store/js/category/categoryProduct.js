@@ -16,20 +16,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const productList = document.querySelector(".product-list");
   const paginationContainer = document.querySelector(".pagination");
 
-  if (!token) {
-    console.log("NO TOKEN FOUND");
-    return;
-  }
-
   async function fetchProducts(page) {
     console.log(apiUrl);
     try {
+      const headers = {
+        "Content-Type": "application/json",
+      };
+
+      // Add Authorization header **only if token exists**
+      if (token) {
+        headers["Authorization"] = `Bearer ${token}`;
+      }
+
       const response = await fetch(`${apiUrl}?page=${page}&limit=${limit}`, {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
+        headers: headers,
       });
       const result = await response.json();
 
@@ -94,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const productItem = document.createElement("li");
       productItem.classList.add("product-item");
 
-      const productLink = `https://www.africanmarkets.eu/store/single%20product/single-product.html?id=${product._id}`;
+      const productLink = `http://127.0.0.1:5500/store/single%20product/single-product.html?id=${product._id}`;
 
       productItem.innerHTML = `
       <div class="product-box">
@@ -246,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       setTimeout(() => {
-        window.location.href = "/login.html";
+        window.location.href = "/account.html";
       }, 2000);
       return;
     }

@@ -2,6 +2,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Retrieve cart from localStorage or initialize an empty array
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+  const cartCountElement = document.querySelector(".cart-count");
+
+  // Retrieve cart from localStorage or initialize an empty array
+  // Function to update cart counter
+  function updateCartCounter() {
+    cartCountElement.textContent = cart.length;
+  }
+
+  // Call updateCartCounter initially to sync with localStorage
+  updateCartCounter();
+
   // Function to display cart items in the table
   function displayCartTable() {
     const cartTableBody = document.querySelector(".cart-table-body");

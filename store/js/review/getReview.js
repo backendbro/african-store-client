@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  const AUTH_TOKEN = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
+
   const API_URL = `https://african-store.onrender.com/api/v1/review/${PRODUCT_ID}`;
 
   let cursor = null; // Cursor for pagination
@@ -23,11 +24,18 @@ document.addEventListener("DOMContentLoaded", async () => {
       let url = `${API_URL}?limit=1`;
       if (cursor) url += `&cursor=${cursor}`;
 
+      const headers = {
+        "Content-Type": "application/json",
+      };
+
+      // Add Authorization header **only if token exists**
+      if (token) {
+        headers["Authorization"] = `Bearer ${token}`;
+      }
+
       const response = await fetch(url, {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${AUTH_TOKEN}`,
-        },
+        headers: headers,
       });
 
       const {

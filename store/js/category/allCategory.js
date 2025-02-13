@@ -5,6 +5,19 @@ document.addEventListener("DOMContentLoaded", async function () {
     try {
       // Show the spinner
 
+      const cartCountElement = document.querySelector(".cart-count");
+
+      // Retrieve cart from localStorage or initialize an empty array
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      // Function to update cart counter
+      function updateCartCounter() {
+        cartCountElement.textContent = cart.length;
+      }
+
+      // Call updateCartCounter initially to sync with localStorage
+      updateCartCounter();
+
       const response = await fetch(
         `https://african-store.onrender.com/api/v1/category/frontend?page=${page}&limit=${limit}`
       );
@@ -27,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     container.innerHTML = ""; // Clear existing content
 
     categories.forEach((category) => {
-      const productLink = `https://www.africanmarkets.eu/store/single-category%20page/index.html?id=${category._id}`;
+      const productLink = `http://127.0.0.1:5500/store/single-category%20page/index.html?id=${category._id}`;
       const categoryElement = document.createElement("div");
       categoryElement.className =
         "grid__item small--one-half medium-up--one-quarter";

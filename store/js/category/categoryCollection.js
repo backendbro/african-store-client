@@ -3,24 +3,19 @@ document.addEventListener("DOMContentLoaded", async function () {
   const url = "https://african-store.onrender.com/api/v1/category";
   const gridContainer = document.querySelector(".grid.grid--uniform");
 
-  // if (!token) {
-  //   Swal.fire({
-  //     title: "Invalid credentials",
-  //     text: "You are not allowed to complete this action, please log in",
-  //     icon: "error",
-  //     showConfirmButton: false,
-  //     timer: 2000,
-  //   });
-  //   window.location.href = "/account.html";
-  // }
-
   try {
+    const headers = {
+      "Content-Type": "application/json",
+    };
+
+    // Add Authorization header **only if token exists**
+    if (token) {
+      headers["Authorization"] = `Bearer ${token}`;
+    }
+
     const response = await fetch(url, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
+      headers: headers,
     });
 
     const data = await response.json();

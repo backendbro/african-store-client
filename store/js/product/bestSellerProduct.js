@@ -6,12 +6,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     async function fetchBestSellers() {
       try {
+        const headers = {
+          "Content-Type": "application/json",
+        };
+
+        // Add Authorization header **only if token exists**
+        if (AUTH_TOKEN) {
+          headers["Authorization"] = `Bearer ${AUTH_TOKEN}`;
+        }
+
         const response = await fetch(API_URL, {
           method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${AUTH_TOKEN}`,
-          },
+          headers: headers,
         });
 
         if (!response.ok) {
@@ -61,7 +67,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const productItem = document.createElement("li");
         productItem.classList.add("product-item");
 
-        const productLink = `https://www.africanmarkets.eu/store/single%20product/single-product.html?id=${individualProduct._id}`;
+        const productLink = `http://127.0.0.1:5500/store/single%20product/single-product.html?id=${individualProduct._id}`;
 
         productItem.innerHTML = `
               <div class="product-box">

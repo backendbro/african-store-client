@@ -11,20 +11,22 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Get authentication token (assuming it's stored in localStorage)
   const token = localStorage.getItem("token");
-  if (!token) {
-    console.error("User is not authenticated");
-    return;
-  }
 
   try {
+    const headers = {
+      "Content-Type": "application/json",
+    };
+
+    // Add Authorization header **only if token exists**
+    if (token) {
+      headers["Authorization"] = `Bearer ${token}`;
+    }
+
     const response = await fetch(
       `https://african-store.onrender.com/api/v1/product/${productId}`,
       {
         method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
+        headers: headers,
       }
     );
     console.log(response);
@@ -143,7 +145,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         setTimeout(() => {
-          window.location.href = "/login.html";
+          window.location.href = "/account.html";
         }, 2000);
         return;
       }
@@ -251,6 +253,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     function updateCartCounter() {
       cartCountElement.textContent = cart.length;
     }
+
+    updateCartCounter();
 
     document.querySelectorAll(".add-to-cart").forEach((button) => {
       button.addEventListener("click", (event) => {

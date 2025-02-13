@@ -37,6 +37,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   document
     .querySelector("#submit-review")
     .addEventListener("click", async (e) => {
+      if (!AUTH_TOKEN) {
+        Swal.fire({
+          title: "Review",
+          text: "To continue this action you have to log in",
+          icon: "error",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        return;
+      }
+
       console.log("clicked");
       e.preventDefault();
 

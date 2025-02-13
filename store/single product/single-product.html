@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js skrollr skrollr-desktop" lang="en">
   <head>
-    <title>Rice - Ofada Rice</title>
+    <title class="page-title">Rice - Ofada Rice</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="author" content="ThemeZaa" />
@@ -43,6 +43,45 @@
     <link rel="stylesheet" href="../../store/css/reset.scss" />
   </head>
   <style>
+    .rating {
+      display: flex;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .star {
+      font-size: 30px;
+      color: lightgray;
+      transition: color 0.2s;
+    }
+
+    .star.selected {
+      color: red;
+    }
+
+    .spinner {
+      display: none;
+      height: 30px;
+    }
+
+    .spinner {
+      width: 20px;
+      height: 20px;
+      border: 4px solid #3498db;
+      border-top: 4px solid transparent;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
     .add-to-wishlist.added {
       background: #ff4d4d; /* Red background to indicate it's added */
       color: white; /* Change icon color to white */
@@ -1559,26 +1598,17 @@
                         </div>
                         <div class="col-lg-2 mb-20px">
                           <label class="form-label">Your rating*</label>
-                          <div>
-                            <span
-                              class="ls-minus-1px icon-small d-block mt-20px md-mt-0"
-                            >
-                              <i
-                                class="feather icon-feather-star text-golden-yellow"
-                              ></i>
-                              <i
-                                class="feather icon-feather-star text-golden-yellow"
-                              ></i>
-                              <i
-                                class="feather icon-feather-star text-golden-yellow"
-                              ></i>
-                              <i
-                                class="feather icon-feather-star text-golden-yellow"
-                              ></i>
-                              <i
-                                class="feather icon-feather-star text-golden-yellow"
-                              ></i>
-                            </span>
+                          <div class="rating mt-10px">
+                            <span class="star" data-value="1">&#9733;</span>
+                            <span class="star" data-value="2">&#9733;</span>
+                            <span class="star" data-value="3">&#9733;</span>
+                            <span class="star" data-value="4">&#9733;</span>
+                            <span class="star" data-value="5">&#9733;</span>
+                            <input
+                              type="hidden"
+                              name="rating"
+                              id="ratingInput"
+                            />
                           </div>
                         </div>
                         <div class="col-md-12 mb-20px">
@@ -1617,7 +1647,8 @@
                             id="submit-review"
                             type="submit"
                           >
-                            Submit review
+                            Submit review&nbsp;
+                            <p class="spinner"></p>
                           </button>
                         </div>
                         <div class="col-12">

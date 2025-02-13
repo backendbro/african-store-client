@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const productItem = document.createElement("li");
         productItem.classList.add("product-item");
 
-        const productLink = `https://www.africanmarkets.eu/store/single%20product/single-product.html?id=${individualProduct._id}`;
+        const productLink = `http://127.0.0.1:5500/store/single%20product/single-product.html?id=${individualProduct._id}`;
 
         productItem.innerHTML = `
               <div class="product-box">
@@ -85,25 +85,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                     Add to Cart
                   </button>
                 </div>
-
-                <div class="product-actions">
-              <ul>
-                <li>
-                  <button class="add-to-wishlist ${
-                    product.isWishlisted ? "added" : ""
-                  }"
-                    data-id="${product._id}" title="Add to wishlist">
-                    <i class="feather icon-feather-heart fs-16"></i>
-                  </button>
-                </li>
-                <li>
-                  <a href="${productLink}" title="Quick shop">
-                    <i class="feather icon-feather-eye fs-16"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-
                     </div>
                   <div class="product-info">
                     <span class="product-name">${individualProduct.name}</span>

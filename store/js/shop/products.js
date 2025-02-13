@@ -43,6 +43,10 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(products);
     productList.innerHTML = ""; // Clear previous items
 
+    console.log(`From shop page products: ${products}`);
+    console.log(`From shop page results: ${results}`);
+    document.querySelector("#product_count").innerText = results.count;
+
     const cartCountElement = document.querySelector(".cart-count");
 
     // Retrieve cart from localStorage or initialize an empty array
@@ -67,14 +71,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const productItem = document.createElement("li");
       productItem.classList.add("product-item");
 
-      const productLink = `https://www.africanmarkets.eu/store/single%20product/single-product.html?id=${product._id}`;
+      const productLink = `http://127.0.0.1:5500/store/single%20product/single-product.html?id=${product._id}`;
 
       productItem.innerHTML = `
         <div class="product-box">
           <div class="product-image">
             <a href="${productLink}">
               <img src="${
-                product.file[0] || "https://via.placeholder.com/150"
+                product.file[0] ||
+                "https://i.pinimg.com/474x/68/cb/f4/68cbf40113d88a2a6a63b937740a292f.jpg"
               }" alt="${product.name}" />
               <div class="product-overlay"></div>
             </a>
@@ -91,22 +96,23 @@ document.addEventListener("DOMContentLoaded", () => {
               </button>
             </div>
             <div class="product-actions">
-              <ul>
-                <li>
-                  <button class="add-to-wishlist ${
-                    product.isWishlisted ? "added" : ""
-                  }"
-                    data-id="${product._id}" title="Add to wishlist">
-                    <i class="feather icon-feather-heart fs-16"></i>
-                  </button>
-                </li>
-                <li>
-                  <a href="${productLink}" title="Quick shop">
-                    <i class="feather icon-feather-eye fs-16"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
+        <ul>
+          <li>
+            <a href="#" class="add-to-wishlist ${
+              product.isWishlisted ? "added" : ""
+            } w-40px h-40px bg-white text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px"
+           "data-bs-placement="left" aria-label="Remove from wishlist"
+            data-bs-original-title="Add to wishlist" data-id="${product._id}">
+              <i class="feather icon-feather-heart-on fs-16 product-wishlist-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a href="${productLink}" title="Quick shop">
+              <i class="feather icon-feather-eye fs-16"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
           </div>
           <div class="product-info">
             <a href="${productLink}" class="product-name">${product.name}</a>

@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     "text-center"
   );
   showMoreElement.innerHTML = `
-        <a href="#" class="btn btn-link btn-hover-animation-switch btn-extra-large text-dark-gray">
+        <a href="#reviews" class="btn btn-link btn-hover-animation-switch btn-extra-large text-dark-gray">
           <span>
             <span class="btn-text">Show more reviews</span>
             <span class="btn-icon"><i class="fa-solid fa-chevron-down"></i></span>

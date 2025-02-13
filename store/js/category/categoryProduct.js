@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const productItem = document.createElement("li");
       productItem.classList.add("product-item");
 
-      const productLink = `https://www.africanmarkets.eu/store/single%20product/single-product.html?id=${product._id}`;
+      const productLink = `http://127.0.0.1:5500/store/single%20product/single-product.html?id=${product._id}`;
 
       productItem.innerHTML = `
       <div class="product-box">
@@ -102,48 +102,46 @@ document.addEventListener("DOMContentLoaded", () => {
           <a href="${productLink}">
             <img src="${
               product.file[0] ||
-              "https://i.pinimg.com/736x/1c/16/62/1c1662f546cc85a1d77732c840ff9113.jpg"
+              "https://i.pinimg.com/474x/68/cb/f4/68cbf40113d88a2a6a63b937740a292f.jpg"
             }" alt="${product.name}" />
-            ${isNew ? `<span class="label">New</span>` : ""}
+            ${isNew ? '<span class="label">New</span>' : ""}
+
             <div class="product-overlay"></div>
           </a>
-          
           <div class="product-buttons">
             <button class="add-to-cart"
-              data-id="${product._id}" 
-              data-name="${product.name}" 
-              data-price="${finalPrice}" 
-              data-image="${product.file[0]}"
-              data-stock="${product.StockQuantity}">
+            data-id="${product._id}" 
+                        data-name="${product.name}" 
+                        data-price="${finalPrice}" 
+                        data-image="${product.file[0]}"
+                        data-stock="${product.StockQuantity}">
+            
               <i class="feather icon-feather-shopping-bag"></i>
-              <span>Add to cart</span>
+              Add to Cart
             </button>
           </div>
-    
           <div class="product-actions">
-            <ul>
-              <li>
-                <button class="add-to-wishlist"
-                  data-id="${product._id}"
-                  title="Add to wishlist">
-                  <i class="feather icon-feather-heart fs-16"></i>
-                </button>
-              </li>
-              <li>
-                <a href="${productLink}" title="Quick shop">
-                  <i class="feather icon-feather-eye fs-16"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
+      <ul>
+        <li>
+          <a href="#" class="add-to-wishlist ${
+            product.isWishlisted ? "added" : ""
+          } w-40px h-40px bg-white text-dark-gray d-flex align-items-center justify-content-center rounded-circle ms-5px me-5px"
+         "data-bs-placement="left" aria-label="Remove from wishlist"
+          data-bs-original-title="Add to wishlist" data-id="${product._id}">
+            <i class="feather icon-feather-heart-on fs-16 product-wishlist-icon"></i>
+          </a>
+        </li>
+        <li>
+          <a href="${productLink}" title="Quick shop">
+            <i class="feather icon-feather-eye fs-16"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
         </div>
-    
         <div class="product-info">
           <a href="${productLink}" class="product-name">${product.name}</a>
-          <div class="product-price">
-            ${product.Discount ? `<del>€${product.BasePrice}</del>` : ""}
-            €${finalPrice}
-          </div>
+          <div class="product-price">€${product.BasePrice}</div>
         </div>
       </div>
     `;
@@ -166,6 +164,31 @@ document.addEventListener("DOMContentLoaded", () => {
           10
         );
         const productImage = event.target.getAttribute("data-image");
+
+        if (
+          !productId ||
+          !productName ||
+          isNaN(productPrice) ||
+          isNaN(productStock) ||
+          !productImage
+        ) {
+          console.error("Invalid product data:", {
+            productId,
+            productName,
+            productPrice,
+            productStock,
+            productImage,
+          });
+
+          Swal.fire({
+            title: "Error",
+            text: "Please try again.",
+            icon: "error",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+          return; // Stop execution if product data is invalid
+        }
 
         // Create product object
         const productObject = {
@@ -236,8 +259,10 @@ document.addEventListener("DOMContentLoaded", () => {
         "https://african-store.onrender.com/api/v1/wishlist",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          Authorization: `Bearer ${token}`,
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
           body: JSON.stringify({ productId }),
         }
       );
@@ -247,14 +272,47 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log(data);
 
       if (response.ok) {
-        button.classList.add("added"); // Indicate it's been added
-        alert("Product added to wishlist!");
+        if (data.message == "Added to wishlist") {
+          console.log(`FROM ADDED: ${data.message}`);
+          button.classList.add("added"); // Indicate it's been added
+
+          Swal.fire({
+            title: "Wishlist",
+            text: data.message,
+            icon: "success",
+            showConfirmButton: false,
+            timer: 2000, // Auto close in 2 seconds
+          });
+        } else if (data.message == "Removed from wishlist") {
+          console.log(`FROM REMOVED: ${data.message}`);
+          button.classList.remove("added");
+          Swal.fire({
+            title: "Wishlist",
+            text: "Removed from wishlist",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 2000, // Auto close in 2 seconds
+          });
+        }
       } else {
-        alert(data.message || "Failed to add product to wishlist.");
+        Swal.fire({
+          title: "Wishlist",
+          text: data.message || "Failed to add product to wishlist.",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 2000, // Auto close in 2 seconds
+        });
       }
     } catch (error) {
       console.error("Error adding to wishlist:", error);
-      alert("An error occurred. Please try again.");
+      console.log(error);
+      Swal.fire({
+        title: "Wishlist",
+        text: error.message || "Failed to add product to wishlist.",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 2000, // Auto close in 2 seconds
+      });
     }
   });
 

@@ -35,6 +35,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const productData = await response.json();
     console.log("Product Data:", productData.data);
 
+    document.querySelector(
+      ".page-title"
+    ).innerText = `${productData.data.category.name} — ${productData.data.name}`;
     document.querySelector(".image-descri").src = productData.data.file[0];
     document.querySelector("#navigation-product").innerText =
       productData.data.name;

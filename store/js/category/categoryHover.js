@@ -3,17 +3,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   const url = "https://african-store.onrender.com/api/v1/category";
   const categoryContainer = document.querySelector(".mega-menu .row");
 
-  if (!token) {
-    Swal.fire({
-      title: "Invalid credentials",
-      text: "You are not allowed to complete this action, please log in",
-      icon: "error",
-      showConfirmButton: false,
-      timer: 2000,
-    });
-    window.location.href = "/account.html";
-  }
-
   // Show loading spinner
   categoryContainer.innerHTML = `
             <div class="cat-loading-spinner">

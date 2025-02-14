@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       return;
     }
 
-    const categories = data?.data?.slice(0, 11);
+    const categories = data?.data?.slice(0, 13);
 
     // Remove spinner
     gridContainer.innerHTML = "";

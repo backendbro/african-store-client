@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           return;
         }
 
+        console.log(products);
         renderProducts(products.data);
       } catch (error) {
         console.error("Error fetching best sellers:", error);
@@ -257,7 +258,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         setTimeout(() => {
-          window.location.href = "/login.html";
+          window.location.href = "/account.html";
         }, 2000);
         return;
       }

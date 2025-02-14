@@ -330,7 +330,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       setTimeout(() => {
-        window.location.href = "/login.html";
+        window.location.href = "/account.html";
       }, 2000);
       return;
     }

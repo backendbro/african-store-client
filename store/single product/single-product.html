@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="description" content="African store demo" />
     <!-- favicon icon -->
+    <script src="https://js.stripe.com/v3/"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <link rel="shortcut icon" href="../../store/images/favicon.png" />
@@ -85,7 +87,14 @@
       color: white !important; /* Ensure icon turns white */
     }
 
+    .btn-double-text {
+      display: inline-flex; /* Ensures text & spinner are on the same line */
+      align-items: center; /* Vertically center them */
+    }
+
     .spinner {
+      display: none; /* Hidden by default */
+      margin-left: 8px; /* A little space before the spinner */
       width: 20px;
       height: 20px;
       border: 4px solid #3498db;
@@ -100,6 +109,12 @@
       }
       100% {
         transform: rotate(360deg);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .custom-buy {
+        margin-bottom: 14px; /* Adjust value as needed */
       }
     }
   </style>
@@ -433,9 +448,7 @@
                     <li>
                       <a href="../../cart.html">Cart</a>
                     </li>
-                    <li>
-                      <a href="../../checkout.html">Checkout</a>
-                    </li>
+                  
                   </ul>
                 </li>
                 <li class="nav-item">
@@ -545,7 +558,7 @@
             <ul>
               <li><a href="../../index.html">Home</a></li>
               <li><a href="../../shop-page/shop.html">Shop</a></li>
-              <li id="navigation-product">Ofada Rice</li>
+              <li id="navigation-product">Product</li>
             </ul>
           </div>
         </div>
@@ -692,7 +705,7 @@
               >
               <div>
                 <span class="text-dark-gray fw-500">SKU: </span>
-                <span id="sku"> M492300 </span>
+                <span id="sku"> </span>
               </div>
             </div>
             <div class="product-price mb-10px">
@@ -735,6 +748,252 @@
                 ></span>
               </a>
             </div>
+
+            <!-- ////////// START ACCORDION   /////////////// -->
+            <!-- <div
+              class=""
+              id=""
+              style="
+                margin-bottom: 13px;
+                border: 1px solid black;
+                outline: none;
+              "
+            >
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingShipping">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseShipping"
+                    aria-expanded="false"
+                    aria-controls="collapseShipping"
+                    style="font-size: 1.5rem"
+                  >
+                    Shipping
+                  </button>
+                </h2>
+                <div
+                  id="collapseShipping"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingShipping"
+                  data-bs-parent="#shippingAccordion"
+                >
+                  <div class="accordion-body">
+                    <ul class="p-0 m-0 w-100">
+                      <li class="d-flex align-items-center flex-nowrap mb-2">
+                        <input
+                          id="euro_local_pickup"
+                          value="0"
+                          data-id="0"
+                          data-fee="0"
+                          type="radio"
+                          name="shipping-option"
+                          class="d-block w-auto mb-0 me-2"
+                          checked="checked"
+                        />
+                        <label
+                          class="md-line-height-18px"
+                          for="euro_local_pickup"
+                        >
+                          <strong>Local Pickup</strong> - Same Day (€0)
+                        </label>
+                      </li>
+                      <li class="d-flex align-items-center flex-nowrap mb-2">
+                        <input
+                          id="shop_express"
+                          type="radio"
+                          name="shipping-option"
+                          class="d-block w-auto mb-0 me-2"
+                          value="5"
+                          data-id="5"
+                          data-fee="5"
+                        />
+                        <label class="md-line-height-18px" for="shop_express">
+                          <strong>Shop Express Delivery (Vilnius)</strong> -
+                          Within 2 Hours (€5)
+                        </label>
+                      </li>
+                      <li class="d-flex align-items-center flex-nowrap mb-2">
+                        <input
+                          id="dpd"
+                          type="radio"
+                          value="6.5"
+                          data-id="6.5"
+                          data-fee="6.5"
+                          name="shipping-option"
+                          class="d-block w-auto mb-0 me-2"
+                        />
+                        <label class="md-line-height-18px" for="dpd">
+                          <strong>DPD</strong> - 2 Business Days (€6.5)
+                        </label>
+                      </li>
+                      <li class="d-flex align-items-center flex-nowrap">
+                        <input
+                          id="lp_express"
+                          type="radio"
+                          name="shipping-option"
+                          class="d-block w-auto mb-0 me-2"
+                          value="6.5"
+                          data-id="6.5"
+                          data-fee="6.5"
+                        />
+                        <label class="md-line-height-18px" for="lp_express">
+                          <strong>LP Express</strong> - 2 Business Days (€6.5)
+                        </label>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+            <div style="margin-bottom: 10px">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingShipping">
+                  <!-- Removed collapse attributes and collapsed class so it's a static heading -->
+                  <button
+                    class="accordion-button"
+                    type="button"
+                    style="font-size: 1.8rem; cursor: default"
+                    disabled
+                  >
+                    Shipping
+                  </button>
+                </h2>
+                <!-- Changed collapse classes to 'show' so details are always visible -->
+                <div
+                  id="collapseShipping"
+                  class="accordion-collapse show"
+                  aria-labelledby="headingShipping"
+                >
+                  <div class="accordion-body">
+                    <ul class="p-0 m-0 w-100">
+                      <li class="d-flex align-items-center flex-nowrap mb-2">
+                        <input
+                          id="euro_local_pickup"
+                          value="0"
+                          data-id="0"
+                          data-fee="0"
+                          type="radio"
+                          name="shipping-option"
+                          class="d-block w-auto mb-0 me-2"
+                          checked="checked"
+                        />
+                        <label
+                          class="md-line-height-18px"
+                          for="euro_local_pickup"
+                        >
+                          <strong>Local Pickup</strong> - Same Day (€0)
+                        </label>
+                      </li>
+                      <li class="d-flex align-items-center flex-nowrap mb-2">
+                        <input
+                          id="shop_express"
+                          type="radio"
+                          name="shipping-option"
+                          class="d-block w-auto mb-0 me-2"
+                          value="5"
+                          data-id="5"
+                          data-fee="5"
+                        />
+                        <label class="md-line-height-18px" for="shop_express">
+                          <strong>Shop Express Delivery (Vilnius)</strong> -
+                          Within 2 Hours (€5)
+                        </label>
+                      </li>
+                      <li class="d-flex align-items-center flex-nowrap mb-2">
+                        <input
+                          id="dpd"
+                          type="radio"
+                          value="6.5"
+                          data-id="6.5"
+                          data-fee="6.5"
+                          name="shipping-option"
+                          class="d-block w-auto mb-0 me-2"
+                        />
+                        <label class="md-line-height-18px" for="dpd">
+                          <strong>DPD</strong> - 2 Business Days (€6.5)
+                        </label>
+                      </li>
+                      <li class="d-flex align-items-center flex-nowrap">
+                        <input
+                          id="lp_express"
+                          type="radio"
+                          name="shipping-option"
+                          class="d-block w-auto mb-0 me-2"
+                          value="6.5"
+                          data-id="6.5"
+                          data-fee="6.5"
+                        />
+                        <label class="md-line-height-18px" for="lp_express">
+                          <strong>LP Express</strong> - 2 Business Days (€6.5)
+                        </label>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ////////// START ACCORDION   /////////////// -->
+
+            <!-- ////////// START BUY AND ADD TO CART   /////////////// -->
+
+            <!-- Container for Subtotal and Quantity (side by side) -->
+            <div
+              class="d-flex"
+              style="padding: 10px; gap: 20px; align-items: center"
+            >
+              <!-- Subtotal Section -->
+              <div
+                class="subtotal"
+                style="flex: 1; display: flex; align-items: center"
+              >
+                <span class="alt-font text-dark-gray fw-500">Total:</span>
+                <span class="cart-subtotal" style="margin-left: 5px">€0</span>
+              </div>
+              <!-- Quantity Control Section -->
+              <!-- Quantity Controls -->
+              <div class="quantity me-15px xs-mb-15px order-1">
+                <button type="button" class="qty-minus" id="qty-minus">
+                  -
+                </button>
+                <input
+                  class="qty-text"
+                  type="text"
+                  id="qty-text"
+                  value="1"
+                  aria-label="submit"
+                />
+                <button type="button" class="qty-plus" id="qty-plus">+</button>
+              </div>
+            </div>
+
+            <!-- Full-width Buy Button -->
+            <div style="padding: 10px">
+              <a
+                id="checkoutBtn"
+                href="#"
+                class="btn btn-cart btn-extra-large custom-buy btn-switch-text btn-box-shadow btn-none-transform btn-dark-gray left-icon btn-round-edge border-0"
+                style="
+                  display: block;
+                  width: 100%;
+                  padding: 12px;
+                  text-align: center;
+                "
+              >
+                <span>
+                  <!-- <span class="ls-0px" data-text="">Buy</span> -->
+                  <span class="ls-0px" data-text="Proceed to checkout">
+                    Proceed to checkout
+                    <span class="spinner"></span>
+                  </span>
+                </span>
+              </a>
+            </div>
+
+            <!-- ////////// START BUY AND ADD TO CART   /////////////// -->
 
             <div class="mb-20px h-1px w-100 bg-extra-medium-gray d-block"></div>
             <div class="row mb-15px">
@@ -895,13 +1154,10 @@
                     <h4
                       class="alt-font text-dark-gray fw-500 mb-20px w-90 lg-w-100"
                     >
-                      Unique and quirky designs for the latest trends product.
+                      Discover the authentic taste and quality of our premium
+                      selection.
                     </h4>
-                    <p class="w-90">
-                      Lorem ipsum is simply dummy text of the printing and
-                      typesetting industry lorem ipsum has been the standard
-                      dummy text.
-                    </p>
+
                     <div>
                       <div
                         class="feature-box feature-box-left-icon-middle mb-10px"
@@ -913,8 +1169,10 @@
                         </div>
                         <div class="feature-box-content">
                           <span class="d-block text-dark-gray fw-500"
-                            >Made from soft yet durable 100% organic cotton
-                            twill.</span
+                            >Each product is carefully sourced and prepared to
+                            preserve its natural flavors and nutritional
+                            goodness, ensuring a delicious experience every
+                            time.</span
                           >
                         </div>
                       </div>
@@ -928,8 +1186,10 @@
                         </div>
                         <div class="feature-box-content">
                           <span class="d-block text-dark-gray fw-500"
-                            >Front and back yoke seams allow a full range of
-                            shoulder.</span
+                            >Whether you're looking for everyday essentials or
+                            gourmet ingredients, our range offers fresh,
+                            high-quality items designed to elevate your culinary
+                            creations.</span
                           >
                         </div>
                       </div>
@@ -943,8 +1203,8 @@
                         </div>
                         <div class="feature-box-content">
                           <span class="d-block text-dark-gray fw-500"
-                            >Interior storm flap and zipper garage at chin for
-                            comfort.</span
+                            >Enjoy the pure, natural taste that comes from our
+                            commitment to excellence and sustainability .</span
                           >
                         </div>
                       </div>
@@ -990,7 +1250,7 @@
                       <div
                         class="col-lg-10 col-md-9 col-sm-8 pt-10px pb-10px xs-pt-0"
                       >
-                        Black, yellow
+                        N/A
                       </div>
                     </div>
                     <div class="row bg-very-light-gray">
@@ -1002,7 +1262,7 @@
                       <div
                         class="col-lg-10 col-md-9 col-sm-8 pt-10px pb-10px xs-pt-0"
                       >
-                        Sports, Formal
+                        N/A
                       </div>
                     </div>
                     <div class="row">
@@ -1014,7 +1274,7 @@
                       <div
                         class="col-lg-10 col-md-9 col-sm-8 pt-10px pb-10px xs-pt-0"
                       >
-                        100% polyester taffeta with a DWR finish
+                       N/A
                       </div>
                     </div>
                     <div class="row bg-very-light-gray">
@@ -1026,21 +1286,10 @@
                       <div
                         class="col-lg-10 col-md-9 col-sm-8 pt-10px pb-10px xs-pt-0"
                       >
-                        Lather, Cotton, Silk
+                       N/A
                       </div>
                     </div>
-                    <div class="row">
-                      <div
-                        class="col-lg-2 col-md-3 col-sm-4 pt-10px pb-10px xs-pb-0 text-dark-gray alt-font fw-500"
-                      >
-                        Free shipping:
-                      </div>
-                      <div
-                        class="col-lg-10 col-md-9 col-sm-8 pt-10px pb-10px xs-pt-0"
-                      >
-                        On all orders over €50
-                      </div>
-                    </div>
+                   
                   </div>
                 </div>
               </div>
@@ -1055,19 +1304,25 @@
                       Shipping information
                     </div>
                     <p class="mb-0">
-                      <span class="fw-500 text-dark-gray">Standard:</span>
-                      Arrives in 5-8 business days
+                      <span class="fw-500 text-dark-gray">Express:</span>
+                      Express (Vilnius only): Delivered within 2 hours.
                     </p>
                     <p>
-                      <span class="fw-500 text-dark-gray">Express:</span>
-                      Arrives in 2-3 business days
+                      <span class="fw-500 text-dark-gray">Standard:</span>
+                      (Lithuania-wide): Arrives in 2-3 business days.
                     </p>
                     <p class="w-80 md-w-100">
-                      These shipping rates are not applicable for orders shipped
-                      outside of the US. Some oversized items may require an
-                      additional shipping charge. Free Shipping applies only to
-                      merchandise taxes and gift cards do not count toward the
-                      free shipping total.
+                      <ul>
+                        <li>
+                          Shipping is only available within Lithuania. 
+                        </li>
+                        <li>
+                          Oversized items may require an additional shipping charge.
+                        </li>
+                      <li>
+                        Free shipping applies only to product costs; gift cards are excluded from free shipping calculations.
+                      </li>
+                      </ul>
                     </p>
                   </div>
                   <div class="col-12 col-md-6 last-paragraph-no-margin">
@@ -1075,15 +1330,38 @@
                       Return information
                     </div>
                     <p class="w-80 md-w-100">
-                      Orders placed between 10/1/2023 and 12/23/2023 can be
-                      returned by 2/27/2023.
+                      Orders placed between 1/MM/YYYY can be
+                      returned by 30/MM/YYYY.
                     </p>
                     <p class="w-80 md-w-100">
-                      Return or exchange any unused or defective merchandise by
-                      mail or at one of our US or Canada store locations.
-                      Returns made within 30 days of the order delivery date
-                      will be issued a full refund to the original form of
-                      payment.
+                      <ul>
+                        <li>
+                          Customers can return or exchange any unused or defective items within 30 days of delivery.
+                        </li>
+                        <li>
+                          Returns must be made via mail or at an approved Lithuania store location.
+                        </li>
+                        <li>
+                          Full refunds will be issued to the original payment method for qualifying returns.
+                        </li>
+                      </ul>
+                    </p>
+                  </div>
+                  <div class="col-12 col-md-6 last-paragraph-no-margin">
+                    <div class="alt-font fs-22 text-dark-gray mb-15px fw-500">
+                      For assistance contact us on
+                    </div>
+                    
+                    <p class="w-80 md-w-100">
+                      <ul>
+                        <li>
+                          
+<b>Email</b>: info@africanmarkets.eu
+</li>
+        <li>
+                  WhatsApp/Call: +370 640 35989
+                        </li>
+                      </ul>
                     </p>
                   </div>
                 </div>
@@ -1111,7 +1389,7 @@
                       <h2
                         class="mb-5px alt-font text-dark-gray fw-600 average-review"
                       >
-                        4.9
+                        0.0
                       </h2>
                       <span
                         class="text-golden-yellow icon-small d-block ls-minus-1px mb-5px review-star-count"
@@ -1124,7 +1402,7 @@
                       </span>
                       <span
                         class="total-reviews-count ps-15px pe-15px pt-10px pb-10px lh-normal bg-dark-gray text-white fs-12 fw-600 text-uppercase border-radius-4px d-inline-block text-center"
-                        >2,488 Reviews</span
+                        >0 Reviews</span
                       >
                     </div>
                   </div>
@@ -1492,8 +1770,8 @@
                                 class="terms-condition check-box align-middle required"
                               />
                               <span class="box fs-15"
-                                >I accept the crafto terms and conditions and I
-                                have read the privacy policy.</span
+                                >I accept the to terms and conditions and I have
+                                read the privacy policy.</span
                               >
                             </label>
                           </div>
@@ -1870,6 +2148,7 @@
     <script src="/store/js/featured/single-product.js"></script>
     <script src="/store/js/shop/cart.js"></script>
     <script src="/store/js/search/search.js"></script>
+    <script src="/store/js/wishlist/quantity.js"></script>
 
     <script
       type="text/javascript"

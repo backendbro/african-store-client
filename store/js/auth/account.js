@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
   const token = localStorage.getItem("token");
   console.log(token);
   const accountText = document.querySelector(".account-auth span");
@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (token && accountText && accountText.textContent.trim() === "Account") {
     accountText.textContent = "Logout";
-
     if (accountLink) {
       accountLink.addEventListener("click", function (event) {
         event.preventDefault();

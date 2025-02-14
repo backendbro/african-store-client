@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", async () => {
+  //   if (window.productPageInitialized) return; // 🛑 Guard clause
+  //   window.productPageInitialized = true;
   // Extract product ID from URL
+
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get("id");
   console.log(productId);
@@ -29,6 +32,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         headers: headers,
       }
     );
+
     console.log(response);
     if (!response.ok) {
       throw new Error("Failed to fetch product details");
@@ -220,11 +224,28 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Display product details on the page (example)
 
     const trimmedId = productData.data._id.substring(0, 8);
-    let Discount = productData.data.Discount
-      ? productData.data.BasePrice * (productData.data.Discount / 100)
-      : 0;
-    let finalPrice = Math.round(productData.data.BasePrice - Discount);
+    // let Discount = productData.data.Discount
+    //   ? productData.data.BasePrice * (productData.data.Discount / 100)
+    //   : 0;
+    //let finalPrice = Math.round(productData.data.BasePrice - Discount);
 
+    function calculateFinalPrice(basePrice, discount, discountType) {
+      let finalPrice = basePrice;
+      if (discountType === "Percentage") {
+        finalPrice = basePrice - (basePrice * discount) / 100;
+      } else if (discountType === "Fixed Amount") {
+        finalPrice = basePrice - discount;
+      }
+      // Ensure final price is not negative
+      return finalPrice > 0 ? finalPrice : 0;
+    }
+    const finalPrice = calculateFinalPrice(
+      productData.data.BasePrice,
+      productData.data.Discount,
+      productData.data.DiscountiscountType
+    );
+
+    document.querySelector(".cart-subtotal").innerText = `£${finalPrice}`;
     document.querySelector("#navigation-product").textContent =
       productData.data.name;
     document.querySelector("#category-name").textContent =
@@ -397,6 +418,169 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
       }
     });
+
+    function updateCartTotalDisplay(quantity) {
+      // Get the shipping fee from the selected shipping option
+
+      if (quantity <= 0) {
+        quantity = 1;
+      }
+
+      const total = finalPrice * quantity;
+      let shippingFee = 0;
+      const selectedShipping = document.querySelector(
+        'input[name="shipping-option"]:checked'
+      );
+      if (selectedShipping) {
+        // Parse the value (assuming the value is set to the fee, e.g., "5" for €5)
+        shippingFee = parseFloat(selectedShipping.value) || 0;
+      }
+
+      const finalTotal = total + shippingFee;
+
+      // Update the element that displays the cart total.
+      const cartTotalEl = document.querySelector(".cart-subtotal");
+      if (cartTotalEl) {
+        cartTotalEl.textContent = `€${finalTotal.toFixed(2)}`;
+      }
+    }
+
+    document
+      .querySelectorAll('input[name="shipping-option"]')
+      .forEach((radio) => {
+        radio.addEventListener("change", () => {
+          // Assume finalPrice is defined in your product fetch code and quantity from the qtyInput.
+
+          // finalPrice should be defined in the outer scope from your product fetch
+          updateCartTotalDisplay(
+            document.querySelector("#qty-text").getAttribute("data-id")
+          );
+        });
+      });
+
+    // Fetch product details
+    try {
+      // (Optional) Initialize image sliders or other UI components as needed...
+
+      // Set up the "Buy" button to create a payment session
+      const checkoutBtn = document.getElementById("checkoutBtn");
+      checkoutBtn.addEventListener("click", async (event) => {
+        event.preventDefault();
+
+        // Show a spinner while processing (assumes an element with class "spinner" exists)
+        const spinner = document.querySelector(".spinner");
+        if (spinner) spinner.style.display = "inline-block";
+
+        // Get the quantity from the input (assumes an element with class "qty-text" exists)
+        const qtyInput = document.querySelector(".qty-text");
+        const quantity = parseInt(qtyInput.getAttribute("data.id"), 10) || 1;
+
+        // Retrieve the selected shipping option (assumes radio buttons with name "shipping-option" exist)
+        const selectedShipping = document.querySelector(
+          'input[name="shipping-option"]:checked'
+        );
+
+        let shippingFee = 0;
+        let shippingMethod = "Standard Shipping";
+        let minDays = 3; // Default minimum
+        let maxDays = 7; // Default maximum
+
+        if (selectedShipping) {
+          const label = selectedShipping.nextElementSibling;
+          const match = label.textContent.match(/€([\d.]+)/);
+          if (match) {
+            shippingFee = parseFloat(match[1]);
+          }
+          // Extract shipping method from the <strong> inside the label if available.
+          if (label.querySelector("strong")) {
+            shippingMethod = label.querySelector("strong").textContent.trim();
+          }
+          // Adjust delivery estimates based on label text
+          if (
+            label.textContent.includes("Same Day") ||
+            label.textContent.includes("Within 2 Hours")
+          ) {
+            minDays = 0;
+            maxDays = 0;
+          } else if (label.textContent.includes("2 Business Days")) {
+            minDays = 2;
+            maxDays = 2;
+          }
+        }
+
+        const price = document.querySelector(".cart-subtotal");
+        console.log(price.textContent);
+
+        // Build the payment item (for a single product)
+        const paymentItems = [
+          {
+            currency: "EUR",
+            name: productData.data.name,
+            images: Array.isArray(productData.data.file)
+              ? productData.data.file
+              : [productData.data.file],
+            price: finalPrice,
+            quantity: quantity,
+          },
+        ];
+
+        // Construct the payment payload
+        const paymentData = {
+          items: paymentItems,
+          shippingFee: shippingFee,
+          shippingMethod: shippingMethod,
+          currency: "EUR",
+          deliveryEstimate: {
+            minimum: { unit: "business_day", value: minDays },
+            maximum: { unit: "business_day", value: maxDays },
+          },
+        };
+
+        console.log("Payment Data:", paymentData);
+
+        // Initialize Stripe (replace with your actual public key)
+        const stripe = Stripe(
+          "pk_live_51QkSW0E0IAd5uSo1ZLavGYaBNCqzCBfu4ScIeVbBo4ps78zNyZKIrcDAE9XaQlibo4IRrDI79ZCP0uG4QRQahgZv00F8oX6nmK"
+        );
+
+        try {
+          const response = await fetch(
+            "https://african-store.onrender.com/api/v1/payment/create-checkout-session",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(paymentData),
+            }
+          );
+          if (!response.ok) {
+            Swal.fire({
+              title: "Payment",
+              text: "Payment could not be processed. Please try again.",
+              icon: "error",
+              showConfirmButton: false,
+              timer: 2000,
+            });
+            if (spinner) spinner.style.display = "none";
+            return;
+          }
+          const { id } = await response.json();
+          console.log("Checkout session id:", id);
+          await stripe.redirectToCheckout({ sessionId: id });
+        } catch (err) {
+          console.error("Payment error:", err);
+          Swal.fire({
+            title: "Payment",
+            text: err.message || "Payment failed. Please try again.",
+            icon: "error",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+          if (spinner) spinner.style.display = "none";
+        }
+      });
+    } catch (error) {
+      console.error("Error fetching product:", error);
+    }
 
     // Store the product and payment details in localStorage
   } catch (error) {

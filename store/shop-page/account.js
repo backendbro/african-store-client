@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
   const token = localStorage.getItem("token");
   const accountText = document.querySelector(".account-text");
   const accountLink = document.querySelector(".account-link");

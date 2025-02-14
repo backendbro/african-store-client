@@ -341,7 +341,7 @@ document.addEventListener("DOMContentLoaded", () => {
         timer: 2000,
       });
       setTimeout(() => {
-        window.location.href = "/login.html";
+        window.location.href = "/account.html";
       }, 2000);
       if (button.contains(wishlistSpinner)) {
         button.removeChild(wishlistSpinner);

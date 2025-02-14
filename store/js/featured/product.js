@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.head.appendChild(style);
 
   const limit = 4; // Adjust as needed
-  const apiUrl = `https://african-store.onrender.com/api/v1/product/category?productId=679c77c2cc221bc159ce6c07`;
+  const apiUrl = `https://african-store.onrender.com/api/v1/product/category?productId=67af4e84009a7afa812fd6dc`;
 
   async function fetchProducts() {
     console.log(apiUrl);
@@ -84,79 +84,179 @@ document.addEventListener("DOMContentLoaded", () => {
     // Call updateCartCounter initially to sync with localStorage
     updateCartCounter();
 
-    products.forEach((product) => {
-      let Discount = product.Discount
-        ? product.BasePrice * (product.Discount / 100)
-        : 0;
-      let finalPrice = Math.round(product.BasePrice - Discount);
-      let isNew = isProductNew(product.createdAt);
+    // products.forEach((product) => {
+    //   let Discount = product.Discount
+    //     ? product.BasePrice * (product.Discount / 100)
+    //     : 0;
+    //   let finalPrice = Math.round(product.BasePrice - Discount);
+    //   let isNew = isProductNew(product.createdAt);
 
-      const productItem = document.createElement("li");
-      productItem.classList.add("product-item");
+    //   const productItem = document.createElement("li");
+    //   productItem.classList.add("product-item");
 
-      const productLink = `https://www.africanmarkets.eu/store/single%20product/single-product.html?id=${product._id}`;
+    //   const productLink = `https://www.africanmarkets.eu/store/single%20product/single-product.html?id=${product._id}`;
 
-      productItem.innerHTML = `
-           <li class="product-item">    
-          <div class="product-box">
-                <a href="${productLink}" class="product-link">
-                  <div class="product-image">
-                    <img src="${
-                      product.file[0] ||
-                      "https://i.pinimg.com/736x/1c/16/62/1c1662f546cc85a1d77732c840ff9113.jpg"
-                    }" 
-                         alt="${product.name}">
-                    ${isNew ? `<span class="label">New</span>` : ""}    
-                    <div class="product-overlay"></div>
-                  
-                   <div class="product-buttons" style="cursor: pointer;">
-                   <a class="add-to-cart 
-                   data-id="${product._id}" 
-                   data-name="${product.name}" 
-                   data-price="${finalPrice}" 
-                   data-image="${product.file[0]}"
-                   data-stock="${product.StockQuantity}">
-                   
-                   <i class="feather icon-feather-shopping-bag"></i>
-                    Add to Cart
-                  </a>
-                </div>
-                <div class="product-actions">
-      <ul>
-        <li>
-          <a href="#" title="Add to wishlist" class="add-to-wishlist ${
-            product.isWishlisted ? "added" : ""
-          }" data-id="${product._id}">
-            <i class="feather icon-feather-heart"></i>
+    //   productItem.innerHTML = `
+    //        <li class="product-item">
+    //       <div class="product-box">
+    //             <a href="${productLink}" class="product-link">
+    //               <div class="product-image">
+    //                 <img src="${
+    //                   product.file[0] ||
+    //                   "https://i.pinimg.com/736x/1c/16/62/1c1662f546cc85a1d77732c840ff9113.jpg"
+    //                 }"
+    //                      alt="${product.name}">
+    //                 ${isNew ? `<span class="label">New</span>` : ""}
+    //                 <div class="product-overlay"></div>
+
+    //                <div class="product-buttons" style="cursor: pointer;">
+    //                <a class="add-to-cart
+    //                data-id="${product._id}"
+    //                data-name="${product.name}"
+    //                data-price="${finalPrice}"
+    //                data-image="${product.file[0]}"
+    //                data-stock="${product.StockQuantity}">
+
+    //                <i class="feather icon-feather-shopping-bag"></i>
+    //                 Add to Cart
+    //               </a>
+    //             </div>
+    //             <div class="product-actions">
+    //   <ul>
+    //     <li>
+    //       <a href="#" title="Add to wishlist" class="add-to-wishlist ${
+    //         product.isWishlisted ? "added" : ""
+    //       }" data-id="${product._id}">
+    //         <i class="feather icon-feather-heart"></i>
+    //       </a>
+    //     </li>
+    //     <li>
+    //       <a href=${productLink} title="Quick shop">
+    //         <i class="feather icon-feather-eye"></i>
+    //       </a>
+    //     </li>
+    //   </ul>
+    // </div>
+    //             </div>
+    //               <div class="product-info">
+    //                 <span class="product-name">${product.name}</span>
+    //                 <div class="product-price">
+    //                   ${
+    //                     product.Discount
+    //                       ? `<del>€${product.BasePrice}</del>`
+    //                       : ""
+    //                   }
+    //                   €${finalPrice}
+    //                 </div>
+    //               </div>
+    //             </a>
+
+    //           </div>
+    //           </li>
+    //         `;
+
+    //   productList.appendChild(productItem);
+    // });
+
+    WishlistService.fetchWishlist()
+      .then((wishlist) => {
+        // Now loop through your products array
+        products.forEach((product) => {
+          console.log(product);
+
+          function calculateFinalPrice(basePrice, discount, discountType) {
+            let finalPrice = basePrice;
+            if (discountType === "Percentage") {
+              finalPrice = basePrice - (basePrice * discount) / 100;
+            } else if (discountType === "Fixed Amount") {
+              finalPrice = basePrice - discount;
+            }
+            // Ensure final price is not negative
+            return finalPrice > 0 ? finalPrice : 0;
+          }
+
+          const finalPrice = calculateFinalPrice(
+            product.BasePrice,
+            product.Discount,
+            product.DiscountiscountType
+          );
+
+          let isNew = isProductNew(product.createdAt);
+
+          // Check if the current product exists in the fetched wishlist
+          let isWishlisted = wishlist.some((item) => item._id === product._id);
+
+          const productItem = document.createElement("li");
+          productItem.classList.add("product-item");
+
+          const productLink = `https://www.africanmarkets.eu/store/single%20product/single-product.html?id=${product._id}`;
+
+          productItem.innerHTML = `
+    <div class="product-box">
+      <div class="product-image">
+        <a href="${productLink}">
+          <img src="${
+            product.file[0] ||
+            "https://i.pinimg.com/474x/68/cb/f4/68cbf40113d88a2a6a63b937740a292f.jpg"
+          }" alt="${product.name}" />
+          ${isNew ? '<span class="label">New</span>' : ""}
+          <div class="product-overlay"></div>
+        </a>
+        <div class="product-buttons" style="cursor: pointer;">
+          <a class="add-to-cart"
+             data-id="${product._id}" 
+             data-name="${product.name}" 
+             data-price="${finalPrice}" 
+             data-image="${product.file[0]}"
+             data-stock="${product.StockQuantity}">
+            <i class="feather icon-feather-shopping-bag"></i>
+            Add to Cart
           </a>
-        </li>
-        <li>
-          <a href=${productLink} title="Quick shop">
-            <i class="feather icon-feather-eye"></i>
-          </a>
-        </li>
-      </ul>
+        </div>
+        <div class="product-actions">
+          <ul>
+            <li>
+              <a href="#" class="add-to-wishlist ${
+                isWishlisted ? "added" : ""
+              } d-flex align-items-center justify-content-center"
+                 data-bs-placement="left" aria-label="Remove from wishlist"
+                 data-bs-original-title="Add to wishlist" data-id="${
+                   product._id
+                 }"
+                 style="width: 40px; height: 40px; background: #fff; color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <i class="feather icon-feather-heart-on fs-16 product-wishlist-icon"></i>
+              </a>
+            </li>
+            <li>
+              <a href="${productLink}" title="Quick shop" class="quick-shop"
+                 style="width: 40px; height: 40px; background: #fff; color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <i class="feather icon-feather-eye fs-16"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="product-info">
+        <a href="${productLink}" class="product-name">${product.name}</a>
+        <div class="product-price">
+      ${
+        product.Discount && product.Discount > 0
+          ? `<del>€${product.BasePrice.toFixed(2)}</del> €${finalPrice.toFixed(
+              2
+            )}`
+          : `€${product.BasePrice.toFixed(2)}`
+      }
     </div>
-                </div>
-                  <div class="product-info">
-                    <span class="product-name">${product.name}</span>
-                    <div class="product-price">
-                      ${
-                        product.Discount
-                          ? `<del>€${product.BasePrice}</del>`
-                          : ""
-                      }
-                      €${finalPrice}
-                    </div>
-                  </div>
-                </a>
-               
-              </div>
-              </li>
-            `;
+      </div>
+    </div>
+  `;
 
-      productList.appendChild(productItem);
-    });
+          productList.appendChild(productItem);
+        });
+      })
+      .catch((err) => {
+        console.error("Failed to load wishlist:", err);
+      });
 
     document.addEventListener("click", async (event) => {
       const button = event.target.closest(".add-to-wishlist");

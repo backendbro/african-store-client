@@ -255,16 +255,26 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.querySelector("#sku").innerText = trimmedId;
 
     document.querySelector(".product-price").innerHTML = `
-  <span class="text-dark-gray fs-28 xs-fs-24 fw-700 ls-minus-1px">
-    ${
-      productData.data.Discount
-        ? `<del class="text-medium-gray me-10px fw-400">€${productData.data.BasePrice}</del>`
-        : ""
-    }
-    €${finalPrice}
-  </span>
-
-  `;
+    
+    <span class="text-dark-gray fs-28 xs-fs-24 fw-700 ls-minus-1px"> 
+        ${
+          productData.data.Discount && productData.data.Discount > 0
+            ? `<del class="text-medium-gray  me-10px fw-400">€${productData.data.BasePrice.toFixed(
+                2
+              )}</del> €${finalPrice.toFixed(2)}`
+            : `€${productData.data.BasePrice.toFixed(2)}`
+        }
+          </span>
+      
+    `;
+    // <span class="text-dark-gray fs-28 xs-fs-24 fw-700 ls-minus-1px">
+    //   ${
+    //     productData.data.Discount
+    //       ? `<del class="text-medium-gray me-10px fw-400">€${productData.data.BasePrice}</del>`
+    //       : ""
+    //   }
+    //   €${finalPrice}
+    // </span>
 
     function displayCartItems() {
       let cart = JSON.parse(localStorage.getItem("cart")) || [];

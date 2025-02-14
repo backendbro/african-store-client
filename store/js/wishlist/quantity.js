@@ -51,8 +51,6 @@ fetch(`https://african-store.onrender.com/api/v1/product/${productId}`, {
         'input[name="shipping-option"]:checked'
       );
       if (selectedShipping) {
-        console.log(`fROM SHUOOB: ${selectedShipping.value}`);
-        // Parse the value (assuming the value is set to the fee, e.g., "5" for €5)
         shippingFee = parseFloat(selectedShipping.value) || 0;
       }
 
@@ -62,7 +60,6 @@ fetch(`https://african-store.onrender.com/api/v1/product/${productId}`, {
       const subtotalEl = document.querySelector(".cart-subtotal");
       if (subtotalEl) {
         subtotalEl.textContent = `€${finalPrices.toFixed(2)}`;
-        subtotalEl.setAttribute("data-total", finalPrices.toFixed(2));
       }
     }
 
@@ -82,12 +79,9 @@ fetch(`https://african-store.onrender.com/api/v1/product/${productId}`, {
       let currentQty = parseInt(qtyInput.value, 10) || 1;
       console.log("Current quantity before plus:", currentQty);
       if (currentQty < maxQuantity) {
-        let newQty = currentQty + 1;
-        qtyInput.value = newQty;
-        // Optionally update data-id attribute if needed:
-        qtyInput.setAttribute("data-id", newQty);
-        updateSubtotal(newQty);
-        console.log("Quantity updated to:", qtyInput.value);
+        qtyInput.value = currentQty + 1;
+        qtyInput.setAttribute("data-id", currentQty + 1);
+        updateSubtotal(currentQty + 1);
       } else {
         Swal.fire({
           title: "Notice",
@@ -110,7 +104,6 @@ fetch(`https://african-store.onrender.com/api/v1/product/${productId}`, {
         qtyInput.value = newQty;
         qtyInput.setAttribute("data-id", newQty);
         updateSubtotal(newQty); // FIX: updateSubtotal with (currentQty - 1)
-        console.log("Quantity updated to:", qtyInput.value);
       }
     });
 

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async function () {
   const container = document.getElementById("category-container");
 
-  async function fetchCategories(page = 1, limit = 10) {
+  async function fetchCategories(page = 1, limit = 13) {
     try {
       // Show the spinner
 
@@ -37,7 +37,13 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   function displayCategories(categories) {
     console.log(categories);
+
     container.innerHTML = ""; // Clear existing content
+
+    if (!categories) {
+      categoryContainer.innerHTML =
+        "<p style='text-align: center; color: red;'>Failed to load categories.</p>";
+    }
 
     categories.forEach((category) => {
       const productLink = `https://www.africanmarkets.eu/store/single-category%20page/index.html?id=${category._id}`;

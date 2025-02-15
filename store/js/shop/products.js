@@ -314,94 +314,247 @@ document.addEventListener("DOMContentLoaded", () => {
 
           productList.appendChild(productItem);
         });
+
+        function displayCartItems() {
+          let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+          const cartItemList = document.querySelector(".cart-item-list");
+
+          // Clear previous content before updating
+          cartItemList.innerHTML = "";
+
+          let totalPrice = 0; // Variable to store total cart price
+
+          cart.forEach((item, index) => {
+            totalPrice += item.quantity * item.finalPrice; // Calculate total
+
+            const cartItem = document.createElement("li");
+            cartItem.classList.add("cart-item", "align-items-center");
+
+            cartItem.innerHTML = `
+                <a href="javascript:void(0);" class="alt-font close" data-index="${index}">×</a>
+                <div class="product-image">
+                  <a href="demo-fashion-store-single-product.html">
+                    <img src="${
+                      item.image || "../../store/images/products/default.jpg"
+                    }" class="cart-thumb" alt="${item.name}" />
+                  </a>
+                </div>
+                <div class="product-detail fw-600">
+                  <a href="demo-fashion-store-single-product.html">${
+                    item.name
+                  }</a>
+                  <span class="item-ammount fw-400">${
+                    item.quantity
+                  } x €${item.finalPrice.toFixed(2)}</span>
+                </div>
+              `;
+
+            cartItemList.appendChild(cartItem);
+          });
+
+          // Append subtotal and checkout links
+          const cartTotal = document.createElement("li");
+          cartTotal.classList.add("cart-total");
+          cartTotal.innerHTML = `
+              <div class="fs-18 alt-font mb-15px">
+                <span class="w-50 fw-500 text-start">Subtotal:</span>
+                <span class="w-50 text-end fw-700">€${totalPrice.toFixed(
+                  2
+                )}</span>
+              </div>
+              <a href="/cart.html" class="btn btn-large btn-transparent-light-gray border-color-extra-medium-gray">
+                View cart
+              </a>
+              `;
+
+          cartItemList.appendChild(cartTotal);
+
+          // Attach event listeners to close buttons
+        }
+
+        document.querySelectorAll(".add-to-cart").forEach((button) => {
+          button.addEventListener("click", (event) => {
+            console.log("Hello world");
+            event.preventDefault();
+
+            // Retrieve product attributes
+            const productId = event.target.getAttribute("data-id");
+            const productName = event.target.getAttribute("data-name");
+            const productPrice = parseFloat(
+              event.target.getAttribute("data-price")
+            );
+            const productStock = parseInt(
+              event.target.getAttribute("data-stock"),
+              10
+            );
+            const productImage = event.target.getAttribute("data-image");
+
+            // Validate product attributes (Ensure they are not null or undefined)
+            const productObject = {
+              id: productId,
+              name: productName,
+              finalPrice: productPrice,
+              image: productImage,
+              StockQuantity: productStock,
+              quantity: 1, // Initialize quantity as 1
+            };
+            console.log(productObject);
+
+            if (
+              !productId ||
+              !productName ||
+              isNaN(productPrice) ||
+              isNaN(productStock) ||
+              !productImage
+            ) {
+              console.error("Invalid product data:", {
+                productId,
+                productName,
+                productPrice,
+                productStock,
+                productImage,
+              });
+
+              Swal.fire({
+                title: "Error",
+                text: "Invalid product data. Please try again.",
+                icon: "error",
+                showConfirmButton: false,
+                timer: 2000,
+              });
+              return; // Stop execution if product data is invalid
+            }
+
+            // Create product object
+
+            // Check if product is already in cart
+            const existingProduct = cart.find((item) => item.id === productId);
+
+            if (existingProduct) {
+              Swal.fire({
+                title: "Product",
+                text: "Product already added",
+                icon: "error",
+                showConfirmButton: false,
+                timer: 2000,
+              });
+            } else {
+              cart.push(productObject);
+              localStorage.setItem("cart", JSON.stringify(cart));
+
+              // Update cart counter
+              updateCartCounter();
+              displayCartItems();
+
+              Swal.fire({
+                title: "Product",
+                text: "Product successfully added",
+                icon: "success",
+                showConfirmButton: false,
+                timer: 2000,
+              });
+            }
+          });
+        });
+
+        document.addEventListener("click", async (event) => {
+          const button = event.target.closest(".add-to-wishlist");
+          if (!button) return;
+
+          event.preventDefault();
+
+          // Insert a spinner into the button
+          const spinner = document.createElement("span");
+          spinner.classList.add("wishlist-spinner");
+          button.appendChild(spinner);
+
+          if (!token) {
+            Swal.fire({
+              title: "Not logged In!",
+              text: "Please log in to complete this action.",
+              icon: "info",
+              showConfirmButton: false,
+              timer: 2000,
+            });
+            setTimeout(() => {
+              window.location.href = "/account.html";
+            }, 2000);
+            // Remove spinner if not logged in
+            button.removeChild(spinner);
+            return;
+          }
+
+          const productId = button.getAttribute("data-id");
+          console.log(productId);
+
+          try {
+            const response = await fetch(
+              "https://african-store.onrender.com/api/v1/wishlist",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({ productId }),
+              }
+            );
+
+            const data = await response.json();
+            console.log(data);
+
+            if (response.ok) {
+              if (data.message === "Added to wishlist") {
+                console.log(`FROM ADDED: ${data.message}`);
+                button.classList.add("added"); // Update button style to indicate added
+                Swal.fire({
+                  title: "Wishlist",
+                  text: data.message,
+                  icon: "success",
+                  showConfirmButton: false,
+                  timer: 2000,
+                });
+              } else if (data.message === "Removed from wishlist") {
+                console.log(`FROM REMOVED: ${data.message}`);
+                button.classList.remove("added");
+                Swal.fire({
+                  title: "Wishlist",
+                  text: "Removed from wishlist",
+                  icon: "success",
+                  showConfirmButton: false,
+                  timer: 2000,
+                });
+              }
+            } else {
+              Swal.fire({
+                title: "Wishlist",
+                text: data.message || "Failed to add product to wishlist.",
+                icon: "error",
+                showConfirmButton: false,
+                timer: 2000,
+              });
+            }
+          } catch (error) {
+            console.error("Error adding to wishlist:", error);
+            Swal.fire({
+              title: "Wishlist",
+              text: error.message || "Failed to add product to wishlist.",
+              icon: "error",
+              showConfirmButton: false,
+              timer: 2000,
+            });
+          } finally {
+            // Remove the spinner from the button once the operation is complete
+            if (button.contains(spinner)) {
+              button.removeChild(spinner);
+            }
+          }
+        });
       })
       .catch((err) => {
         console.error("Failed to load wishlist:", err);
       });
-
-    document.querySelectorAll(".add-to-cart").forEach((button) => {
-      button.addEventListener("click", (event) => {
-        console.log("Hello world");
-        event.preventDefault();
-
-        // Retrieve product attributes
-        const productId = event.target.getAttribute("data-id");
-        const productName = event.target.getAttribute("data-name");
-        const productPrice = parseFloat(
-          event.target.getAttribute("data-price")
-        );
-        const productStock = parseInt(
-          event.target.getAttribute("data-stock"),
-          10
-        );
-        const productImage = event.target.getAttribute("data-image");
-
-        // Validate product attributes (Ensure they are not null or undefined)
-        const productObject = {
-          id: productId,
-          name: productName,
-          finalPrice: productPrice,
-          image: productImage,
-          StockQuantity: productStock,
-          quantity: 1, // Initialize quantity as 1
-        };
-        console.log(productObject);
-
-        if (
-          !productId ||
-          !productName ||
-          isNaN(productPrice) ||
-          isNaN(productStock) ||
-          !productImage
-        ) {
-          console.error("Invalid product data:", {
-            productId,
-            productName,
-            productPrice,
-            productStock,
-            productImage,
-          });
-
-          Swal.fire({
-            title: "Error",
-            text: "Invalid product data. Please try again.",
-            icon: "error",
-            showConfirmButton: false,
-            timer: 2000,
-          });
-          return; // Stop execution if product data is invalid
-        }
-
-        // Create product object
-
-        // Check if product is already in cart
-        const existingProduct = cart.find((item) => item.id === productId);
-
-        if (existingProduct) {
-          Swal.fire({
-            title: "Product",
-            text: "Product already added",
-            icon: "error",
-            showConfirmButton: false,
-            timer: 2000,
-          });
-        } else {
-          cart.push(productObject);
-          localStorage.setItem("cart", JSON.stringify(cart));
-
-          // Update cart counter
-          updateCartCounter();
-
-          Swal.fire({
-            title: "Product",
-            text: "Product successfully added",
-            icon: "success",
-            showConfirmButton: false,
-            timer: 2000,
-          });
-        }
-      });
-    });
   }
 
   function isProductNew(createdAt) {
@@ -415,100 +568,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Check if the difference is less than or equal to 1 day
     return differenceInMillis <= oneDayInMillis;
   }
-
-  document.addEventListener("click", async (event) => {
-    const button = event.target.closest(".add-to-wishlist");
-    if (!button) return;
-
-    event.preventDefault();
-
-    // Insert a spinner into the button
-    const spinner = document.createElement("span");
-    spinner.classList.add("wishlist-spinner");
-    button.appendChild(spinner);
-
-    if (!token) {
-      Swal.fire({
-        title: "Not logged In!",
-        text: "Please log in to complete this action.",
-        icon: "info",
-        showConfirmButton: false,
-        timer: 2000,
-      });
-      setTimeout(() => {
-        window.location.href = "/account.html";
-      }, 2000);
-      // Remove spinner if not logged in
-      button.removeChild(spinner);
-      return;
-    }
-
-    const productId = button.getAttribute("data-id");
-    console.log(productId);
-
-    try {
-      const response = await fetch(
-        "https://african-store.onrender.com/api/v1/wishlist",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ productId }),
-        }
-      );
-
-      const data = await response.json();
-      console.log(data);
-
-      if (response.ok) {
-        if (data.message === "Added to wishlist") {
-          console.log(`FROM ADDED: ${data.message}`);
-          button.classList.add("added"); // Update button style to indicate added
-          Swal.fire({
-            title: "Wishlist",
-            text: data.message,
-            icon: "success",
-            showConfirmButton: false,
-            timer: 2000,
-          });
-        } else if (data.message === "Removed from wishlist") {
-          console.log(`FROM REMOVED: ${data.message}`);
-          button.classList.remove("added");
-          Swal.fire({
-            title: "Wishlist",
-            text: "Removed from wishlist",
-            icon: "success",
-            showConfirmButton: false,
-            timer: 2000,
-          });
-        }
-      } else {
-        Swal.fire({
-          title: "Wishlist",
-          text: data.message || "Failed to add product to wishlist.",
-          icon: "error",
-          showConfirmButton: false,
-          timer: 2000,
-        });
-      }
-    } catch (error) {
-      console.error("Error adding to wishlist:", error);
-      Swal.fire({
-        title: "Wishlist",
-        text: error.message || "Failed to add product to wishlist.",
-        icon: "error",
-        showConfirmButton: false,
-        timer: 2000,
-      });
-    } finally {
-      // Remove the spinner from the button once the operation is complete
-      if (button.contains(spinner)) {
-        button.removeChild(spinner);
-      }
-    }
-  });
 
   function updatePagination(pagination) {
     paginationContainer.innerHTML = ""; // Clear old pagination

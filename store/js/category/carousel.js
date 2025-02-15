@@ -1,74 +1,80 @@
-const initProductSliders = (productData) => {
-  const swiperWrapperMain = document.querySelector(
-    ".product-image-slider .swiper-wrapper"
-  );
-  const swiperWrapperThumb = document.querySelector(
-    ".product-image-thumb .swiper-wrapper"
-  );
+// // JavaScript Implementation
+// function initializeProductSlider(productsArray) {
+//   const sliderWrapper = document.querySelector('.product-horizontal-slider .swiper-wrapper');
+//   sliderWrapper.innerHTML = ''; // Clear existing content
 
-  if (!swiperWrapperMain || !swiperWrapperThumb || !productData?.data?.file)
-    return;
+//   // Generate slides from products array
+//   const slidesHTML = productsArray.map(product => `
+//       <div class="swiper-slide">
+//           <div class="interactive-banner-style-09 border-radius-6px overflow-hidden position-relative">
+//               <img src="${product.image}" alt="${product.name}" />
+//               <div class="opacity-full bg-gradient-gray-light-dark-transparent"></div>
+//               <div class="image-content h-100 w-100 ps-15 pe-15 pt-11 pb-11 lg-p-11 d-flex justify-content-bottom align-items-start flex-column">
+//                   <div class="mt-auto d-flex align-items-start w-100 z-index-1 position-relative overflow-hidden flex-column">
+//                       <span class="text-white fw-500 fs-22">${product.name}</span>
+//                       ${product.price ? `<span class="text-white fs-18 mt-1">€${product.price}</span>` : ''}
+//                   </div>
+//                   <div class="position-absolute left-0px top-0px w-100 h-100 bg-gradient-regal-blue-transparent opacity-9"></div>
+//                   <div class="box-overlay bg-gradient-gray-light-dark-transparent"></div>
+//                   <a href="${product.link || '#'}" class="position-absolute z-index-1 top-0px left-0px h-100 w-100"></a>
+//               </div>
+//           </div>
+//       </div>
+//   `).join('');
 
-  // Clear existing slides
-  swiperWrapperMain.innerHTML = "";
-  swiperWrapperThumb.innerHTML = "";
+//   sliderWrapper.innerHTML = slidesHTML;
 
-  const slidesMain = productData.data.file
-    .map((file, index) => {
-      const imgAlt = productData.data.name || `Product Image ${index + 1}`;
-      return `
-        <div class="swiper-slide gallery-box" role="group" aria-label="${
-          index + 1
-        } / ${productData.data.file.length}">
-          <a href="${file}" data-group="lightbox-gallery" title="${imgAlt}">
-            <img class="w-100" alt="${imgAlt}" src="${file}" data-no-retina="">
-          </a>
-        </div>`;
-    })
-    .join("");
+//   // Initialize Swiper
+//   new Swiper('.product-horizontal-slider', {
+//       slidesPerView: 1,
+//       spaceBetween: 30,
+//       loop: true,
+//       autoplay: {
+//           delay: 4000,
+//           disableOnInteraction: false
+//       },
+//       navigation: {
+//           nextEl: '.slider-one-slide-next-1',
+//           prevEl: '.slider-one-slide-prev-1'
+//       },
+//       pagination: {
+//           el: '.slider-four-slide-pagination-1',
+//           clickable: true,
+//           dynamicBullets: false
+//       },
+//       keyboard: {
+//           enabled: true,
+//           onlyInViewport: true
+//       },
+//       breakpoints: {
+//           1400: { slidesPerView: 4 },
+//           1024: { slidesPerView: 3 },
+//           768: { slidesPerView: 3 },
+//           576: { slidesPerView: 2 },
+//           320: { slidesPerView: 1 }
+//       },
+//       effect: "slide"
+//   });
+// }
 
-  const slidesThumb = productData.data.file
-    .map((file, index) => {
-      const imgAlt = productData.data.name || `Product Image ${index + 1}`;
-      return `
-        <div class="swiper-slide" role="group" aria-label="${index + 1} / ${
-        productData.data.file.length
-      }" style="margin-bottom: 15px;">
-          <img class="w-100" alt="${imgAlt}" src="${file}" data-no-retina="">
-        </div>`;
-    })
-    .join("");
+// // Example Usage
+// const sampleProducts = [
+//   {
+//       name: "African Net Sponge 40 Inch",
+//       image: "./store/images/sponge.webp",
+//       price: 24.99,
+//       link: "/products/sponge"
+//   },
+//   {
+//       name: "Shea Butter",
+//       image: "./store/images/shea-butter.jpg",
+//       price: 19.99,
+//       link: "/products/shea-butter"
+//   },
+//   // Add more products as needed
+// ];
 
-  // Insert slides into the DOM
-  swiperWrapperMain.innerHTML = slidesMain;
-  swiperWrapperThumb.innerHTML = slidesThumb;
-
-  // Reinitialize Swiper
-  setTimeout(() => {
-    if (typeof Swiper !== "undefined") {
-      const thumbSwiper = new Swiper(".product-image-thumb", {
-        spaceBetween: 15,
-        slidesPerView: "auto",
-        direction: "vertical",
-        navigation: {
-          nextEl: ".swiper-thumb-next",
-          prevEl: ".swiper-thumb-prev",
-        },
-      });
-
-      new Swiper(".product-image-slider", {
-        spaceBetween: 10,
-        loop: productData.data.file.length > 1,
-        autoplay: {
-          delay: 2000,
-          disableOnInteraction: false,
-        },
-        navigation: {
-          nextEl: ".slider-product-next",
-          prevEl: ".slider-product-prev",
-        },
-        thumbs: { swiper: thumbSwiper },
-      });
-    }
-  }, 100);
-};
+// // Initialize slider with products array
+// document.addEventListener('DOMContentLoaded', () => {
+//   initializeProductSlider(sampleProducts);
+// });

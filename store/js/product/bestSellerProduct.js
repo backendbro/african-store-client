@@ -253,6 +253,122 @@ document.addEventListener("DOMContentLoaded", () => {
 
           productList.appendChild(productItem);
         });
+
+        function displayCartItems() {
+          let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+          const cartItemList = document.querySelector(".cart-item-list");
+
+          // Clear previous content before updating
+          cartItemList.innerHTML = "";
+
+          let totalPrice = 0; // Variable to store total cart price
+
+          cart.forEach((item, index) => {
+            totalPrice += item.quantity * item.finalPrice; // Calculate total
+
+            const cartItem = document.createElement("li");
+            cartItem.classList.add("cart-item", "align-items-center");
+
+            cartItem.innerHTML = `
+                <a href="javascript:void(0);" class="alt-font close" data-index="${index}">×</a>
+                <div class="product-image">
+                  <a href="demo-fashion-store-single-product.html">
+                    <img src="${
+                      item.image || "../../store/images/products/default.jpg"
+                    }" class="cart-thumb" alt="${item.name}" />
+                  </a>
+                </div>
+                <div class="product-detail fw-600">
+                  <a href="demo-fashion-store-single-product.html">${
+                    item.name
+                  }</a>
+                  <span class="item-ammount fw-400">${
+                    item.quantity
+                  } x €${item.finalPrice.toFixed(2)}</span>
+                </div>
+              `;
+
+            cartItemList.appendChild(cartItem);
+          });
+
+          // Append subtotal and checkout links
+          const cartTotal = document.createElement("li");
+          cartTotal.classList.add("cart-total");
+          cartTotal.innerHTML = `
+              <div class="fs-18 alt-font mb-15px">
+                <span class="w-50 fw-500 text-start">Subtotal:</span>
+                <span class="w-50 text-end fw-700">€${totalPrice.toFixed(
+                  2
+                )}</span>
+              </div>
+              <a href="/cart.html" class="btn btn-large btn-transparent-light-gray border-color-extra-medium-gray">
+                View cart
+              </a>
+              `;
+
+          cartItemList.appendChild(cartTotal);
+
+          // Attach event listeners to close buttons
+        }
+
+        // Attach event listeners to "Add to Cart" buttons
+        document.querySelectorAll(".add-to-cart").forEach((button) => {
+          console.log(button);
+          button.addEventListener("click", (event) => {
+            console.log("Hello world");
+            event.preventDefault();
+
+            const productId = event.target.getAttribute("data-id");
+            const productName = event.target.getAttribute("data-name");
+            const productPrice = parseFloat(
+              event.target.getAttribute("data-price")
+            );
+            const productStock = parseInt(
+              event.target.getAttribute("data-stock"),
+              10
+            );
+            const productImage = event.target.getAttribute("data-image");
+
+            // Create product object
+            const productObject = {
+              id: productId,
+              name: productName,
+              finalPrice: productPrice,
+              image: productImage,
+              StockQuantity: productStock,
+              quantity: 1, // Initialize quantity as 1
+            };
+
+            // Check if product is already in cart
+            const existingProduct = cart.find((item) => item.id === productId);
+
+            if (existingProduct) {
+              Swal.fire({
+                title: "Product",
+                text: "Product already added",
+                icon: "error",
+                showConfirmButton: false,
+                timer: 2000,
+              });
+            } else {
+              cart.push(productObject);
+              localStorage.setItem("cart", JSON.stringify(cart));
+
+              // Update cart counter
+              updateCartCounter();
+              displayCartItems();
+
+              Swal.fire({
+                title: "Product",
+                text: "Product successfully added",
+                icon: "success",
+                showConfirmButton: false,
+                timer: 2000,
+              });
+            }
+          });
+        });
       })
       .catch((err) => {
         console.error("Failed to load wishlist:", err);
@@ -341,118 +457,6 @@ document.addEventListener("DOMContentLoaded", () => {
           timer: 2000, // Auto close in 2 seconds
         });
       }
-    });
-
-    function displayCartItems() {
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-      const cartItemList = document.querySelector(".cart-item-list");
-
-      // Clear previous content before updating
-      cartItemList.innerHTML = "";
-
-      let totalPrice = 0; // Variable to store total cart price
-
-      cart.forEach((item, index) => {
-        totalPrice += item.quantity * item.finalPrice; // Calculate total
-
-        const cartItem = document.createElement("li");
-        cartItem.classList.add("cart-item", "align-items-center");
-
-        cartItem.innerHTML = `
-            <a href="javascript:void(0);" class="alt-font close" data-index="${index}">×</a>
-            <div class="product-image">
-              <a href="demo-fashion-store-single-product.html">
-                <img src="${
-                  item.image || "../../store/images/products/default.jpg"
-                }" class="cart-thumb" alt="${item.name}" />
-              </a>
-            </div>
-            <div class="product-detail fw-600">
-              <a href="demo-fashion-store-single-product.html">${item.name}</a>
-              <span class="item-ammount fw-400">${
-                item.quantity
-              } x €${item.finalPrice.toFixed(2)}</span>
-            </div>
-          `;
-
-        cartItemList.appendChild(cartItem);
-      });
-
-      // Append subtotal and checkout links
-      const cartTotal = document.createElement("li");
-      cartTotal.classList.add("cart-total");
-      cartTotal.innerHTML = `
-          <div class="fs-18 alt-font mb-15px">
-            <span class="w-50 fw-500 text-start">Subtotal:</span>
-            <span class="w-50 text-end fw-700">€${totalPrice.toFixed(2)}</span>
-          </div>
-          <a href="/cart.html" class="btn btn-large btn-transparent-light-gray border-color-extra-medium-gray">
-            View cart
-          </a>
-          `;
-
-      cartItemList.appendChild(cartTotal);
-
-      // Attach event listeners to close buttons
-    }
-
-    // Attach event listeners to "Add to Cart" buttons
-    document.querySelectorAll(".add-to-cart").forEach((button) => {
-      console.log(button);
-      button.addEventListener("click", (event) => {
-        console.log("Hello world");
-        event.preventDefault();
-
-        const productId = event.target.getAttribute("data-id");
-        const productName = event.target.getAttribute("data-name");
-        const productPrice = parseFloat(
-          event.target.getAttribute("data-price")
-        );
-        const productStock = parseInt(
-          event.target.getAttribute("data-stock"),
-          10
-        );
-        const productImage = event.target.getAttribute("data-image");
-
-        // Create product object
-        const productObject = {
-          id: productId,
-          name: productName,
-          finalPrice: productPrice,
-          image: productImage,
-          StockQuantity: productStock,
-          quantity: 1, // Initialize quantity as 1
-        };
-
-        // Check if product is already in cart
-        const existingProduct = cart.find((item) => item.id === productId);
-
-        if (existingProduct) {
-          Swal.fire({
-            title: "Product",
-            text: "Product already added",
-            icon: "error",
-            showConfirmButton: false,
-            timer: 2000,
-          });
-        } else {
-          cart.push(productObject);
-          localStorage.setItem("cart", JSON.stringify(cart));
-
-          // Update cart counter
-          updateCartCounter();
-          displayCartItems();
-
-          Swal.fire({
-            title: "Product",
-            text: "Product successfully added",
-            icon: "success",
-            showConfirmButton: false,
-            timer: 2000,
-          });
-        }
-      });
     });
   }
 

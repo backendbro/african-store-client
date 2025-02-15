@@ -253,7 +253,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       productData.data.DiscountiscountType
     );
 
-    document.querySelector(".cart-subtotal").innerText = `£${finalPrice}`;
+    document.querySelector(".cart-subtotal").innerText = `€${finalPrice}`;
     document.querySelector("#navigation-product").textContent =
       productData.data.name;
     document.querySelector("#category-name").textContent =

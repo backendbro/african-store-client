@@ -252,154 +252,155 @@ document.addEventListener("DOMContentLoaded", () => {
   `;
 
           productList.appendChild(productItem);
+          document.addEventListener("click", async (event) => {
+            const button = event.target.closest(".add-to-wishlist");
+            if (!button) return;
+
+            event.preventDefault();
+
+            if (!token) {
+              Swal.fire({
+                title: "Not logged In!",
+                text: "Please log in to complete this action.",
+                icon: "success",
+                showConfirmButton: false,
+                timer: 2000,
+              });
+
+              setTimeout(() => {
+                window.location.href = "/account.html";
+              }, 2000);
+              return;
+            }
+
+            const productId = button.getAttribute("data-id");
+            console.log(productId);
+
+            try {
+              const response = await fetch(
+                "https://african-store.onrender.com/api/v1/wishlist",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                  },
+                  body: JSON.stringify({ productId }),
+                }
+              );
+
+              console.log(response);
+              const data = await response.json();
+              console.log(data);
+
+              if (response.ok) {
+                if (data.message == "Added to wishlist") {
+                  console.log(`FROM ADDED: ${data.message}`);
+                  button.classList.add("added"); // Indicate it's been added
+
+                  Swal.fire({
+                    title: "Wishlist",
+                    text: data.message,
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 2000, // Auto close in 2 seconds
+                  });
+                } else if (data.message == "Removed from wishlist") {
+                  console.log(`FROM REMOVED: ${data.message}`);
+                  button.classList.remove("added");
+                  Swal.fire({
+                    title: "Wishlist",
+                    text: "Removed from wishlist",
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 2000, // Auto close in 2 seconds
+                  });
+                }
+              } else {
+                Swal.fire({
+                  title: "Wishlist",
+                  text: data.message || "Failed to add product to wishlist.",
+                  icon: "success",
+                  showConfirmButton: false,
+                  timer: 2000, // Auto close in 2 seconds
+                });
+              }
+            } catch (error) {
+              console.error("Error adding to wishlist:", error);
+              Swal.fire({
+                title: "Wishlist",
+                text: error.message || "Failed to add product to wishlist.",
+                icon: "success",
+                showConfirmButton: false,
+                timer: 2000, // Auto close in 2 seconds
+              });
+            }
+          });
+
+          // Attach event listeners to "Add to Cart" buttons
+          document.querySelectorAll(".add-to-cart").forEach((button) => {
+            console.log(button);
+            button.addEventListener("click", (event) => {
+              console.log("Hello world");
+              event.preventDefault();
+
+              const productId = event.target.getAttribute("data-id");
+              const productName = event.target.getAttribute("data-name");
+              const productPrice = parseFloat(
+                event.target.getAttribute("data-price")
+              );
+              const productStock = parseInt(
+                event.target.getAttribute("data-stock"),
+                10
+              );
+              const productImage = event.target.getAttribute("data-image");
+
+              // Create product object
+              const productObject = {
+                id: productId,
+                name: productName,
+                finalPrice: productPrice,
+                image: productImage,
+                StockQuantity: productStock,
+                quantity: 1, // Initialize quantity as 1
+              };
+
+              // Check if product is already in cart
+              const existingProduct = cart.find(
+                (item) => item.id === productId
+              );
+
+              if (existingProduct) {
+                Swal.fire({
+                  title: "Product",
+                  text: "Product already added",
+                  icon: "error",
+                  showConfirmButton: false,
+                  timer: 2000,
+                });
+              } else {
+                cart.push(productObject);
+                localStorage.setItem("cart", JSON.stringify(cart));
+
+                // Update cart counter
+                updateCartCounter();
+                //displayCartItems();
+
+                Swal.fire({
+                  title: "Product",
+                  text: "Product successfully added",
+                  icon: "success",
+                  showConfirmButton: false,
+                  timer: 2000,
+                });
+              }
+            });
+          });
         });
       })
       .catch((err) => {
         console.error("Failed to load wishlist:", err);
       });
-
-    document.addEventListener("click", async (event) => {
-      const button = event.target.closest(".add-to-wishlist");
-      if (!button) return;
-
-      event.preventDefault();
-
-      if (!token) {
-        Swal.fire({
-          title: "Not logged In!",
-          text: "Please log in to complete this action.",
-          icon: "success",
-          showConfirmButton: false,
-          timer: 2000,
-        });
-
-        setTimeout(() => {
-          window.location.href = "/account.html";
-        }, 2000);
-        return;
-      }
-
-      const productId = button.getAttribute("data-id");
-      console.log(productId);
-
-      try {
-        const response = await fetch(
-          "https://african-store.onrender.com/api/v1/wishlist",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify({ productId }),
-          }
-        );
-
-        console.log(response);
-        const data = await response.json();
-        console.log(data);
-
-        if (response.ok) {
-          if (data.message == "Added to wishlist") {
-            console.log(`FROM ADDED: ${data.message}`);
-            button.classList.add("added"); // Indicate it's been added
-
-            Swal.fire({
-              title: "Wishlist",
-              text: data.message,
-              icon: "success",
-              showConfirmButton: false,
-              timer: 2000, // Auto close in 2 seconds
-            });
-          } else if (data.message == "Removed from wishlist") {
-            console.log(`FROM REMOVED: ${data.message}`);
-            button.classList.remove("added");
-            Swal.fire({
-              title: "Wishlist",
-              text: "Removed from wishlist",
-              icon: "success",
-              showConfirmButton: false,
-              timer: 2000, // Auto close in 2 seconds
-            });
-          }
-        } else {
-          Swal.fire({
-            title: "Wishlist",
-            text: data.message || "Failed to add product to wishlist.",
-            icon: "success",
-            showConfirmButton: false,
-            timer: 2000, // Auto close in 2 seconds
-          });
-        }
-      } catch (error) {
-        console.error("Error adding to wishlist:", error);
-        Swal.fire({
-          title: "Wishlist",
-          text: error.message || "Failed to add product to wishlist.",
-          icon: "success",
-          showConfirmButton: false,
-          timer: 2000, // Auto close in 2 seconds
-        });
-      }
-    });
-
-    // Attach event listeners to "Add to Cart" buttons
-    document.querySelectorAll(".add-to-cart").forEach((button) => {
-      console.log(button);
-      button.addEventListener("click", (event) => {
-        console.log("Hello world");
-        event.preventDefault();
-
-        const productId = event.target.getAttribute("data-id");
-        const productName = event.target.getAttribute("data-name");
-        const productPrice = parseFloat(
-          event.target.getAttribute("data-price")
-        );
-        const productStock = parseInt(
-          event.target.getAttribute("data-stock"),
-          10
-        );
-        const productImage = event.target.getAttribute("data-image");
-
-        // Create product object
-        const productObject = {
-          id: productId,
-          name: productName,
-          finalPrice: productPrice,
-          image: productImage,
-          StockQuantity: productStock,
-          quantity: 1, // Initialize quantity as 1
-        };
-
-        // Check if product is already in cart
-        const existingProduct = cart.find((item) => item.id === productId);
-
-        if (existingProduct) {
-          Swal.fire({
-            title: "Product",
-            text: "Product already added",
-            icon: "error",
-            showConfirmButton: false,
-            timer: 2000,
-          });
-        } else {
-          cart.push(productObject);
-          localStorage.setItem("cart", JSON.stringify(cart));
-
-          // Update cart counter
-          updateCartCounter();
-          //displayCartItems();
-
-          Swal.fire({
-            title: "Product",
-            text: "Product successfully added",
-            icon: "success",
-            showConfirmButton: false,
-            timer: 2000,
-          });
-        }
-      });
-    });
   }
 
   function isProductNew(createdAt) {

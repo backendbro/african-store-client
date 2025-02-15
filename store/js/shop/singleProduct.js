@@ -491,7 +491,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         // Get the quantity from the input (assumes an element with class "qty-text" exists)
         const qtyInput = document.querySelector(".qty-text");
-        const quantity = parseInt(qtyInput.getAttribute("data.id"), 10) || 1;
+        const quantity = parseInt(qtyInput.getAttribute("data-id"));
+        console.log(`FROM PAYMENT: ${quantity}`);
 
         // Retrieve the selected shipping option (assumes radio buttons with name "shipping-option" exist)
         const selectedShipping = document.querySelector(

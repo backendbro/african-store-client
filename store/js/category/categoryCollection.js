@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     gridContainer.innerHTML = `
           <div class="grid__item small--one-half medium-up--one-quarter">
             <div class="collection-grid-item">
-              <a href="/store/shop-categories/categories.html" class="collection-grid-item__link">
+              <a href="/store/shop-page/shop.html" class="collection-grid-item__link">
                 <div class="collection-grid-item__overlay" style="background-image: url('https://www.osiafrik.com/cdn/shop/collections/IMG-20180602-WA0006_3b81a974-17d5-4ed6-86de-8f399d55447e_250x250_crop_top@2x.jpg?v=1587489409');"></div>
                 <div class="collection-grid-item__title-wrapper">
                   <h3 class="collection-grid-item__title">VIEW ALL PRODUCTS</h3>

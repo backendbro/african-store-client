@@ -76,7 +76,7 @@
       transition: transform 0.2s ease-in-out;
     }
 
-    .add-to-wishlist.added {
+    .wishlist.added {
       background: #ff4d4d !important; /* Ensure it applies */
       color: white !important;
       border-radius: 50%;
@@ -84,6 +84,22 @@
     }
 
     .add-to-wishlist.added i {
+      color: white !important; /* Ensure icon turns white */
+    }
+    
+    .wishlister:hover {
+      transform: scale(1.05);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .wishlister.added {
+      background: #ff4d4d !important; /* Ensure it applies */
+      color: white !important;
+      border-radius: 50%;
+      padding: 10px;
+    }
+
+    .wishlister.added i {
       color: white !important; /* Ensure icon turns white */
     }
 
@@ -735,8 +751,8 @@
               </a>
 
               <a
-                style="margin-left: 13px"
-                href="#"
+                style="margin-left: 13px; cursor:pointer;"
+                
                 class="wishlister wishlist d-flex align-items-center justify-content-center border border-radius-5px border-color-extra-medium-gray order-2 order-sm-3"
               >
                 <i
@@ -965,6 +981,7 @@
                   type="text"
                   id="qty-text"
                   value="1"
+                  data-id="1"
                   aria-label="submit"
                 />
                 <button type="button" class="qty-plus" id="qty-plus">+</button>
@@ -2141,7 +2158,10 @@
     </a>
 
     <!-- javascript libraries -->
+    
+    <script src="/store/js/wishlist/quantity.js"></script>
     <script src="/store/js/auth/account.js"></script>
+    <script src="/store/js/wishlist/getAllWishlists.js"></script>
     <script src="/store/js/shop/singleProduct.js"></script>
     <script src="/store/js/category/categoryHover.js"></script>
     <script src="/store/js/review/getReview.js"></script>
@@ -2149,7 +2169,6 @@
     <script src="/store/js/featured/single-product.js"></script>
     <script src="/store/js/shop/cart.js"></script>
     <script src="/store/js/search/search.js"></script>
-    <script src="/store/js/wishlist/quantity.js"></script>
 
     <script
       type="text/javascript"

@@ -128,9 +128,17 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     }, 100);
 
-    if (productData.data.isWishlisted) {
-      console.log(document.querySelector(".wishlister"));
-      document.querySelector(".wishlister").classList.add("added");
+    if (productData.data) {
+      WishlistService.fetchWishlist().then((wishlist) => {
+        const isWishlisted = wishlist.some(
+          (item) => item._id === productData.data.id
+        );
+        console.log(isWishlisted);
+        if (isWishlisted) {
+          console.log(document.querySelector(".wishlister"));
+          document.querySelector(".wishlister").classList.add("added");
+        }
+      });
     }
 
     const button = document.querySelector(".wishlister");

@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(apiUrl);
     try {
       const response = await fetch(
-        `https://african-store.onrender.com/api/v1/product?${page}=1&limit=20`,
+        `https://african-store.onrender.com/api/v1/product?page=${page}&limit=10`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -67,6 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       console.log(result);
       if (result.success) {
+        console.log("PAGINATION");
+        console.log(result.pagination);
         renderProducts(result.data, result);
         updatePagination(result.pagination);
       }

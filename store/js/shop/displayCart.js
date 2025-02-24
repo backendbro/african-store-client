@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const cartCountElement = document.querySelector(".cart-count");
 
-  // Retrieve cart from localStorage or initialize an empty array
   // Function to update cart counter
   function updateCartCounter() {
     cartCountElement.textContent = cart.length;
@@ -58,12 +57,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                 item.quantity
               }" readonly data-index="${index}" />
               <button type="button" class="qty-plus" data-index="${index}" ${
-        item.quantity >= item.stock ? "disabled" : ""
+        item.quantity >= item.StockQuantity ? "disabled" : ""
       }>+</button>
             </div>
-            <span class="stock-info fs-12 text-danger ${
-              item.quantity >= item.stock ? "d-block" : "d-none"
-            }">Max</span>
+            <span class="stock-info fs-12 text-4xl font-bold text-danger ${
+              item.quantity >= item.StockQuantity ? "d-block" : "d-none"
+            }">MAX!</span>
           </td>
           <td class="product-subtotal" data-title="Total" id="subtotal-${index}">€${itemTotal.toFixed(
         2
@@ -85,7 +84,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Remove item event listener
     document.querySelectorAll(".remove-item").forEach((button) => {
       button.addEventListener("click", (event) => {
-        const index = event.target.getAttribute("data-index");
+        // Use event.currentTarget to get the button itself
+        const index = event.currentTarget.getAttribute("data-index");
         removeCartItem(index);
       });
     });
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Quantity increase event listener
     document.querySelectorAll(".qty-plus").forEach((button) => {
       button.addEventListener("click", (event) => {
-        const index = event.target.getAttribute("data-index");
+        const index = event.currentTarget.getAttribute("data-index");
         updateCartQuantity(index, 1);
       });
     });
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Quantity decrease event listener
     document.querySelectorAll(".qty-minus").forEach((button) => {
       button.addEventListener("click", (event) => {
-        const index = event.target.getAttribute("data-index");
+        const index = event.currentTarget.getAttribute("data-index");
         updateCartQuantity(index, -1);
       });
     });
@@ -121,7 +121,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (item.quantity + change < 1) return;
 
     // Prevent quantity from exceeding available stock
-    if (item.quantity + change > item.stock) return;
+    if (item.quantity + change > item.StockQuantity) {
+      Swal.fire({
+        title: "Notice",
+        text: "You have reached the maximum quantity available.",
+        icon: "info",
+        timer: 2000,
+        showConfirmButton: false,
+      });
+      return;
+    }
 
     // Update quantity
     item.quantity += change;
@@ -143,14 +152,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     const plusButton = document.querySelector(
       `.qty-plus[data-index="${index}"]`
     );
-    plusButton.disabled = item.quantity >= item.stock;
+    plusButton.disabled = item.quantity >= item.StockQuantity;
 
     // Show or hide stock limit warning
     const stockInfo = quantityInput
       .closest(".product-quantity")
       .querySelector(".stock-info");
-    stockInfo.classList.toggle("d-block", item.quantity >= item.stock);
-    stockInfo.classList.toggle("d-none", item.quantity < item.stock);
+    if (item.quantity >= item.StockQuantity) {
+      stockInfo.classList.remove("d-none");
+      stockInfo.classList.add("d-block");
+    } else {
+      stockInfo.classList.remove("d-block");
+      stockInfo.classList.add("d-none");
+    }
 
     // Update the subtotal for this item
     let itemTotal = item.quantity * item.finalPrice;
@@ -160,49 +174,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Recalculate the total price
     updateTotalPrice();
-
-    // **Call updateSubtotal() to update the cart subtotal**
-    updateSubtotal();
   }
 
   // Function to update total price dynamically
-  // function updateTotalPrice() {
-  //   let totalPrice = cart.reduce(
-  //     (sum, item) => sum + item.quantity * item.finalPrice,
-  //     0
-  //   );
-
-  //   const totalElement = document.querySelector(".cart-total");
-  //   if (totalElement) {
-  //     totalElement.innerHTML = `
-  //       <div class="fs-18 alt-font mb-15px">
-  //         <span class="w-50 fw-500 text-start">Subtotal:</span>
-  //         <span class="w-50 text-end fw-700">€${totalPrice.toFixed(2)}</span>
-  //       </div>
-  //       <a href="./cart.html" class="btn btn-large btn-transparent-light-gray border-color-extra-medium-gray">
-  //         View cart
-  //       </a>
-  //       <a href="checkout.html" class="btn btn-large btn-dark-gray btn-box-shadow">
-  //         Checkout
-  //       </a>
-  //     `;
-  //   }
-  // }
-
-  document.querySelector(".empty-cart").addEventListener("click", function () {
-    // Clear the cart from localStorage
-    localStorage.removeItem("cart");
-
-    // Empty the cart array
-    cart = [];
-
-    // Refresh the cart UI
-    displayCartTable();
-
-    // Reset the total price
-    updateTotalPrice();
-  });
-
   function updateTotalPrice() {
     let totalPrice = cart.reduce(
       (sum, item) => sum + item.quantity * item.finalPrice,
@@ -234,6 +208,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     ).textContent = `€${finalTotal.toFixed(2)}`;
   }
 
+  // Empty cart functionality
+  document.querySelector(".empty-cart").addEventListener("click", function () {
+    localStorage.removeItem("cart");
+    cart = [];
+    displayCartTable();
+    updateTotalPrice();
+  });
+
   function updateShippingCostListener() {
     document
       .querySelectorAll('input[name="shipping-option"]')
@@ -242,86 +224,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
   }
 
-  document.querySelector(".empty-cart").addEventListener("click", function () {
-    localStorage.removeItem("cart");
-    cart = [];
-    updateTotalPrice();
-  });
-
   updateShippingCostListener();
   updateTotalPrice();
 
-  // function updateSubtotal() {
-  //   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-  //   // Calculate subtotal based on selected items
-  //   let subtotal = cart.reduce(
-  //     (sum, item) => sum + item.finalPrice * item.quantity,
-  //     0
-  //   );
-
-  //   // Update the subtotal in the HTML
-  //   document.querySelector(".cart-subtotal").textContent = `€${subtotal.toFixed(
-  //     2
-  //   )}`;
-  //   document.querySelector(".product-total").textContent = `€${subtotal.toFixed(
-  //     2
-  //   )}`;
-  // }
-
-  // Call updateSubtotal on page load
-
-  //updateSubtotal();
-  // Initialize cart display on page load
+  // Checkout functionality omitted for brevity...
+  // (Your checkout code remains the same)
 
   const checkoutBtn = document.getElementById("checkoutBtn");
-
-  // checkoutBtn.addEventListener("click", async function () {
-  //   const paymentItems = cart.map((item, index) => {
-  //     const selectedQuantity =
-  //       parseInt(
-  //         document.querySelector(`.qty-text[data-index="${index}"]`).value,
-  //         10
-  //       ) || item.quantity;
-
-  //     return {
-  //       currency: "EUR",
-  //       name: item.name,
-  //       // Wrap the image URL in an array. If item.image is already an array, use it;
-  //       // otherwise, create a new array with the single image URL.
-  //       images: Array.isArray(item.image) ? item.image : [item.image],
-  //       // Use item.finalPrice if available, otherwise use item.price
-  //       price: item.finalPrice || item.price,
-  //       quantity: selectedQuantity,
-  //     };
-  //   });
-
-  //   console.log(paymentItems);
-
-  //   const stripe = Stripe(
-  //     "pk_live_51QkSW0E0IAd5uSo1ZLavGYaBNCqzCBfu4ScIeVbBo4ps78zNyZKIrcDAE9XaQlibo4IRrDI79ZCP0uG4QRQahgZv00F8oX6nmK"
-  //   );
-  //   // try {
-  //   //   const response = await fetch(
-  //   //     "https://african-store.onrender.com/api/v1/payment/create-checkout-session",
-  //   //     {
-  //   //       method: "POST",
-  //   //       headers: { "Content-Type": "application/json" },
-  //   //       body: JSON.stringify({ items: paymentItems }),
-  //   //     }
-  //   //   );
-
-  //   //   console.log(response);
-  //   //   const { id } = await response.json();
-  //   //   console.log(id);
-  //   //   await stripe.redirectToCheckout({ sessionId: id });
-  //   // } catch (err) {
-  //   //   console.error(err);
-  //   //   alert("Payment failed - please try again");
-  //   // }
-
-  //   console.log(paymentItems);
-  // });
 
   checkoutBtn.addEventListener("click", async function (event) {
     // Show spinner
@@ -446,5 +355,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
+  // Finally, display the cart table on page load
   displayCartTable();
 });

@@ -118,6 +118,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     link: `https://www.africanmarkets.eu/store/single%20product/single-product.html?id=${prod._id}`, // Update URL as needed
   }));
 
-  https: console.log(`Carousel details ${sliderProducts}`);
+  console.log(`Carousel details ${sliderProducts}`);
   initializeProductSlider(sliderProducts);
 });

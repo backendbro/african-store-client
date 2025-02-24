@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               <div class="w-300px md-w-250px sm-w-100 text-center">
                <img class="rounded-circle w-90px mb-10px" alt="" src="${
                  review.avatar ||
-                 "https://i.pinimg.com/474x/82/73/46/827346ec925e4ecfc40184bc035d3955.jpg"
+                 "https://i.pinimg.com/474x/6f/1d/a9/6f1da99fe93a3ecf1405aab8019166a2.jpg"
                }">
                 <span class="text-dark-gray fw-600 d-block">${
                   review.name

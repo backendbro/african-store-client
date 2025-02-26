@@ -1,29 +1,40 @@
-document.addEventListener("DOMContentLoaded", async function () {
+document.addEventListener("DOMContentLoaded", function () {
   const token = localStorage.getItem("token");
-  const accountText = document.querySelector(".account-text");
-  const accountLink = document.querySelector(".account-link");
+  const accountDropdown = document.querySelector(".account-item-list");
+  const loginItem = accountDropdown.querySelector(".account-item:nth-child(2)");
+  const profileItem = accountDropdown.querySelector(
+    ".account-item:nth-child(1)"
+  );
+  const logoutItem = accountDropdown.querySelector(
+    ".account-item:nth-child(3)"
+  );
 
-  if (token && accountText && accountText.textContent.trim() === "Account") {
-    accountText.textContent = "Logout";
+  if (token) {
+    // Show profile and logout, hide login
+    profileItem.style.display = "block";
+    logoutItem.style.display = "block";
+    loginItem.style.display = "none";
 
-    if (accountLink) {
-      accountLink.addEventListener("click", function (event) {
-        event.preventDefault();
-        console.log("Something happened");
-        localStorage.removeItem("token");
+    logoutItem.addEventListener("click", function (event) {
+      event.preventDefault();
+      localStorage.removeItem("token");
 
-        Swal.fire({
-          title: "Logged Out!",
-          text: "You have successfully logged out.",
-          icon: "success",
-          showConfirmButton: false,
-          timer: 2000, // Auto close in 2 seconds
-        });
-
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000);
+      Swal.fire({
+        title: "Logged Out!",
+        text: "You have successfully logged out.",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 2000, // Auto close in 2 seconds
       });
-    }
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+    });
+  } else {
+    // Show login, hide profile and logout
+    profileItem.style.display = "none";
+    logoutItem.style.display = "none";
+    loginItem.style.display = "block";
   }
 });

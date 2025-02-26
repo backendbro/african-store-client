@@ -54,7 +54,7 @@ loginButton.addEventListener("click", async () => {
   } catch (err) {
     Swal.fire({
       title: "Login failed",
-      text: err.message,
+      text: "Invalid credentials",
       icon: "success",
       showConfirmButton: false,
       timer: 2000,

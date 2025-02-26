@@ -74,6 +74,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.querySelector(".review-count-text").textContent = reviewLength;
 
     allReviews.forEach((review) => {
+      console.log(review);
       const date = formatDate(review.createdAt);
       const reviewElement = document.createElement("div");
       reviewElement.classList.add("col-12", "border-bottom", "pb-40px");

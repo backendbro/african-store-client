@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (productData.data) {
       WishlistService.fetchWishlist().then((wishlist) => {
         const isWishlisted = wishlist.some(
-          (item) => item._id === productData.data.id
+          (item) => item._id == productData.data._id
         );
         console.log(isWishlisted);
         if (isWishlisted) {

@@ -51,10 +51,19 @@ document.addEventListener("DOMContentLoaded", async () => {
       console.log("clicked");
       e.preventDefault();
 
-      // Show spinner
-      const spinner = document.querySelector(".spinner");
-      document.getElementById("submit-review").style.display = "flex";
-      spinner.style.display = "inline-block";
+      // Dynamically create and show the spinner
+      let spinner = document.querySelector(".loading-spinner");
+      const submitBtn = document.getElementById("submit-review");
+      if (!spinner) {
+        spinner = document.createElement("span");
+        spinner.className = "loading-spinner";
+        // Optional: add inline styles if needed (or define them in your CSS)
+        spinner.style.display = "inline-block";
+        spinner.style.marginLeft = "10px";
+        submitBtn.appendChild(spinner);
+      } else {
+        spinner.style.display = "inline-block";
+      }
 
       const name = document.querySelector("input[name='name']").value;
       const email = document.querySelector("input[name='email']").value;
@@ -73,7 +82,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       const clickedReviews = document.getElementById("ratingInput").value;
 
-      if (!name | !email | !clickedReviews | !comment | !termsAccepted) {
+      // Use logical OR (||) not bitwise (|) for checking emptiness
+      if (!name || !email || !clickedReviews || !comment || !termsAccepted) {
         Swal.fire({
           title: "Review",
           text: "Make sure to fill out all the fields to add a review",
@@ -81,6 +91,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           showConfirmButton: false,
           timer: 2000,
         });
+        spinner.style.display = "none"; // Hide spinner since validation failed
         return;
       }
 
@@ -114,7 +125,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             showConfirmButton: false,
             timer: 2000,
           });
-
           window.location.reload();
         } else if (
           res.message == "You can only submit up to 2 reviews per product."

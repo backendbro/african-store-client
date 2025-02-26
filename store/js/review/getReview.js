@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         totalReviews,
       } = await response.json();
 
+      console.log(reviews);
       reviewLength = totalReviews;
       if (reviews.length > 0) {
         cursor = reviews[reviews.length - 1]._id;

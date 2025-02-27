@@ -11653,13 +11653,10 @@ button:focus {
   position: absolute;
   top: 0;
   left: 0;
-
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
-
-  /* width: 50%; */
-  margin-left: 25%;
+  margin-left: 35%;
 }
 
 .product-item:hover .product-image img {
@@ -11886,6 +11883,10 @@ button:focus {
 @media (max-width: 767px) {
   .product-item {
     width: 50%;
+  }
+
+  .product-box .product-image img {
+    margin-left: 25px;
   }
 }
 .navbar-toggler {

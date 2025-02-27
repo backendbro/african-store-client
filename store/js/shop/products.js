@@ -255,6 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
           productItem.innerHTML = `
       <div class="product-box">
         <div class="product-image">
+
           <a href="${productLink}">
             <img src="${
               product.file[0] ||
@@ -297,6 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </ul>
           </div>
         </div>
+
         <div class="product-info">
           <a href="${productLink}" class="product-name">${product.name}</a>
           <div class="product-price">
@@ -307,8 +309,8 @@ document.addEventListener("DOMContentLoaded", () => {
               )}</del> €${finalPrice.toFixed(2)}`
             : `€${product.BasePrice.toFixed(2)}`
         }
-      </div>
         </div>
+      </div>
       </div>
     `;
 

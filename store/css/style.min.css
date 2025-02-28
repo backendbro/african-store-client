@@ -11885,8 +11885,52 @@ button:focus {
   margin-right: 5px;
 }
 
+
+/* /// for other products except shop //// */
 @media (max-width: 991px) {
   .product-list {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 20px;
+  }
+
+  .product-item {
+      flex: 0 0 auto;
+      width: 80%;
+      max-width: 300px;
+      scroll-snap-align: start;
+      margin-right: 20px;
+  }
+
+  .product-item:last-child {
+      margin-right: 0;
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .product-list::-webkit-scrollbar {
+      display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .product-list {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+  }
+}
+
+
+@media (max-width: 767px) {
+  .product-item {
+      width: 85%;
+  }
+}
+
+/* /// for other products except shop //// */
+
+@media (max-width: 991px) {
+  .product-list-2 {
     display: flex;
     flex-direction: column; /* Stack items vertically */
     overflow-y: auto; /* Enable vertical scrolling */
@@ -11896,7 +11940,7 @@ button:focus {
     padding-bottom: 20px;
   }
 
-  .product-item {
+  .product-item-2 {
     flex: 0 0 auto;
     width: 90%; /* Adjust width for a better fit */
     max-width: 300px;
@@ -11904,7 +11948,7 @@ button:focus {
     margin: 10px auto; /* Center the items */
   }
 
-  .product-box .product-image img {
+  .product-box-2 .product-image-2 img {
     width: 100%; /* Ensures full width inside the container */
     max-width: 100%; /* Prevents overflow */
     height: auto; /* Keeps proportions intact */
@@ -11916,21 +11960,22 @@ button:focus {
     transform: translate(-50%, -50%);
   }
 
-  .product-item:last-child {
+  .product-item-2:last-child {
     margin-bottom: 0; /* Remove extra space at the bottom */
   }
 
   /* Hide scrollbar for Chrome, Safari, and Opera */
-  .product-list::-webkit-scrollbar {
+  .product-list-2::-webkit-scrollbar {
     display: none;
   }
 
   /* Hide scrollbar for IE, Edge, and Firefox */
-  .product-list {
+  .product-list-2 {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
 }
+
 
 /* @media (max-width: 991px) {
   .product-list {
@@ -11997,7 +12042,7 @@ button:focus {
 } */
 
 @media (max-width: 767px) {
-  .product-list {
+  .product-list-2 {
     display: flex;
     flex-direction: column; /* Stack items vertically */
     overflow-y: auto; /* Enable vertical scrolling */
@@ -12007,7 +12052,7 @@ button:focus {
     padding-bottom: 20px;
   }
 
-  .product-item {
+  .product-item-2 {
     flex: 0 0 auto;
     width: 90%; /* Adjust width for a better fit */
     max-width: 300px;
@@ -12015,7 +12060,7 @@ button:focus {
     margin: 10px auto; /* Center the items */
   }
 
-  .product-box .product-image img {
+  .product-box-2 .product-image-2 img {
     width: 100%; /* Ensures full width inside the container */
     max-width: 100%; /* Prevents overflow */
     height: auto; /* Keeps proportions intact */
@@ -12027,11 +12072,11 @@ button:focus {
     transform: translate(-50%, -50%);
   }
 
-  .product-list::-webkit-scrollbar {
+  .product-list-2::-webkit-scrollbar {
     display: none;
   }
 
-  .product-list {
+  .product-list-2 {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }

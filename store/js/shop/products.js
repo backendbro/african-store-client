@@ -249,12 +249,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
           const productItem = document.createElement("li");
           productItem.classList.add("product-item");
+          productItem.classList.add("product-item-2");
 
           const productLink = `https://www.africanmarkets.eu/store/single%20product/single-product.html?id=${product._id}`;
 
           productItem.innerHTML = `
-      <div class="product-box">
-        <div class="product-image">
+      <div class="product-box product-box-2">
+        <div class="product-image product-image-2">
 
           <a href="${productLink}">
             <img src="${

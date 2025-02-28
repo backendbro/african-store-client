@@ -11927,6 +11927,13 @@ button:focus {
 
 /* /// for other products except shop //// */
 
+@media (max-width: 375px) {
+  /* Styles for iPhone 7 and smaller screens */
+  .product-item-2 {
+    border: 1px solid red;
+  }
+}
+
 @media (max-width: 991px) {
   .product-list-2 {
     display: flex;

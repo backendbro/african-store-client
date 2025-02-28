@@ -11962,7 +11962,7 @@ button:focus {
 
   .product-item-2:last-child {
     margin-bottom: 0; /* Remove extra space at the bottom */
-    margin-right: 19px;
+    margin-right: 21px;
   }
 
   /* Hide scrollbar for Chrome, Safari, and Opera */
@@ -12082,8 +12082,9 @@ button:focus {
   }
 
   .product-item-2:last-child {
-    margin-bottom: 0; /* Remove extra space at the bottom */
-    margin-right: 19px;
+    margin-bottom: 0;
+    position: relative;
+    left: -17px; /* Move left instead of using margin-right */
   }
 }
 

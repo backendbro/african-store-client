@@ -11927,13 +11927,6 @@ button:focus {
 
 /* /// for other products except shop //// */
 
-@media (max-width: 375px) {
-  /* Styles for iPhone 7 and smaller screens */
-  .product-item-2 {
-    border: 1px solid red;
-  }
-}
-
 @media (max-width: 991px) {
   .product-list-2 {
     display: flex;
@@ -11969,7 +11962,7 @@ button:focus {
 
   .product-item-2:last-child {
     margin-bottom: 0; /* Remove extra space at the bottom */
-    margin-right: 18px;
+    margin-right: 19px;
   }
 
   /* Hide scrollbar for Chrome, Safari, and Opera */
@@ -12086,6 +12079,11 @@ button:focus {
   .product-list-2 {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  .product-item-2:last-child {
+    margin-bottom: 0; /* Remove extra space at the bottom */
+    margin-right: 19px;
   }
 }
 

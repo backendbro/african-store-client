@@ -11897,7 +11897,7 @@ button:focus {
 
   .product-item {
     flex: 0 0 auto;
-    width: 80%;
+    width: 50%;
     max-width: 300px;
     scroll-snap-align: start;
     margin-right: 20px;
@@ -11921,7 +11921,7 @@ button:focus {
 
 @media (max-width: 767px) {
   .product-item {
-    width: 85%;
+    width: 50%;
   }
 }
 
@@ -11940,7 +11940,7 @@ button:focus {
 
   .product-item-2 {
     flex: 0 0 auto;
-    width: 90%; /* Adjust width for a better fit */
+    width: 50%; /* Adjust width for a better fit */
     max-width: 300px;
     scroll-snap-align: start;
     margin: 10px auto;
@@ -11961,8 +11961,9 @@ button:focus {
   }
 
   .product-item-2:last-child {
-    margin-bottom: 0; /* Remove extra space at the bottom */
-    margin-right: 21px;
+    margin-bottom: 0;
+    position: relative;
+    left: -15px; /* Move left instead of using margin-right */
   }
 
   /* Hide scrollbar for Chrome, Safari, and Opera */
@@ -12054,7 +12055,7 @@ button:focus {
 
   .product-item-2 {
     flex: 0 0 auto;
-    width: 90%; /* Adjust width for a better fit */
+    width: 50%; /* Adjust width for a better fit */
     max-width: 300px;
     scroll-snap-align: start;
     margin: 10px auto; /* Center the items */
@@ -12084,7 +12085,7 @@ button:focus {
   .product-item-2:last-child {
     margin-bottom: 0;
     position: relative;
-    left: -12.5px; /* Move left instead of using margin-right */
+    left: -59px; /* Move left instead of using margin-right */
   }
 }
 

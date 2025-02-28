@@ -12085,7 +12085,7 @@ button:focus {
   .product-item-2:last-child {
     margin-bottom: 0;
     position: relative;
-    left: -59px; /* Move left instead of using margin-right */
+    left: -15px; /* Move left instead of using margin-right */
   }
 }
 

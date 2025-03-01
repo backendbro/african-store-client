@@ -12044,9 +12044,11 @@ button:focus {
 @media (max-width: 767px) {
   .product-list-2 {
     display: grid;
-    /* Increased fixed width to 200px for each column */
-    grid-template-columns: repeat(2, 200px);
+    /* Create 2 columns of fixed width */
+    grid-template-columns: repeat(2, 170px);
+    /* Center the entire grid in the container */
     justify-content: center;
+    /* Optional: Center items within each cell */
     justify-items: center;
     gap: 10px;
     margin: 0 auto;
@@ -12058,9 +12060,10 @@ button:focus {
   }
 
   .product-item-2 {
-    width: 200px;
+    width: 170px;
     max-width: 300px;
     scroll-snap-align: start;
+    /* Remove auto margins if not needed */
     margin: 10px 0;
   }
 
@@ -12086,11 +12089,12 @@ button:focus {
   .product-item-2:last-child {
     margin-bottom: 0;
     position: static;
-    width: 200px;
+    width: 170px;
     height: 274px;
     max-width: 300px;
   }
 }
+
 
 
 .navbar-toggler {

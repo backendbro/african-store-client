@@ -11929,30 +11929,30 @@ button:focus {
 
 @media (max-width: 991px) {
   .product-list-2 {
-    display: flex;
-    flex-direction: column; /* Stack items vertically */
-    overflow-y: auto; /* Enable vertical scrolling */
-    max-height: 80vh; /* Set a height limit to prevent full-page scrolling */
+    display: grid;
+    /* Increased fixed width to 200px for each column */
+    grid-template-columns: repeat(2, 200px);
+    justify-content: center;
+    justify-items: center;
+    gap: 10px;
+    margin: 0 auto;
+    overflow-y: auto;
+    max-height: 80vh;
     scroll-snap-type: y mandatory;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 20px;
   }
 
   .product-item-2 {
-    flex: 0 0 auto;
-    width: 50%; /* Adjust width for a better fit */
+    width: 200px;
     max-width: 300px;
     scroll-snap-align: start;
-    margin: 10px auto;
-    justify-content: center; /* Helps in centering */
-    box-sizing: border-box;
+    margin: 10px 0;
   }
 
   .product-box-2 .product-image-2 img {
-    width: 100%; /* Ensures full width inside the container */
-    max-width: 100%; /* Prevents overflow */
-    height: auto; /* Keeps proportions intact */
-    max-height: 100%;
+    width: 100%;
+    height: auto;
     object-fit: contain;
     position: absolute;
     top: 50%;
@@ -11960,26 +11960,22 @@ button:focus {
     transform: translate(-50%, -50%);
   }
 
-  .product-item-2:last-child {
-    margin-bottom: 0;
-    margin-left: auto;
-    margin-right: auto;
-    position: static; /* Remove right shifting */
-    width: 50%; /* Ensures it's the same as others */
-    max-width: 300px;
-  }
-
-  /* Hide scrollbar for Chrome, Safari, and Opera */
   .product-list-2::-webkit-scrollbar {
     display: none;
   }
 
-  /* Hide scrollbar for IE, Edge, and Firefox */
   .product-list-2 {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
-}
+
+  .product-item-2:last-child {
+    margin-bottom: 0;
+    position: static;
+    width: 200px;
+    height: 274px;
+    max-width: 300px;
+  }}
 
 /* @media (max-width: 991px) {
   .product-list {
@@ -12047,28 +12043,30 @@ button:focus {
 
 @media (max-width: 767px) {
   .product-list-2 {
-    display: flex;
-    flex-direction: column; /* Stack items vertically */
-    overflow-y: auto; /* Enable vertical scrolling */
-    max-height: 80vh; /* Set a limit for scrolling */
+    display: grid;
+    /* Increased fixed width to 200px for each column */
+    grid-template-columns: repeat(2, 200px);
+    justify-content: center;
+    justify-items: center;
+    gap: 10px;
+    margin: 0 auto;
+    overflow-y: auto;
+    max-height: 80vh;
     scroll-snap-type: y mandatory;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 20px;
   }
 
   .product-item-2 {
-    flex: 0 0 auto;
-    width: 50%; /* Adjust width for a better fit */
+    width: 200px;
     max-width: 300px;
     scroll-snap-align: start;
-    margin: 10px auto; /* Center the items */
+    margin: 10px 0;
   }
 
   .product-box-2 .product-image-2 img {
-    width: 100%; /* Ensures full width inside the container */
-    max-width: 100%; /* Prevents overflow */
-    height: auto; /* Keeps proportions intact */
-    max-height: 100%;
+    width: 100%;
+    height: auto;
     object-fit: contain;
     position: absolute;
     top: 50%;
@@ -12087,13 +12085,13 @@ button:focus {
 
   .product-item-2:last-child {
     margin-bottom: 0;
-    margin-left: auto;
-    margin-right: auto;
-    position: static; /* Remove right shifting */
-    width: 50%; /* Ensures it's the same as others */
+    position: static;
+    width: 200px;
+    height: 274px;
     max-width: 300px;
   }
 }
+
 
 .navbar-toggler {
   font-size: 24px;

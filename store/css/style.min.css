@@ -11975,7 +11975,8 @@ button:focus {
     width: 200px;
     height: 274px;
     max-width: 300px;
-  }}
+  }
+}
 
 /* @media (max-width: 991px) {
   .product-list {
@@ -12090,12 +12091,10 @@ button:focus {
     margin-bottom: 0;
     position: static;
     width: 170px;
-    height: 274px;
+    height: 244px;
     max-width: 300px;
   }
 }
-
-
 
 .navbar-toggler {
   font-size: 24px;

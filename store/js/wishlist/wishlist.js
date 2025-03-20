@@ -230,6 +230,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         const productImage = event.target.getAttribute("data-image");
 
+        console.log(productId);
         // Validate product attributes (Ensure they are not null or undefined)
         if (
           !productId ||

@@ -9705,6 +9705,7 @@ header.sticky .navbar.disable-fixed {
   color: var(--white);
 }
 
+
 [data-header-hover="dark"]
   .header-cart-icon
   .header-cart

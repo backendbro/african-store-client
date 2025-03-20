@@ -219,6 +219,9 @@ document.addEventListener("DOMContentLoaded", () => {
           // Check if the current product exists in the fetched wishlist
           let isWishlisted = wishlist.some((item) => item._id === product._id);
 
+          // Determine if the product is out of stock
+          let isOutOfStock = product.StockQuantity === 0;
+
           const productItem = document.createElement("li");
           productItem.classList.add("product-item");
 
@@ -227,7 +230,9 @@ document.addEventListener("DOMContentLoaded", () => {
           productItem.innerHTML = `
       <div class="product-box">
         <div class="product-image">
-          <a href="${productLink}">
+          <a href="${productLink}" ${
+            isOutOfStock ? 'style="pointer-events: none; opacity: 0.5;"' : ""
+          }>
             <img src="${
               product.file[0] ||
               "https://i.pinimg.com/474x/68/cb/f4/68cbf40113d88a2a6a63b937740a292f.jpg"
@@ -241,28 +246,38 @@ document.addEventListener("DOMContentLoaded", () => {
                data-name="${product.name}" 
                data-price="${finalPrice}" 
                data-image="${product.file[0]}"
-               data-stock="${product.StockQuantity}">
-              <i class="feather icon-feather-shopping-bag"></i>
-              Add to Cart
+               data-stock="${product.StockQuantity}"
+               ${
+                 isOutOfStock
+                   ? 'style="pointer-events: none; opacity: 0.5;"'
+                   : ""
+               }>
+              ${
+                isOutOfStock
+                  ? '<span style="background-color: white; color: red; font-size: 1.2em; padding: 5px 10px; border-radius: 3px;">Out of Stock</span>'
+                  : '<i class="feather icon-feather-shopping-bag"></i> Add to Cart'
+              }
             </a>
           </div>
           <div class="product-actions">
             <ul>
               <li>
-                <a href="#" class="add-to-wishlist ${
-                  isWishlisted ? "added" : ""
-                } d-flex align-items-center justify-content-center"
+                <a href="#" class="add-to-wishlist ' + (isWishlisted ? "added" : "") + ' d-flex align-items-center justify-content-center"
                    data-bs-placement="left" aria-label="Remove from wishlist"
                    data-bs-original-title="Add to wishlist" data-id="${
                      product._id
                    }"
-                   style="width: 40px; height: 40px; background: #fff; color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                   style="width: 40px; height: 40px; background: #fff; color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; ${
+                     isOutOfStock ? "pointer-events: none; opacity: 0.5;" : ""
+                   }">
                   <i class="feather icon-feather-heart-on fs-16 product-wishlist-icon"></i>
                 </a>
               </li>
               <li>
                 <a href="${productLink}" title="Quick shop" class="quick-shop"
-                   style="width: 40px; height: 40px; background: #fff; color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                   style="width: 40px; height: 40px; background: #fff; color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; ${
+                     isOutOfStock ? "pointer-events: none; opacity: 0.5;" : ""
+                   }">
                   <i class="feather icon-feather-eye fs-16"></i>
                 </a>
               </li>
@@ -270,7 +285,9 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
         <div class="product-info">
-          <a href="${productLink}" class="product-name">${product.name}</a>
+          <a href="${productLink}" class="product-name" ${
+            isOutOfStock ? 'style="pointer-events: none; opacity: 0.5;"' : ""
+          }>${product.name}</a>
           <div class="product-price">
         ${
           product.Discount && product.Discount > 0

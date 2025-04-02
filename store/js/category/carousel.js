@@ -18,12 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
       const result = await response.json();
       console.log("Fetched category products:", result);
-      // Assume result.data is an array of products
-      if (result.data.products && result.data.products.length > 0) {
-        return result.data.products;
-      } else {
-        return [];
-      }
+      return result.data.products || [];
     } catch (error) {
       console.error("Error fetching category products:", error);
       return [];
@@ -43,41 +38,64 @@ document.addEventListener("DOMContentLoaded", async () => {
     const slidesHTML = productsArray
       .map(
         (product) => `
-      <div class="swiper-slide">
-        <div class="interactive-banner-style-09 border-radius-6px overflow-hidden position-relative">
-          <img src="${product.image}" alt="${product.name}" />
-          <div class="opacity-full bg-gradient-gray-light-dark-transparent"></div>
-          <div class="image-content h-100 w-100 ps-15 pe-15 pt-11 pb-11 lg-p-11 d-flex justify-content-bottom align-items-start flex-column">
-            <div class="mt-auto d-flex align-items-start w-100 z-index-1 position-relative overflow-hidden flex-column">
-              <span class="text-white fw-500 fs-22">${product.name}</span>
-              ${
-                product.price
-                  ? `<span class="text-white fs-18 mt-1">€${product.price}</span>`
-                  : ""
-              }
-            </div>
-            <div class="position-absolute left-0px top-0px w-100 h-100 bg-gradient-regal-blue-transparent opacity-9"></div>
-            <div class="box-overlay bg-gradient-gray-light-dark-transparent"></div>
-            <a href="${
-              product.link || "#"
-            }" class="position-absolute z-index-1 top-0px left-0px h-100 w-100"></a>
-          </div>
+  <div class="swiper-slide ${
+    product.StockQuantity === 0 ? "out-of-stock" : ""
+  }">
+    <div class="interactive-banner-style-09 border-radius-6px overflow-hidden position-relative">
+      <img src="${product.image}" alt="${product.name}" />
+
+      <div class="opacity-full bg-gradient-gray-light-dark-transparent"></div>
+
+      <div class="image-content h-100 w-100 ps-15 pe-15 pt-11 pb-11 lg-p-11 d-flex justify-content-bottom align-items-start flex-column">
+        <div class="mt-auto d-flex align-items-start w-100 z-index-1 position-relative overflow-hidden flex-column">
+          <span class="text-white fw-700 fs-22 p-2 bg-dark opacity-90 rounded shadow">${
+            product.name
+          }</span>
+          ${
+            product.price
+              ? `<span class="text-white fw-700 fs-18 p-2 bg-dark opacity-90 rounded shadow mt-1">€${product.price}</span>`
+              : ""
+          }
         </div>
+
+        <!-- Show "Out of Stock" in Red -->
+        ${
+          product.StockQuantity === 0
+            ? `<span class="text-danger out-of-stock-text fw-bold fs-20 mt-2" style="color: red !important;">Out of Stock</span>`
+            : ""
+        }
+
+        <div class="position-absolute left-0px top-0px w-100 h-100 bg-gradient-regal-blue-transparent opacity-9"></div>
+        <div class="box-overlay bg-gradient-gray-light-dark-transparent"></div>
+
+        <!-- Disable click if out of stock -->
+        <a href="${
+          product.StockQuantity > 0 ? product.link : "javascript:void(0);"
+        }" 
+           class="position-absolute z-index-1 top-0px left-0px h-100 w-100 ${
+             product.StockQuantity === 0 ? "disabled-link" : ""
+           }">
+        </a>
       </div>
-    `
+    </div>
+  </div>
+  `
       )
       .join("");
 
     sliderWrapper.innerHTML = slidesHTML;
 
-    // Determine loop mode based on the number of slides
-    const loopMode = productsArray.length > 1;
+    // Apply JavaScript-based styling to Out of Stock text
+    document.querySelectorAll(".out-of-stock-text").forEach((el) => {
+      el.style.color = "red";
+      console.log(el);
+    });
 
-    // Initialize Swiper with proper selectors
+    // Initialize Swiper
     new Swiper(".slider-three-slide", {
       slidesPerView: 1,
       spaceBetween: 30,
-      loop: loopMode,
+      loop: productsArray.length > 1,
       autoplay: {
         delay: 4000,
         disableOnInteraction: false,
@@ -106,18 +124,51 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
+  // Add styles to indicate out-of-stock items
+  const style = document.createElement("style");
+  style.innerHTML = `
+  .out-of-stock {
+    filter: grayscale(100%) opacity(0.5);
+  }
+  .disabled-link {
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+  .text-danger {
+    color: red !important;
+  }
+  .out-of-stock-text {
+    color: red !important;
+  }
+`;
+  document.head.appendChild(style);
+
   // Fetch the products and then initialize the slider
   const productsData = await fetchCategoryProducts();
-  console.log(`productData: ${productsData}`);
 
   // Map the fetched products to the structure expected by the slider.
   const sliderProducts = productsData.map((prod) => ({
     name: prod.name,
     image: prod.file && prod.file.length ? prod.file[0] : "",
     price: prod.BasePrice ? prod.BasePrice.toFixed(2) : null,
-    link: `https://www.africanmarkets.eu/store/single%20product/single-product.html?id=${prod._id}`, // Update URL as needed
+    link: `https://www.africanmarkets.eu/store/single%20product/single-product.html?id=${prod._id}`,
+    StockQuantity: prod.StockQuantity || 0, // Ensure StockQuantity is included
   }));
 
-  console.log(`Carousel details ${sliderProducts}`);
+  console.log("Carousel details", sliderProducts);
   initializeProductSlider(sliderProducts);
 });
+
+// Add styles to indicate out-of-stock items
+const style = document.createElement("style");
+style.innerHTML = `
+  .out-of-stock {
+    filter: grayscale(100%) opacity(0.5);
+    pointer-events: none;
+  }
+  .disabled-link {
+    cursor: not-allowed;
+    background: rgba(0, 0, 0, 0.4);
+  }
+`;
+document.head.appendChild(style);

@@ -33,16 +33,16 @@ document.addEventListener("DOMContentLoaded", async () => {
             <a href="javascript:void(0);" class="fs-20 fw-500 remove-item" data-index="${index}">×</a>
           </td>
           <td class="product-thumbnail">
-            <a href="demo-jewellery-store-single-product.html">
+            <a href="/store/single%20product/single-product.html?id=${item.id}">
               <img class="cart-product-image" alt="${item.name}" src="${
         item.image || "./store/images/products/default.jpg"
       }">
             </a>
           </td>
           <td class="product-name">
-            <a href="demo-jewellery-store-single-product.html" class="text-dark-gray fw-500 d-block lh-initial">${
-              item.name
-            }</a>
+            <a href="/store/single%20product/single-product.html?id=${
+              item.id
+            }" class="text-dark-gray fw-500 d-block lh-initial">${item.name}</a>
             <span class="fs-14">Color: ${item.color || "N/A"}</span>
           </td>
           <td class="product-price" data-title="Price">€${item.finalPrice.toFixed(
@@ -255,6 +255,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         ) || item.quantity;
 
       return {
+        productId: item.id,
         currency: "EUR",
         name: item.name,
         images: Array.isArray(item.image) ? item.image : [item.image],

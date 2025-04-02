@@ -579,7 +579,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const finalPrice = calculateFinalPrice(
             product.BasePrice,
             product.Discount,
-            product.DiscountiscountType
+            product.DiscountType
           );
 
           let isNew = isProductNew(product.createdAt);
@@ -669,7 +669,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 product.Discount && product.Discount > 0
                   ? `<del>€${product.BasePrice.toFixed(
                       2
-                    )}</del> €${finalPrice.toFixed(2)}`
+                    )} </del> €${finalPrice.toFixed(2)}`
                   : `€${product.BasePrice.toFixed(2)}`
               }
             </div>
